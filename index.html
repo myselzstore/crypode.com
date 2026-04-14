@@ -545,6 +545,106 @@
     color: var(--text-muted);
   }
 
+  /* SUPPORT SECTION */
+  .support-section {
+    margin: 0 48px 100px;
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 60px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .support-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .support-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .support-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 8px;
+    padding: 28px 32px;
+    flex: 1;
+    min-width: 240px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .support-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-3px);
+  }
+  .support-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+  .crypto-address {
+    background: var(--dark-2);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    word-break: break-all;
+    color: var(--cream-soft);
+    margin: 12px 0;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .copy-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 20px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .copy-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+  .bmc-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFDD00;
+    color: #0D0D0D;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    margin-top: 16px;
+  }
+  .bmc-button:hover {
+    transform: scale(1.02);
+    background: #ffe055;
+  }
+  .support-note {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
   /* FOOTER */
   footer {
     border-top: 1px solid rgba(201,168,76,0.1);
@@ -619,6 +719,8 @@
     .topics-grid { grid-template-columns: 1fr; }
     .newsletter { margin: 0 24px 80px; padding: 48px 24px; }
     .newsletter-form { flex-direction: column; }
+    .support-section { margin: 0 24px 60px; padding: 40px 24px; }
+    .support-grid { flex-direction: column; gap: 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
   }
@@ -820,6 +922,47 @@
   </div>
 </section>
 
+<!-- SUPPORT SECTION: Buy Me a Coffee + Crypto Donations -->
+<section class="support-section">
+  <div style="text-align: center;">
+    <div class="hero-tag" style="margin-bottom: 16px;">☕ Support the Mission</div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400;">Fuel honest financial guidance</h2>
+    <p style="max-width: 540px; margin: 16px auto 0; color: var(--text-muted);">If these articles have helped you navigate debt, faith, and family, consider supporting Crypode to keep this work sustainable.</p>
+  </div>
+
+  <div class="support-grid">
+    <!-- Buy Me a Coffee Card -->
+    <div class="support-card">
+      <h4>☕ Buy Me a Coffee</h4>
+      <p style="font-size: 0.85rem; margin-bottom: 12px;">Quick & easy — one‑time support</p>
+      <a href="https://buymeacoffee.com/myselzstorh" target="_blank" class="bmc-button">
+        <span>Buy Me a Coffee</span>
+        <span style="font-size: 1.2rem;">☕</span>
+      </a>
+    </div>
+
+    <!-- Crypto Donations Card -->
+    <div class="support-card">
+      <h4>₿ Crypto Donations</h4>
+      <div style="margin-bottom: 16px;">
+        <div class="crypto-address" id="usdt-addr">TLc1KcMRHejXRpuh15HXJAzmUxi1zsEusU</div>
+        <button class="copy-btn" onclick="copyToClipboard('usdt-addr', 'USDT address')">Copy USDT (TRC20)</button>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="crypto-address" id="btc-addr">1nJo6u87ngiAJaLHdaCW4JmA1w5qcz4hW</div>
+        <button class="copy-btn" onclick="copyToClipboard('btc-addr', 'Bitcoin address')">Copy Bitcoin (BTC)</button>
+      </div>
+      <div>
+        <div class="crypto-address" id="eth-addr">0xb6b989fb96b39a36e9c4653ad86d3d30c51cfebc</div>
+        <button class="copy-btn" onclick="copyToClipboard('eth-addr', 'Ethereum address')">Copy Ethereum (ETH)</button>
+      </div>
+    </div>
+  </div>
+  <div class="support-note">
+    ✦ Any amount helps keep these honest articles coming. JazakAllah khair ✦
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Cry<span>pode</span></div>
@@ -849,6 +992,21 @@
     }
   }
 
+  function copyToClipboard(elementId, label) {
+    const addressDiv = document.getElementById(elementId);
+    const text = addressDiv.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = addressDiv.nextElementSibling;
+      const originalText = btn.innerText;
+      btn.innerText = '✓ Copied!';
+      setTimeout(() => {
+        btn.innerText = originalText;
+      }, 2000);
+    }).catch(() => {
+      alert('Could not copy. Manual copy: ' + text);
+    });
+  }
+
   // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -859,7 +1017,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.topic-card, .about-card').forEach(el => {
+  document.querySelectorAll('.topic-card, .about-card, .support-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, border-color 0.4s, box-shadow 0.4s';
