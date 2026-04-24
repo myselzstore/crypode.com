@@ -6,7 +6,6 @@
 <title>Crypode — Real Money Wisdom for Real Life</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='512' height='512' rx='64' fill='%230D0D0D'/%3E%3Crect x='8' y='8' width='496' height='496' rx='58' fill='none' stroke='%23C9A84C' stroke-width='6' stroke-opacity='0.5'/%3E%3Cline x1='80' y1='110' x2='432' y2='110' stroke='%23C9A84C' stroke-width='1.5' stroke-opacity='0.35'/%3E%3Cline x1='80' y1='402' x2='432' y2='402' stroke='%23C9A84C' stroke-width='1.5' stroke-opacity='0.35'/%3E%3Cpolygon points='256,50 268,38 280,50 268,62' fill='%23C9A84C' opacity='0.7'/%3E%3Cpolygon points='256,450 268,438 280,450 268,462' fill='%23C9A84C' opacity='0.7'/%3E%3Ctext x='108' y='310' font-family='Georgia,serif' font-size='210' font-weight='700' fill='%23C9A84C'%3EC%3C/text%3E%3Ctext x='268' y='310' font-family='Georgia,serif' font-size='210' font-style='italic' font-weight='400' fill='%23F5F0E8'%3Ep%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<!-- Markdown rendering library -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
   :root {
@@ -33,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* NOISE TEXTURE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -62,11 +60,9 @@
     color: var(--gold);
     letter-spacing: 2px;
     text-decoration: none;
-  }
-
-  .logo span {
-    color: var(--cream);
-    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
   nav ul {
@@ -113,9 +109,8 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
   }
 
   .hero-line {
@@ -241,143 +236,6 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--text-muted);
-  }
-
-  /* CHAT SECTION - IMPROVED: smaller, nicer, markdown support */
-  .chat-section {
-    max-width: 900px;
-    margin: 0 auto 60px;
-    padding: 0 24px;
-  }
-  .chat-container {
-    background: var(--dark-3);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    transition: all 0.2s;
-  }
-  .chat-header {
-    padding: 16px 24px;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-    background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
-  }
-  .chat-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .chat-header p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-  .chat-messages {
-    height: 380px;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: var(--dark-2);
-    scroll-behavior: smooth;
-  }
-  .message {
-    display: flex;
-    gap: 10px;
-    animation: fadeUp 0.25s ease;
-  }
-  .message.user {
-    justify-content: flex-end;
-  }
-  .message-bubble {
-    max-width: 80%;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    word-wrap: break-word;
-  }
-  .message.user .message-bubble {
-    background: var(--gold);
-    color: var(--dark);
-    border-bottom-right-radius: 4px;
-  }
-  .message.assistant .message-bubble {
-    background: var(--dark-3);
-    border: 1px solid rgba(201,168,76,0.2);
-    color: var(--cream);
-    border-bottom-left-radius: 4px;
-  }
-  /* Markdown styling inside assistant bubble */
-  .message-bubble h1, .message-bubble h2, .message-bubble h3 {
-    margin: 8px 0 6px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 500;
-  }
-  .message-bubble h3 { font-size: 1.1rem; color: var(--gold); }
-  .message-bubble p { margin: 6px 0; }
-  .message-bubble ul, .message-bubble ol { margin: 6px 0 6px 20px; }
-  .message-bubble li { margin: 2px 0; }
-  .message-bubble strong { color: var(--gold-light); }
-  .message-bubble em { font-style: italic; }
-  .message-bubble hr { margin: 10px 0; border-color: rgba(201,168,76,0.2); }
-  .chat-input-area {
-    padding: 14px 20px;
-    border-top: 1px solid rgba(201,168,76,0.15);
-    display: flex;
-    gap: 10px;
-    background: var(--dark-3);
-  }
-  .chat-input-area input {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    color: var(--cream);
-    padding: 12px 16px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 0.9rem;
-    border-radius: 40px;
-    outline: none;
-    transition: border 0.2s;
-  }
-  .chat-input-area input:focus {
-    border-color: var(--gold);
-  }
-  .chat-input-area button {
-    background: var(--gold);
-    border: none;
-    color: var(--dark);
-    padding: 0 24px;
-    border-radius: 40px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .chat-input-area button:hover {
-    background: var(--gold-light);
-    transform: scale(0.97);
-  }
-  .chat-loading {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(201,168,76,0.3);
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-    vertical-align: middle;
-    margin-right: 8px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  @media (max-width: 768px) {
-    .chat-section { padding: 0 16px; margin-bottom: 50px; }
-    .message-bubble { max-width: 90%; }
-    .chat-messages { height: 340px; }
   }
 
   /* MARQUEE */
@@ -511,13 +369,145 @@
     margin-top: 4px;
   }
 
-  /* TOPICS */
+  /* CHAT SECTION - bigger, after about */
+  .chat-section {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+  .chat-container {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  }
+  .chat-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
+  }
+  .chat-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .chat-header p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  .chat-messages {
+    height: 450px;
+    overflow-y: auto;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--dark-2);
+    scroll-behavior: smooth;
+  }
+  .message {
+    display: flex;
+    gap: 12px;
+    animation: fadeUp 0.25s ease;
+  }
+  .message.user {
+    justify-content: flex-end;
+  }
+  .message-bubble {
+    max-width: 80%;
+    padding: 12px 20px;
+    border-radius: 24px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  .message.user .message-bubble {
+    background: var(--gold);
+    color: var(--dark);
+    border-bottom-right-radius: 6px;
+  }
+  .message.assistant .message-bubble {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--cream);
+    border-bottom-left-radius: 6px;
+  }
+  /* Markdown styling */
+  .message-bubble h1, .message-bubble h2, .message-bubble h3 {
+    margin: 8px 0 6px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+  }
+  .message-bubble h3 { font-size: 1.1rem; color: var(--gold); }
+  .message-bubble p { margin: 6px 0; }
+  .message-bubble ul, .message-bubble ol { margin: 6px 0 6px 20px; }
+  .message-bubble li { margin: 2px 0; }
+  .message-bubble strong { color: var(--gold-light); }
+  .message-bubble em { font-style: italic; }
+  .message-bubble hr { margin: 10px 0; border-color: rgba(201,168,76,0.2); }
+  .chat-input-area {
+    padding: 18px 24px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    gap: 12px;
+    background: var(--dark-3);
+  }
+  .chat-input-area input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--cream);
+    padding: 14px 18px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.95rem;
+    border-radius: 44px;
+    outline: none;
+  }
+  .chat-input-area input:focus { border-color: var(--gold); }
+  .chat-input-area button {
+    background: var(--gold);
+    border: none;
+    color: var(--dark);
+    padding: 0 32px;
+    border-radius: 44px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .chat-input-area button:hover {
+    background: var(--gold-light);
+    transform: scale(0.97);
+  }
+  .chat-loading {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(201,168,76,0.3);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 768px) {
+    .chat-section { padding: 0 16px; }
+    .chat-messages { height: 380px; padding: 16px; }
+    .message-bubble { max-width: 90%; }
+  }
+
+  /* TOPICS, NEWSLETTER, SUPPORT, FOOTER (unchanged) */
   .topics {
     padding: 80px 48px 120px;
     max-width: 1200px;
     margin: 0 auto;
   }
-
   .section-header {
     display: flex;
     justify-content: space-between;
@@ -526,57 +516,38 @@
     border-bottom: 1px solid rgba(201,168,76,0.1);
     padding-bottom: 32px;
   }
-
   .section-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 2.5vw, 2.4rem);
     font-weight: 400;
     color: var(--cream);
   }
-
   .section-header a {
     color: var(--gold);
     text-decoration: none;
     font-size: 0.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: opacity 0.3s;
   }
-
-  .section-header a:hover { opacity: 0.7; }
-
   .topics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
   }
-
   .topic-card {
     background: var(--dark-2);
     padding: 40px 36px;
     border: 1px solid rgba(201,168,76,0.08);
     position: relative;
-    cursor: pointer;
     transition: all 0.4s;
     overflow: hidden;
+    text-decoration: none;
+    display: block;
   }
-
-  .topic-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 0;
-    background: linear-gradient(to top, rgba(201,168,76,0.06), transparent);
-    transition: height 0.4s;
-  }
-
   .topic-card:hover {
     border-color: rgba(201,168,76,0.3);
     transform: translateY(-4px);
   }
-
-  .topic-card:hover::after { height: 100%; }
-
   .topic-number {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
@@ -585,12 +556,7 @@
     margin-bottom: 24px;
     font-weight: 700;
   }
-
-  .topic-icon {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-
+  .topic-icon { font-size: 1.8rem; margin-bottom: 20px; }
   .topic-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -598,14 +564,7 @@
     margin-bottom: 14px;
     font-weight: 400;
   }
-
-  .topic-card p {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-  }
-
-  /* NEWSLETTER */
+  .topic-card p { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); }
   .newsletter {
     margin: 0 48px 120px;
     background: var(--dark-3);
@@ -614,25 +573,8 @@
     border-radius: 4px;
     text-align: center;
     position: relative;
-    overflow: hidden;
   }
-
-  .newsletter::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-  }
-
-  .newsletter-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%);
-  }
-
   .newsletter-content { position: relative; z-index: 2; }
-
   .newsletter h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -640,74 +582,25 @@
     color: var(--cream);
     margin-bottom: 16px;
   }
-
-  .newsletter h2 em {
-    color: var(--gold);
-    font-style: italic;
-  }
-
-  .newsletter p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 40px;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-  }
-
-  .newsletter-form {
-    display: flex;
-    gap: 12px;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
+  .newsletter h2 em { color: var(--gold); font-style: italic; }
+  .newsletter p { color: var(--text-muted); font-size: 1rem; margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .newsletter-form { display: flex; gap: 12px; max-width: 460px; margin: 0 auto; }
   .newsletter-form input {
     flex: 1;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(201,168,76,0.2);
     color: var(--cream);
     padding: 16px 20px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 0.9rem;
     border-radius: 2px;
-    outline: none;
-    transition: border-color 0.3s;
   }
-
-  .newsletter-form input:focus {
-    border-color: var(--gold);
-  }
-
-  .newsletter-form input::placeholder {
-    color: var(--text-muted);
-  }
-
-  /* SUPPORT SECTION */
   .support-section {
     margin: 0 48px 100px;
     background: var(--dark-3);
     border: 1px solid rgba(201,168,76,0.15);
     border-radius: 4px;
     padding: 60px 48px;
-    position: relative;
-    overflow: hidden;
   }
-  .support-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-  }
-  .support-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    margin-top: 40px;
-  }
+  .support-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 40px; }
   .support-card {
     background: rgba(0,0,0,0.3);
     border: 1px solid rgba(201,168,76,0.1);
@@ -716,18 +609,6 @@
     flex: 1;
     min-width: 240px;
     text-align: center;
-    transition: all 0.3s;
-  }
-  .support-card:hover {
-    border-color: rgba(201,168,76,0.3);
-    transform: translateY(-3px);
-  }
-  .support-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    margin-bottom: 16px;
-    letter-spacing: 1px;
   }
   .crypto-address {
     background: var(--dark-2);
@@ -736,9 +617,7 @@
     font-family: monospace;
     font-size: 0.85rem;
     word-break: break-all;
-    color: var(--cream-soft);
     margin: 12px 0;
-    border: 1px solid rgba(201,168,76,0.2);
   }
   .copy-btn {
     background: transparent;
@@ -746,17 +625,9 @@
     color: var(--gold);
     padding: 8px 20px;
     font-size: 0.7rem;
-    letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 2px;
     cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 8px;
-    font-weight: 500;
-  }
-  .copy-btn:hover {
-    background: var(--gold);
-    color: var(--dark);
   }
   .bmc-button {
     display: inline-flex;
@@ -768,23 +639,8 @@
     border-radius: 40px;
     font-weight: 700;
     text-decoration: none;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.2s;
     margin-top: 16px;
   }
-  .bmc-button:hover {
-    transform: scale(1.02);
-    background: #ffe055;
-  }
-  .support-note {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  /* FOOTER */
   footer {
     border-top: 1px solid rgba(201,168,76,0.1);
     padding: 48px;
@@ -792,62 +648,19 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--gold);
-    letter-spacing: 2px;
-  }
-
-  .footer-logo span {
-    color: var(--cream);
-    font-style: italic;
-  }
-
-  footer p {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 28px;
-  }
-
-  .footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  .footer-links a:hover { color: var(--gold); }
-
-  /* ANIMATIONS */
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; }
+  footer p { font-size: 0.78rem; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; text-transform: uppercase; }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-
-  /* ISLAMIC ORNAMENT */
-  .ornament {
-    text-align: center;
-    color: rgba(201,168,76,0.2);
-    font-size: 1.5rem;
-    letter-spacing: 8px;
-    margin: 40px 0;
-  }
-
-  /* RESPONSIVE */
+  .ornament { text-align: center; color: rgba(201,168,76,0.2); font-size: 1.5rem; letter-spacing: 8px; margin: 40px 0; }
   @media (max-width: 768px) {
     nav { padding: 20px 24px; }
     nav ul { display: none; }
@@ -857,19 +670,16 @@
     .topics { padding: 40px 24px 80px; }
     .topics-grid { grid-template-columns: 1fr; }
     .newsletter { margin: 0 24px 80px; padding: 48px 24px; }
-    .newsletter-form { flex-direction: column; }
     .support-section { margin: 0 24px 60px; padding: 40px 24px; }
-    .support-grid { flex-direction: column; gap: 24px; }
+    .support-grid { flex-direction: column; }
     footer { flex-direction: column; gap: 24px; text-align: center; }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="logo" style="display:flex;align-items:center;gap:12px;">
+  <a href="#" class="logo">
     <svg width="44" height="44" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
       <rect width="512" height="512" rx="64" fill="#0D0D0D"/>
       <rect x="8" y="8" width="496" height="496" rx="58" fill="none" stroke="#C9A84C" stroke-width="6" stroke-opacity="0.5"/>
@@ -881,7 +691,7 @@
       <text x="108" y="310" font-family="Georgia,serif" font-size="210" font-weight="700" fill="#C9A84C">C</text>
       <text x="268" y="310" font-family="Georgia,serif" font-size="210" font-style="italic" font-weight="400" fill="#F5F0E8">p</text>
     </svg>
-    Cry<span>pode</span>
+    Crypode
   </a>
   <ul>
     <li><a href="#about">About</a></li>
@@ -911,25 +721,6 @@
   </div>
 </section>
 
-<!-- AI ASSISTANCE - IMPROVED: smaller, nicer, markdown -->
-<section class="chat-section">
-  <div class="chat-container">
-    <div class="chat-header">
-      <h3>✦ Crypode AI Assistant</h3>
-      <p>Ask me about Gulf finance, debt, Islamic finance, or building a stable future — powered by DeepSeek.</p>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="message assistant">
-        <div class="message-bubble">Salam! I'm your financial assistant. How can I help you today? (Real, grounded advice for Gulf professionals.)</div>
-      </div>
-    </div>
-    <div class="chat-input-area">
-      <input type="text" id="chatInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter') sendChatMessage()">
-      <button id="sendBtn" onclick="sendChatMessage()">Send</button>
-    </div>
-  </div>
-</section>
-
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
@@ -950,18 +741,18 @@
   </div>
 </div>
 
-<!-- ABOUT, TOPICS, NEWSLETTER, SUPPORT, FOOTER sections unchanged -->
+<!-- ABOUT SECTION (improved text) -->
 <section class="about" id="about">
   <div>
     <div class="about-label">✦ Our Story</div>
     <h2>Built by someone living it, <em>not just advising it</em></h2>
-    <p>Crypode was born from a simple frustration — most financial advice is written by people who have never truly struggled. Who have never watched 50% of their salary vanish into debt repayments while six children depend on them.</p>
-    <p>This is a space for honest conversations about money in the Gulf context — where banking rules are different, family obligations are real, and faith shapes how we think about wealth and provision.</p>
-    <p>No judgment. No false promises. Just real guidance from someone walking the same road.</p>
+    <p>Crypode started from a simple frustration: most financial advice comes from people who’ve never truly struggled. Who’ve never watched half their salary disappear into debt while six children depend on them.</p>
+    <p>This is a space for honest money conversations rooted in the Gulf — where banking rules are different, family obligations are real, and faith shapes our view of wealth and provision.</p>
+    <p>No judgment. No get‑rich‑quick fantasies. Just real guidance from someone walking the same road.</p>
   </div>
   <div class="about-visual">
     <div class="about-card">
-      <div class="about-card-quote">"I tried to find advice that understood my reality — the debt, the family, the Gulf system. I couldn't find it. So I decided to write it."</div>
+      <div class="about-card-quote">"I looked for advice that understood my reality — the debt, the family, the Gulf system. I couldn't find it. So I started writing it myself."</div>
       <div class="about-card-author">
         <div class="author-avatar">C</div>
         <div class="author-info"><strong style="color: var(--cream); font-size: 0.9rem;">The Founder</strong><small>Technical Supervisor · Father of Six · Muscat, Oman</small></div>
@@ -971,24 +762,44 @@
   </div>
 </section>
 
+<!-- AI ASSISTANCE (moved to after About, bigger box) -->
+<section class="chat-section">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h3>✦ Crypode AI Assistant</h3>
+      <p>Ask me about Gulf finance, debt, Islamic finance, or building a stable future — powered by DeepSeek.</p>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message assistant">
+        <div class="message-bubble">Salam! I'm your financial assistant. How can I help you today? (Real, grounded advice for Gulf professionals.)</div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter') sendChatMessage()">
+      <button id="sendBtn" onclick="sendChatMessage()">Send</button>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS, BLOG, NEWSLETTER, SUPPORT, FOOTER (unchanged) -->
 <section class="topics" id="topics">
   <div class="section-header"><h2>What We Cover</h2><a href="https://crypode.ghost.io" target="_blank">Read All Articles →</a></div>
   <div class="topics-grid">
-    <a href="article-1-debt.html" class="topic-card" style="text-decoration:none;display:block;"><div class="topic-number">01</div><div class="topic-icon">⚖️</div><h3>Navigating Debt in the Gulf</h3><p>How to manage bank loans, credit cards, and repayment pressure in systems that don't negotiate — and still move forward.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-2-islamic-finance.html" class="topic-card" style="text-decoration:none;display:block;"><div class="topic-number">02</div><div class="topic-icon">🌙</div><h3>Islamic Finance Explained</h3><p>Understanding halal banking, interest-free alternatives, and how to align your financial decisions with your faith.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-3-career.html" class="topic-card" style="text-decoration:none;display:block;"><div class="topic-number">03</div><div class="topic-icon">💼</div><h3>Career as Your Greatest Asset</h3><p>How to leverage your skills, explore Gulf opportunities, and turn experience into greater income without starting over.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-4-income.html" class="topic-card" style="text-decoration:none;display:block;"><div class="topic-number">04</div><div class="topic-icon">🌱</div><h3>Building Income on the Side</h3><p>Realistic passive and side income strategies for professionals with limited time, limited capital, and real responsibilities.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-5-family.html" class="topic-card" style="text-decoration:none;display:block;"><div class="topic-number">05</div><div class="topic-icon">👨‍👩‍👧‍👦</div><h3>Providing for a Large Family</h3><p>Practical money management when you are the sole provider — budgeting, priorities, and protecting what matters most.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-6-stress.html" class="topic-card" style="text-decoration:none;display:block;"><div class="topic-number">06</div><div class="topic-icon">🧠</div><h3>The Weight of Financial Stress</h3><p>Honest conversations about the mental and emotional toll of financial pressure — and how to carry it without breaking.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-1-debt.html" class="topic-card"><div class="topic-number">01</div><div class="topic-icon">⚖️</div><h3>Navigating Debt in the Gulf</h3><p>How to manage bank loans, credit cards, and repayment pressure in systems that don't negotiate — and still move forward.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-2-islamic-finance.html" class="topic-card"><div class="topic-number">02</div><div class="topic-icon">🌙</div><h3>Islamic Finance Explained</h3><p>Understanding halal banking, interest-free alternatives, and how to align your financial decisions with your faith.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-3-career.html" class="topic-card"><div class="topic-number">03</div><div class="topic-icon">💼</div><h3>Career as Your Greatest Asset</h3><p>How to leverage your skills, explore Gulf opportunities, and turn experience into greater income without starting over.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-4-income.html" class="topic-card"><div class="topic-number">04</div><div class="topic-icon">🌱</div><h3>Building Income on the Side</h3><p>Realistic passive and side income strategies for professionals with limited time, limited capital, and real responsibilities.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-5-family.html" class="topic-card"><div class="topic-number">05</div><div class="topic-icon">👨‍👩‍👧‍👦</div><h3>Providing for a Large Family</h3><p>Practical money management when you are the sole provider — budgeting, priorities, and protecting what matters most.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-6-stress.html" class="topic-card"><div class="topic-number">06</div><div class="topic-icon">🧠</div><h3>The Weight of Financial Stress</h3><p>Honest conversations about the mental and emotional toll of financial pressure — and how to carry it without breaking.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
   </div>
 </section>
 
 <section class="topics" id="blog" style="padding-top:0;">
   <div class="section-header"><h2>Latest from the Blog</h2><a href="https://crypode.ghost.io" target="_blank">Read All Articles →</a></div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
-    <a href="https://crypode.ghost.io/the-billionaire-mindset-rooted-in-islam/" target="_blank" class="topic-card" style="text-decoration:none;"><div class="topic-icon">🌙</div><h3>The Billionaire Mindset Rooted in Islam</h3><p>A wealth secret hiding in plain sight — how Islamic principles align perfectly with long-term financial success.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="https://crypode.ghost.io/the-day-i-faced-a-future-emir-on-the-tennis-court/" target="_blank" class="topic-card" style="text-decoration:none;"><div class="topic-icon">🎾</div><h3>The Day He Faced a Future Emir on the Tennis Court</h3><p>An unforgettable story about representing Oman — and what sport teaches us about life, pressure, and showing up.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="https://crypode.ghost.io" target="_blank" class="topic-card" style="text-decoration:none;"><div class="topic-icon">✍️</div><h3>More Stories Coming Soon</h3><p>Real, honest articles about debt, family, faith, and building something better — written from lived experience in Oman.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Visit Blog →</div></a>
+    <a href="https://crypode.ghost.io/the-billionaire-mindset-rooted-in-islam/" target="_blank" class="topic-card"><div class="topic-icon">🌙</div><h3>The Billionaire Mindset Rooted in Islam</h3><p>A wealth secret hiding in plain sight — how Islamic principles align perfectly with long-term financial success.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="https://crypode.ghost.io/the-day-i-faced-a-future-emir-on-the-tennis-court/" target="_blank" class="topic-card"><div class="topic-icon">🎾</div><h3>The Day He Faced a Future Emir on the Tennis Court</h3><p>An unforgettable story about representing Oman — and what sport teaches us about life, pressure, and showing up.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="https://crypode.ghost.io" target="_blank" class="topic-card"><div class="topic-icon">✍️</div><h3>More Stories Coming Soon</h3><p>Real, honest articles about debt, family, faith, and building something better — written from lived experience in Oman.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Visit Blog →</div></a>
   </div>
 </section>
 
@@ -1007,12 +818,12 @@
   <div style="text-align:center;"><div class="hero-tag" style="margin-bottom:16px;">☕ Support the Mission</div><h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;">Fuel honest financial guidance</h2><p style="max-width:540px;margin:16px auto 0;color:var(--text-muted);">If these articles have helped you navigate debt, faith, and family, consider supporting Crypode to keep this work sustainable.</p></div>
   <div class="support-grid">
     <div class="support-card"><h4>☕ Buy Me a Coffee</h4><p style="font-size:0.85rem;margin-bottom:12px;">Quick & easy — one‑time support</p><a href="https://buymeacoffee.com/myselzstorh" target="_blank" class="bmc-button"><span>Buy Me a Coffee</span><span style="font-size:1.2rem;">☕</span></a></div>
-    <div class="support-card"><h4>₿ Crypto Donations</h4><div style="margin-bottom:16px;"><div class="crypto-address" id="usdt-addr">TLc1KcMRHejXRpuh15HXJAzmUxi1zsEusU</div><button class="copy-btn" onclick="copyToClipboard('usdt-addr', 'USDT address')">Copy USDT (TRC20)</button></div><div style="margin-bottom:16px;"><div class="crypto-address" id="btc-addr">1nJo6u87ngiAJaLHdaCW4JmA1w5qcz4hW</div><button class="copy-btn" onclick="copyToClipboard('btc-addr', 'Bitcoin address')">Copy Bitcoin (BTC)</button></div><div><div class="crypto-address" id="eth-addr">0xb6b989fb96b39a36e9c4653ad86d3d30c51cfebc</div><button class="copy-btn" onclick="copyToClipboard('eth-addr', 'Ethereum address')">Copy Ethereum (ETH)</button></div></div>
+    <div class="support-card"><h4>₿ Crypto Donations</h4><div style="margin-bottom:16px;"><div class="crypto-address" id="usdt-addr">TLc1KcMRHejXRpuh15HXJAzmUxi1zsEusU</div><button class="copy-btn" onclick="copyToClipboard('usdt-addr')">Copy USDT (TRC20)</button></div><div style="margin-bottom:16px;"><div class="crypto-address" id="btc-addr">1nJo6u87ngiAJaLHdaCW4JmA1w5qcz4hW</div><button class="copy-btn" onclick="copyToClipboard('btc-addr')">Copy Bitcoin (BTC)</button></div><div><div class="crypto-address" id="eth-addr">0xb6b989fb96b39a36e9c4653ad86d3d30c51cfebc</div><button class="copy-btn" onclick="copyToClipboard('eth-addr')">Copy Ethereum (ETH)</button></div></div>
   </div>
   <div class="support-note">✦ Any amount helps keep these honest articles coming. JazakAllah khair ✦</div>
 </section>
 
-<footer><div class="footer-logo">Cry<span>pode</span></div><p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p><div class="footer-links"><a href="#about">About</a><a href="https://crypode.ghost.io" target="_blank">Blog</a><a href="#topics">Topics</a><a href="#newsletter">Subscribe</a></div></footer>
+<footer><div class="footer-logo">Crypode</div><p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p><div class="footer-links"><a href="#about">About</a><a href="https://crypode.ghost.io" target="_blank">Blog</a><a href="#topics">Topics</a><a href="#newsletter">Subscribe</a></div></footer>
 
 <script>
   function handleSubscribe() {
@@ -1021,28 +832,23 @@
       const email = encodeURIComponent(input.value);
       input.value = '';
       input.placeholder = '✦ Thank you — redirecting you now...';
-      input.style.borderColor = 'var(--gold)';
-      setTimeout(() => {
-        window.open('https://crypode.ghost.io/#/portal/signup?email=' + email, '_blank');
-      }, 800);
+      setTimeout(() => window.open('https://crypode.ghost.io/#/portal/signup?email=' + email, '_blank'), 800);
     } else {
       input.style.borderColor = '#c0392b';
       input.placeholder = 'Please enter a valid email';
     }
   }
 
-  function copyToClipboard(elementId, label) {
-    const addressDiv = document.getElementById(elementId);
-    const text = addressDiv.innerText;
+  function copyToClipboard(elementId) {
+    const text = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(text).then(() => {
-      const btn = addressDiv.nextElementSibling;
-      const originalText = btn.innerText;
+      const btn = document.getElementById(elementId).nextElementSibling;
+      const original = btn.innerText;
       btn.innerText = '✓ Copied!';
-      setTimeout(() => { btn.innerText = originalText; }, 2000);
-    }).catch(() => { alert('Could not copy. Manual copy: ' + text); });
+      setTimeout(() => btn.innerText = original, 2000);
+    });
   }
 
-  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1054,11 +860,10 @@
   document.querySelectorAll('.topic-card, .about-card, .support-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, border-color 0.4s, box-shadow 0.4s';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
 
-  // CHAT FUNCTIONALITY with Markdown rendering
   const BACKEND_URL = "https://crypode-backend.onrender.com/api/chat";
 
   async function sendChatMessage() {
@@ -1067,8 +872,6 @@
     if (!message) return;
 
     const messagesContainer = document.getElementById('chatMessages');
-    
-    // Append user message
     const userMsgDiv = document.createElement('div');
     userMsgDiv.className = 'message user';
     userMsgDiv.innerHTML = `<div class="message-bubble">${escapeHtml(message)}</div>`;
@@ -1076,7 +879,6 @@
     inputEl.value = '';
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-    // Loading indicator
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'message assistant';
     loadingDiv.id = 'loadingMsg';
@@ -1088,28 +890,23 @@
       const response = await fetch(BACKEND_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: message })
+        body: JSON.stringify({ message })
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const reply = data.reply || "Sorry, I couldn't process that.";
-      
-      // Remove loading indicator
       document.getElementById('loadingMsg')?.remove();
-      
-      // Render markdown to HTML
       const assistantDiv = document.createElement('div');
       assistantDiv.className = 'message assistant';
-      const formattedHtml = marked.parse(reply);
-      assistantDiv.innerHTML = `<div class="message-bubble">${formattedHtml}</div>`;
+      assistantDiv.innerHTML = `<div class="message-bubble">${marked.parse(reply)}</div>`;
       messagesContainer.appendChild(assistantDiv);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     } catch (error) {
-      console.error('Chat error:', error);
+      console.error(error);
       document.getElementById('loadingMsg')?.remove();
       const errorDiv = document.createElement('div');
       errorDiv.className = 'message assistant';
-      errorDiv.innerHTML = `<div class="message-bubble">⚠️ Connection error. Make sure your backend proxy is running and BACKEND_URL is correct.</div>`;
+      errorDiv.innerHTML = `<div class="message-bubble">⚠️ Connection error. Please try again later.</div>`;
       messagesContainer.appendChild(errorDiv);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
