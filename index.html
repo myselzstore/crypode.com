@@ -47,21 +47,37 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 24px 48px;
+    padding: 20px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
   }
 
+  .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+
   .logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     letter-spacing: 2px;
-    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 12px;
+  }
+
+  .logo-subtitle {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    margin-top: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
   }
 
   nav ul {
@@ -678,19 +694,22 @@
 <body>
 
 <nav>
-  <a href="#" class="logo">
-    <svg width="44" height="44" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-      <rect width="512" height="512" rx="64" fill="#0D0D0D"/>
-      <rect x="8" y="8" width="496" height="496" rx="58" fill="none" stroke="#C9A84C" stroke-width="6" stroke-opacity="0.5"/>
-      <rect x="24" y="24" width="464" height="464" rx="48" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.2"/>
-      <line x1="80" y1="110" x2="432" y2="110" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.35"/>
-      <line x1="80" y1="402" x2="432" y2="402" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.35"/>
-      <polygon points="256,50 268,38 280,50 268,62" fill="#C9A84C" opacity="0.7"/>
-      <polygon points="256,450 268,438 280,450 268,462" fill="#C9A84C" opacity="0.7"/>
-      <text x="108" y="310" font-family="Georgia,serif" font-size="210" font-weight="700" fill="#C9A84C">C</text>
-      <text x="268" y="310" font-family="Georgia,serif" font-size="210" font-style="italic" font-weight="400" fill="#F5F0E8">p</text>
-    </svg>
-    <span style="color: #C9A84C;">Cry</span><span style="color: #F5F0E8;">pode</span>
+  <a href="#" class="logo-wrapper">
+    <div class="logo">
+      <svg width="44" height="44" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <rect width="512" height="512" rx="64" fill="#0D0D0D"/>
+        <rect x="8" y="8" width="496" height="496" rx="58" fill="none" stroke="#C9A84C" stroke-width="6" stroke-opacity="0.5"/>
+        <rect x="24" y="24" width="464" height="464" rx="48" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.2"/>
+        <line x1="80" y1="110" x2="432" y2="110" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.35"/>
+        <line x1="80" y1="402" x2="432" y2="402" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.35"/>
+        <polygon points="256,50 268,38 280,50 268,62" fill="#C9A84C" opacity="0.7"/>
+        <polygon points="256,450 268,438 280,450 268,462" fill="#C9A84C" opacity="0.7"/>
+        <text x="108" y="310" font-family="Georgia,serif" font-size="210" font-weight="700" fill="#C9A84C">C</text>
+        <text x="268" y="310" font-family="Georgia,serif" font-size="210" font-style="italic" font-weight="400" fill="#F5F0E8">p</text>
+      </svg>
+      <span style="color: #C9A84C;">Cry</span><span style="color: #F5F0E8; font-style: italic;">pode</span>
+    </div>
+    <div class="logo-subtitle">Your AI Financial Advisor</div>
   </a>
   <ul>
     <li><a href="#about">About</a></li>
@@ -822,7 +841,7 @@
   <div class="support-note">✦ Any amount helps keep these honest articles coming. JazakAllah khair ✦</div>
 </section>
 
-<footer><div class="footer-logo"><span style="color: #C9A84C;">Cry</span><span style="color: #F5F0E8;">pode</span></div><p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p><div class="footer-links"><a href="#about">About</a><a href="https://crypode.ghost.io" target="_blank">Blog</a><a href="#topics">Topics</a><a href="#newsletter">Subscribe</a></div></footer>
+<footer><div class="footer-logo"><span style="color: #C9A84C;">Cry</span><span style="color: #F5F0E8; font-style: italic;">pode</span></div><p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p><div class="footer-links"><a href="#about">About</a><a href="https://crypode.ghost.io" target="_blank">Blog</a><a href="#topics">Topics</a><a href="#newsletter">Subscribe</a></div></footer>
 
 <script>
   function handleSubscribe() {
