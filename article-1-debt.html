@@ -6,7 +6,6 @@
 <title>Navigating Debt in the Gulf — Crypode</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* (same CSS as earlier, including mobile nav fix) */
   :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --cream: #F5F0E8; --cream-soft: #EDE8DF; --text-muted: #888880; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -53,103 +52,15 @@
   footer p { font-size: 0.78rem; color: var(--text-muted); }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 768px) { 
-    nav { padding: 16px 24px; justify-content: center; }
-    nav ul { display: flex; gap: 16px; width: 100%; justify-content: center; }
-    nav ul a { font-size: 0.7rem; padding: 6px 10px; }
-    .article-hero { padding: 140px 24px 40px; }
-    .article-body { padding: 0 24px 80px; }
+    nav { padding: 16px 24px; justify-content: space-between; }
+    nav ul { display: none; }
+    .article-hero { padding: 120px 20px 40px; }
+    .article-body { padding: 0 20px 60px; }
     .related-grid { grid-template-columns: 1fr; }
-    .related-articles { padding: 60px 24px; }
+    .related-articles { padding: 60px 20px; }
     footer { flex-direction: column; text-align: center; }
   }
-
-  /* HAMBURGER MOBILE MENU */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 8px;
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 3px;
-    background: transparent;
-    z-index: 200;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold);
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(13,13,13,0.98);
-    z-index: 150;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 2px;
-    padding: 20px 48px;
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-    transition: color 0.3s, background 0.3s;
-  }
-  .mobile-menu a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
-  .mobile-menu a:last-child { 
-    color: var(--gold); 
-    border: 1px solid rgba(201,168,76,0.4);
-    margin-top: 24px;
-    width: auto;
-    padding: 14px 36px;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: 'Tajawal', sans-serif;
-  }
-  .mobile-menu-close {
-    position: absolute;
-    top: 24px; right: 24px;
-    color: var(--text-muted);
-    font-size: 1.8rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    line-height: 1;
-  }
-  .mobile-menu-logo {
-    position: absolute;
-    top: 24px; left: 24px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 2px;
-  }
-  .mobile-menu-logo span { color: var(--cream); font-style: italic; }
-
-  @media (max-width: 768px) {
-        .hamburger { display: flex; }
-  }
-
-
-  /* ── MOBILE HAMBURGER NAV (override) ── */
+  /* Hamburger & Mobile Menu */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -160,7 +71,6 @@
     border: 1px solid rgba(201,168,76,0.4);
     border-radius: 3px;
     background: transparent;
-    position: relative;
     z-index: 300;
     flex-shrink: 0;
   }
@@ -175,7 +85,6 @@
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
   .mobile-menu {
     display: none;
     position: fixed;
@@ -234,18 +143,11 @@
     width: auto !important;
     border-bottom: 1px solid var(--gold) !important;
   }
-
   @media (max-width: 768px) {
-    nav { 
-      padding: 16px 20px !important;
-      flex-wrap: nowrap !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-    }
-    nav > ul { display: none !important; }
     .hamburger { display: flex !important; }
+    nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
+    nav > ul { display: none !important; }
   }
-
 </style>
 </head>
 <body>
@@ -256,10 +158,12 @@
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#topics">Topics</a></li>
     <li><a href="books-resources.html">Books</a></li>
+    <li><a href="crypto-islamic-trading.html">Crypto</a></li>
+    <li><a href="impact-products.html">Deals</a></li>
     <li><a href="https://crypode.ghost.io" target="_blank">Blog</a></li>
     <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
   </ul>
-  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Open menu">
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -278,7 +182,6 @@
 </div>
 
 <div class="article-body">
-  <!-- original article content - unchanged -->
   <p>Let me tell you something nobody in the financial advice world ever says: sometimes the debt is not your fault. Sometimes you made the best decisions you could with what you knew, life happened, and now you are sitting with a number that feels impossible — while a system that does not negotiate looks back at you unmoved.</p>
   <p>That is the reality for many working professionals across the Gulf. And it is the reality I have lived personally. If you want to understand the psychology behind why debt feels so crushing, <a href="https://www.amazon.com/dp/0857197681/?tag=wwwmybestabsw-20" target="_blank" style="color:var(--gold);text-decoration:underline;">The Psychology of Money by Morgan Housel</a> is one of the most honest books ever written on the subject.</p>
   <blockquote><p>"The bank does not see a father of six doing his best. It sees a loan number and a repayment schedule."</p></blockquote>
@@ -308,7 +211,7 @@
   <p>You are not alone in this. And the road out, while slow, is real.</p>
 </div>
 
-<!-- RECOMMENDED READING (4 books exactly as on books-resources page) -->
+<!-- Recommended reading section (unchanged) -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📚 Recommended Reading</div>
@@ -337,31 +240,7 @@
   <p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p>
 </footer>
 
-<!-- MOBILE DROPDOWN MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
-  <div class="mobile-menu-logo">Cry<span>pode</span></div>
-  <a href="index.html" onclick="toggleMenu()">Home</a>
-  <a href="index.html#about" onclick="toggleMenu()">About</a>
-  <a href="index.html#topics" onclick="toggleMenu()">Topics</a>
-  <a href="books-resources.html" onclick="toggleMenu()">Books</a>
-  <a href="https://crypode.ghost.io" target="_blank" onclick="toggleMenu()">Blog</a>
-  <a href="index.html#newsletter" onclick="toggleMenu()">Subscribe</a>
-</div>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const btn  = document.getElementById('hamburgerBtn');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  }
-  // Close on ESC
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { const m = document.getElementById('mobileMenu'); if (m.classList.contains('open')) toggleMenu(); }});
-</script>
-
-<!-- MOBILE MENU OVERLAY -->
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <span class="mobile-menu-logo">Cry<em>pode</em></span>
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
@@ -369,13 +248,26 @@
   <a href="index.html#about" onclick="closeMobileMenu()">About</a>
   <a href="index.html#topics" onclick="closeMobileMenu()">Topics</a>
   <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
+  <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
+  <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
   <a href="https://crypode.ghost.io" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
+
 <script>
-  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');    document.getElementById('hamburgerBtn').classList.add('open');    document.body.style.overflow='hidden'; }
-  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow=''; }
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMobileMenu(); });
+  function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.getElementById('hamburgerBtn').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
 </script>
 </body>
 </html>

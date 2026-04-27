@@ -548,6 +548,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
   }
+  /* Blog grid uses same responsive pattern */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
   .topic-card {
     background: var(--dark-2);
     padding: 40px 36px;
@@ -681,7 +687,7 @@
     .hero-stats { display: none; }
     .about { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
     .topics { padding: 40px 24px 80px; }
-    .topics-grid { grid-template-columns: 1fr; }
+    .topics-grid, .blog-grid { grid-template-columns: 1fr; }
     .newsletter { margin: 0 24px 80px; padding: 48px 24px; }
     .support-section { margin: 0 24px 60px; padding: 40px 24px; }
     .support-grid { flex-direction: column; }
@@ -690,92 +696,6 @@
   }
 
   /* HAMBURGER MOBILE MENU */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 8px;
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 3px;
-    background: transparent;
-    z-index: 200;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold);
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(13,13,13,0.98);
-    z-index: 150;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 2px;
-    padding: 20px 48px;
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-    transition: color 0.3s, background 0.3s;
-  }
-  .mobile-menu a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
-  .mobile-menu a:last-child { 
-    color: var(--gold); 
-    border: 1px solid rgba(201,168,76,0.4);
-    margin-top: 24px;
-    width: auto;
-    padding: 14px 36px;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: 'Tajawal', sans-serif;
-  }
-  .mobile-menu-close {
-    position: absolute;
-    top: 24px; right: 24px;
-    color: var(--text-muted);
-    font-size: 1.8rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    line-height: 1;
-  }
-  .mobile-menu-logo {
-    position: absolute;
-    top: 24px; left: 24px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 2px;
-  }
-  .mobile-menu-logo span { color: var(--cream); font-style: italic; }
-
-  @media (max-width: 768px) {
-        .hamburger { display: flex; }
-  }
-
-
-  /* ── MOBILE HAMBURGER NAV (override) ── */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -862,6 +782,7 @@
   }
 
   @media (max-width: 768px) {
+    .hamburger { display: flex !important; }
     nav { 
       padding: 16px 20px !important;
       flex-wrap: nowrap !important;
@@ -869,9 +790,7 @@
       align-items: center !important;
     }
     nav > ul { display: none !important; }
-    .hamburger { display: flex !important; }
   }
-
 </style>
 </head>
 <body>
@@ -1005,17 +924,17 @@
   </div>
 </section>
 
-<!-- BLOG PREVIEW (Now linking to Medium) -->
+<!-- BLOG PREVIEW (Now using .blog-grid class for responsive stacking) -->
 <section class="topics" id="blog" style="padding-top:0;">
   <div class="section-header"><h2>Latest from the Blog</h2><a href="https://medium.com/@crypode" target="_blank">Read All Articles →</a></div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+  <div class="blog-grid">
     <a href="https://medium.com/readers-digests/the-billionaire-mindset-rooted-in-islam-ca73939cb086" target="_blank" class="topic-card"><div class="topic-icon">🌙</div><h3>The Billionaire Mindset Rooted in Islam</h3><p>A wealth secret hiding in plain sight — how Islamic principles align perfectly with long-term financial success.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
     <a href="https://medium.com/readers-digests/the-day-i-faced-a-future-emir-on-the-tennis-court-b4e9aee55495" target="_blank" class="topic-card"><div class="topic-icon">🎾</div><h3>The Day He Faced a Future Emir of Qatar on the Tennis Court</h3><p>An unforgettable story about representing Oman — and what sport teaches us about life, pressure, and showing up.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
     <a href="https://medium.com/@crypode" target="_blank" class="topic-card"><div class="topic-icon">✍️</div><h3>More Stories Coming Soon</h3><p>Real, honest articles about debt, family, faith, and building something better — written from lived experience in Oman.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Visit Blog →</div></a>
   </div>
 </section>
 
-<!-- NEWSLETTER (Now linking to Medium Subscribe) -->
+<!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
   <div class="newsletter-bg"></div>
   <div class="newsletter-content">
@@ -1140,32 +1059,6 @@
   }
 </script>
 
-<!-- MOBILE DROPDOWN MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
-  <div class="mobile-menu-logo">Cry<span>pode</span></div>
-  <a href="index.html" onclick="toggleMenu()">Home</a>
-  <a href="index.html#about" onclick="toggleMenu()">About</a>
-  <a href="index.html#topics" onclick="toggleMenu()">Topics</a>
-  <a href="books-resources.html" onclick="toggleMenu()">Books</a>
-  <a href="crypto-islamic-trading.html" onclick="toggleMenu()">Crypto</a>
-  <a href="impact-products.html" onclick="toggleMenu()" style="color: var(--gold);">Deals</a>
-  <a href="https://medium.com/@crypode" target="_blank" onclick="toggleMenu()">Blog</a>
-  <a href="index.html#newsletter" onclick="toggleMenu()">Subscribe</a>
-</div>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const btn  = document.getElementById('hamburgerBtn');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  }
-  // Close on ESC
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { const m = document.getElementById('mobileMenu'); if (m.classList.contains('open')) toggleMenu(); }});
-</script>
-
 <!-- MOBILE MENU OVERLAY -->
 <div class="mobile-menu" id="mobileMenu">
   <span class="mobile-menu-logo">Cry<em>pode</em></span>
@@ -1179,10 +1072,21 @@
   <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
+
 <script>
-  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');    document.getElementById('hamburgerBtn').classList.add('open');    document.body.style.overflow='hidden'; }
-  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow=''; }
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMobileMenu(); });
+  function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.getElementById('hamburgerBtn').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
 </script>
 </body>
 </html>

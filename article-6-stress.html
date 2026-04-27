@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building Income on the Side — Crypode</title>
+<title>The Weight of Financial Stress — Crypode</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* same CSS as above - omitted for brevity, but identical */
   :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --cream: #F5F0E8; --cream-soft: #EDE8DF; --text-muted: #888880; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -51,104 +50,15 @@
   .footer-logo span { color: var(--cream); font-style: italic; }
   footer p { font-size: 0.78rem; color: var(--text-muted); }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @media (max-width: 768px) { 
-    nav { padding: 16px 24px; justify-content: center; }
-    nav ul { display: flex; gap: 16px; width: 100%; justify-content: center; }
-    nav ul a { font-size: 0.7rem; padding: 6px 10px; }
-    .article-hero { padding: 140px 24px 40px; }
-    .article-body { padding: 0 24px 80px; }
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; justify-content: space-between; }
+    nav ul { display: none; }
+    .article-hero { padding: 120px 20px 40px; }
+    .article-body { padding: 0 20px 60px; }
     .related-grid { grid-template-columns: 1fr; }
-    .related-articles { padding: 60px 24px; }
+    .related-articles { padding: 60px 20px; }
     footer { flex-direction: column; text-align: center; }
   }
-
-  /* HAMBURGER MOBILE MENU */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 8px;
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 3px;
-    background: transparent;
-    z-index: 200;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold);
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(13,13,13,0.98);
-    z-index: 150;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 2px;
-    padding: 20px 48px;
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-    transition: color 0.3s, background 0.3s;
-  }
-  .mobile-menu a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
-  .mobile-menu a:last-child { 
-    color: var(--gold); 
-    border: 1px solid rgba(201,168,76,0.4);
-    margin-top: 24px;
-    width: auto;
-    padding: 14px 36px;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: 'Tajawal', sans-serif;
-  }
-  .mobile-menu-close {
-    position: absolute;
-    top: 24px; right: 24px;
-    color: var(--text-muted);
-    font-size: 1.8rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    line-height: 1;
-  }
-  .mobile-menu-logo {
-    position: absolute;
-    top: 24px; left: 24px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 2px;
-  }
-  .mobile-menu-logo span { color: var(--cream); font-style: italic; }
-
-  @media (max-width: 768px) {
-        .hamburger { display: flex; }
-  }
-
-
-  /* ── MOBILE HAMBURGER NAV (override) ── */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -159,7 +69,6 @@
     border: 1px solid rgba(201,168,76,0.4);
     border-radius: 3px;
     background: transparent;
-    position: relative;
     z-index: 300;
     flex-shrink: 0;
   }
@@ -174,7 +83,6 @@
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
   .mobile-menu {
     display: none;
     position: fixed;
@@ -233,18 +141,11 @@
     width: auto !important;
     border-bottom: 1px solid var(--gold) !important;
   }
-
   @media (max-width: 768px) {
-    nav { 
-      padding: 16px 20px !important;
-      flex-wrap: nowrap !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-    }
-    nav > ul { display: none !important; }
     .hamburger { display: flex !important; }
+    nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
+    nav > ul { display: none !important; }
   }
-
 </style>
 </head>
 <body>
@@ -255,65 +156,85 @@
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#topics">Topics</a></li>
     <li><a href="books-resources.html">Books</a></li>
+    <li><a href="crypto-islamic-trading.html">Crypto</a></li>
+    <li><a href="impact-products.html">Deals</a></li>
     <li><a href="https://crypode.ghost.io" target="_blank">Blog</a></li>
     <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
   </ul>
-  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Open menu">
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="article-hero">
   <a href="index.html" class="back-link">← Back to Home</a>
-  <div class="article-tag">🌱 Side Income</div>
-  <h1>Building Income on the Side — <em>Realistic Strategies</em> for Busy Professionals</h1>
+  <div class="article-tag">🧠 Mental Health</div>
+  <h1>The Weight of Financial Stress — <em>Carrying Pressure</em> Without Breaking</h1>
   <div class="article-meta">
     <span>By Fahad</span>
     <span class="dot">✦</span>
     <span>Muscat, Oman</span>
     <span class="dot">✦</span>
-    <span>9 min read</span>
+    <span>8 min read</span>
   </div>
 </div>
 
 <div class="article-body">
-  <!-- original content unchanged -->
-  <p>The phrase "passive income" gets thrown around constantly. It sounds simple — make money while you sleep, while you work your day job, while you live your life. The reality is more complicated, and for a busy professional with a full-time job and a family depending on them, most passive income advice is simply not realistic.</p>
-  <p>So let me be honest about what actually works when you have limited time, limited capital, and real obligations. This is not a get-rich-quick article. This is about finding income streams that are genuinely compatible with a full life.</p>
-  <blockquote><p>"The best side income uses what you already know. You do not need to learn something entirely new — you need to package what you have."</p></blockquote>
-  <h2>Start with what you <em>already know</em></h2>
-  <p>The biggest mistake people make when looking for side income is searching for something entirely outside their existing skill set. They try dropshipping, or cryptocurrency trading, or selling products they know nothing about — and they lose time, money, or both.</p>
-  <p>The more reliable path is to ask: what do I know that other people would pay to learn or access? This question points you toward income that uses existing knowledge — which means faster startup, lower risk, and more credibility.</p>
-  <p>For a technical professional in aviation, this might mean: training junior engineers on specific systems. Writing technical documentation freelance. Consulting for smaller MRO operations that cannot afford full-time expertise. Reviewing technical manuals for accuracy.</p>
-  <p>For someone with financial experience, it might mean helping others understand their bank statements, comparing loan products, or explaining Islamic finance options.</p>
-  <h2>Content creation — <em>the long game</em></h2>
-  <p>Writing, recording, or sharing what you know online is one of the few genuinely accessible income streams for busy professionals. It requires almost no startup capital. It can be done in the early morning, late at night, or during breaks. And over time, it compounds.</p>
-  <p>This website — Crypode — is built on exactly this principle. The knowledge I have accumulated through years of managing finances under pressure, living in Oman, navigating Gulf banking systems, and trying to provide for a large family — that knowledge is genuinely valuable to people in similar situations.</p>
-  <p>Content takes time to generate income. We are talking 12 to 18 months of consistent publishing before meaningful returns appear. That is the honest reality. But it also requires very little ongoing investment — primarily your time and your honesty.</p>
-  <div class="highlight-box"><p>A newsletter with 1,000 engaged subscribers in the Gulf region is a real asset. It can generate income through sponsorships, affiliate partnerships, or your own digital products. Start building it now — even if monetization is months away.</p></div>
-  <h2>Freelancing in your <em>area of expertise</em></h2>
-  <p>Platforms like Upwork, Fiverr, and LinkedIn make it genuinely possible to offer freelance services to clients internationally from Oman. If your skills are specialized and your English is strong, the opportunity is real.</p>
-  <p>Technical writing for aviation companies. Translation services for Arabic-English technical documents. Online tutoring for professional certification examinations. These are all services with real demand that can be delivered remotely.</p>
-  <p>The key is to start small and specific. Do not offer everything. Offer one service, to one audience, delivered excellently. Build a small reputation. Let it grow from there.</p>
-  <h2>What to <em>avoid</em></h2>
-  <p>In the Gulf particularly, there is no shortage of people promoting investment schemes, network marketing opportunities, and get-rich-quick arrangements. Many target working professionals who are under financial pressure — exactly because that pressure makes people vulnerable to promises.</p>
-  <p>Any opportunity that requires significant upfront payment, that promises guaranteed high returns, or that involves recruiting others to generate your income — treat these with extreme caution. The history of such schemes, particularly in the Gulf, is full of people who lost money they could not afford to lose.</p>
-  <p>If an opportunity sounds too good relative to the effort required, it almost certainly is.</p>
-  <h2>The <em>patience</em> required</h2>
-  <p>Side income that is real, sustainable, and halal takes time to build. It does not solve a debt crisis in six months. It is a long-term project that runs alongside your main career — gradually adding income, gradually reducing dependence on a single salary.</p>
-  <p>That is not a failure of the idea. That is just the reality of building something real. The people who succeed at this are not smarter or more talented than you. They are simply more patient and more consistent.</p>
-  <p>Start small. Start honest. Start now. بإذن الله it will grow.</p>
+  <p>Financial stress is not just about numbers. It is about the weight you carry to work every morning. The knot in your stomach when you check your bank balance. The conversations you avoid with your spouse because you have no good news to share. The quiet fear that one unexpected expense could break everything.</p>
+  <p>For Gulf professionals — especially those supporting large families or remitting money home — this weight is real. And most financial advice completely ignores it. Articles tell you to "cut back on coffee" or "start a side hustle." They assume you have energy left after work, or that your anxiety is just a lack of discipline.</p>
+  <p>This article is different. It starts from the premise that you are already doing your best. The goal is not to add guilt. It is to help you protect your mind while you work through the money problems.</p>
+
+  <blockquote><p>"You cannot solve a financial crisis with a mindset that is already exhausted. First, stabilise your mental state. Then, take one small step."</p></blockquote>
+
+  <h2>The hidden toll of <em>constant pressure</em></h2>
+  <p>When you live with financial stress for months or years, your body and mind adapt in ways that are not healthy. Sleep becomes difficult. Irritability rises. You withdraw from friends and family because you do not want to explain your situation again. Concentration at work suffers — which ironically puts your income at even greater risk.</p>
+  <p>In the Gulf, the social stigma around debt makes this worse. Many professionals pretend everything is fine while drowning inside. They take loans to repay loans. They avoid looking at their statements. They hope for a bonus or a miracle that never comes.</p>
+  <p>If any of this sounds familiar, please hear this: you are not weak. You are not a failure. You are a human being carrying a heavy load in a system that offers little mercy. The first step is not a financial one. It is admitting that the weight exists.</p>
+
+  <div class="highlight-box">
+    <p>Financial stress is not a character flaw. It is a response to real constraints. Shame grows in silence. Speaking about your situation — to a trusted friend, a family member, or even a therapist — is the most important action you can take.</p>
+  </div>
+
+  <h2>Separating <em>fear from facts</em></h2>
+  <p>When we are stressed, our brains magnify the worst outcomes. A manageable debt feels like a life sentence. A late payment feels like the end of everything. But fear is not the same as reality.</p>
+  <p>Try this exercise: write down your financial situation as if you were a neutral advisor. List your debts, your income, your essential expenses. Do not add emotional language. Do not predict disaster. Just the facts. Then ask: what is the actual worst case? And what is the most likely case?</p>
+  <p>For most people, the worst case is bad but survivable. The most likely case is difficult but not impossible. Separating fear from facts gives you back a small measure of control — and control reduces stress.</p>
+
+  <h2>Small actions that <em>protect your mind</em></h2>
+  <p>While you work on larger solutions (debt repayment, income growth, Islamic restructuring), here are small daily actions that protect your mental health:</p>
+  <p><strong style="color: var(--gold);">1. Set a "worry window"</strong> — Give yourself 15 minutes each day to think about money. Outside that window, gently redirect your mind. This prevents financial anxiety from consuming your whole day.</p>
+  <p><strong style="color: var(--gold);">2. Do one small financial task daily</strong> — Open your bank app. Check one bill. Write down one expense. Tiny actions build momentum and reduce the feeling of being frozen.</p>
+  <p><strong style="color: var(--gold);">3. Protect your sleep</strong> — Do not check balances or emails after 9 PM. An exhausted mind makes worse decisions. Sleep is not a luxury; it is a tool for survival.</p>
+  <p><strong style="color: var(--gold);">4. Talk to someone who will not judge</strong> — This could be a close friend, a sibling, or a professional counsellor. The goal is not solutions. The goal is to let the pressure out.</p>
+
+  <h2>When to seek <em>professional help</em></h2>
+  <p>There is a difference between normal financial worry and clinical anxiety or depression. If you experience any of the following for more than two weeks, please reach out to a mental health professional:</p>
+  <ul style="margin: 20px 0 20px 40px; color: var(--cream-soft); line-height: 1.8;">
+    <li>Persistent difficulty sleeping or waking up very early</li>
+    <li>Loss of appetite or overeating</li>
+    <li>Feeling hopeless or thinking that nothing will ever improve</li>
+    <li>Thoughts of harming yourself or ending your life</li>
+  </ul>
+  <p>In Oman, you can contact the Ministry of Health's mental health support line. In the UAE, the National Program for Happiness and Wellbeing offers resources. You are not alone, and help is available.</p>
+
+  <div class="arabic">لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا</div>
+  <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: -16px;">Allah does not burden a soul beyond that it can bear. — Al-Baqarah 286</p>
+
+  <h2>You are more than your <em>bank balance</em></h2>
+  <p>One of the most damaging effects of financial stress is that it shrinks your identity. You start to see yourself only as your debt, your salary, your struggles. But you are also a parent, a friend, a person with skills and hopes and dignity. Those things do not disappear when money is tight.</p>
+  <p>The road out of financial distress is slow. It requires patience and persistence. But you do not have to walk it in shame. You are not broken. You are fighting a hard battle. And every day you keep going is a victory.</p>
+  <p>Keep taking small steps. Keep protecting your mind. And remember: this season will not last forever. With hardship comes ease. That promise is not just spiritual — it is practical. You will look back on this time one day and see how far you have come.</p>
 </div>
 
-<!-- RECOMMENDED READING (3 books exactly as on books-resources) -->
+<!-- Recommended Reading -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📚 Recommended Reading</div>
     <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:var(--cream);margin-bottom:32px;">Go deeper on this topic</h3>
     <div style="display:flex;flex-direction:column;gap:16px;">
-      <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best for Low-Capital Startups</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">The $100 Startup — Chris Guillebeau</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">Real stories of people who built income streams from scratch using existing skills and almost no capital. Practical and realistic.</p><a href="https://www.amazon.com/dp/0307951529/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
-      <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best for Content Creators</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">Show Your Work — Austin Kleon</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">How to share your knowledge and expertise online to build an audience and attract opportunities — essential for anyone starting a content platform.</p><a href="https://www.amazon.com/dp/076117897X/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
-      <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best for Long-Term Thinking</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">Die with Zero — Bill Perkins</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">A provocative take on how to think about money, time, and experiences — especially relevant for professionals working toward financial freedom.</p><a href="https://www.amazon.com/dp/0358567610/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
+      <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best for Financial Psychology</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">The Psychology of Money — Morgan Housel</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">How emotions, fears, and beliefs shape our financial decisions — and how to make better choices even when under sustained pressure.</p><a href="https://www.amazon.com/dp/0857197681/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
+      <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best for Mindset Reset</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">Think and Grow Rich — Napoleon Hill</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">A classic on the mindset required to build wealth — particularly the chapters on persistence and managing fear under pressure.</p><a href="https://www.amazon.com/dp/1585424331/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
+      <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best for Resilience</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">Man's Search for Meaning — Viktor Frankl</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">Not a finance book — but perhaps the most important book for anyone carrying enormous pressure. Finding purpose in hardship changes everything.</p><a href="https://www.amazon.com/dp/0807014273/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
     </div>
     <p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);text-align:center;">Affiliate links. Crypode earns a small commission at no extra cost to you. JazakAllah khair. 🤲</p>
   </div>
@@ -322,7 +243,7 @@
 <section class="related-articles">
   <h3>Continue Reading</h3>
   <div class="related-grid">
-    <a href="article-3-career.html" class="related-card"><span class="icon">💼</span><h4>Career as Your Greatest Asset</h4><p>How to leverage your skills and turn experience into greater income.</p></a>
+    <a href="article-1-debt.html" class="related-card"><span class="icon">⚖️</span><h4>Navigating Debt in the Gulf</h4><p>How to manage loans and repayment pressure in systems that don't negotiate.</p></a>
     <a href="article-5-family.html" class="related-card"><span class="icon">👨‍👩‍👧‍👦</span><h4>Providing for a Large Family</h4><p>Practical money management when you are the sole provider.</p></a>
     <a href="article-2-islamic-finance.html" class="related-card"><span class="icon">🌙</span><h4>Islamic Finance Explained</h4><p>How to align your financial decisions with your faith.</p></a>
   </div>
@@ -333,31 +254,6 @@
   <p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p>
 </footer>
 
-<!-- MOBILE DROPDOWN MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
-  <div class="mobile-menu-logo">Cry<span>pode</span></div>
-  <a href="index.html" onclick="toggleMenu()">Home</a>
-  <a href="index.html#about" onclick="toggleMenu()">About</a>
-  <a href="index.html#topics" onclick="toggleMenu()">Topics</a>
-  <a href="books-resources.html" onclick="toggleMenu()">Books</a>
-  <a href="https://crypode.ghost.io" target="_blank" onclick="toggleMenu()">Blog</a>
-  <a href="index.html#newsletter" onclick="toggleMenu()">Subscribe</a>
-</div>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const btn  = document.getElementById('hamburgerBtn');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  }
-  // Close on ESC
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { const m = document.getElementById('mobileMenu'); if (m.classList.contains('open')) toggleMenu(); }});
-</script>
-
-<!-- MOBILE MENU OVERLAY -->
 <div class="mobile-menu" id="mobileMenu">
   <span class="mobile-menu-logo">Cry<em>pode</em></span>
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
@@ -365,13 +261,26 @@
   <a href="index.html#about" onclick="closeMobileMenu()">About</a>
   <a href="index.html#topics" onclick="closeMobileMenu()">Topics</a>
   <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
+  <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
+  <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
   <a href="https://crypode.ghost.io" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
+
 <script>
-  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');    document.getElementById('hamburgerBtn').classList.add('open');    document.body.style.overflow='hidden'; }
-  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow=''; }
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMobileMenu(); });
+  function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.getElementById('hamburgerBtn').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
 </script>
 </body>
 </html>
