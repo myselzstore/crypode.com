@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='512' height='512' rx='64' fill='%230D0D0D'/%3E%3Crect x='8' y='8' width='496' height='496' rx='58' fill='none' stroke='%23C9A84C' stroke-width='6' stroke-opacity='0.5'/%3E%3Ctext x='108' y='310' font-family='Georgia,serif' font-size='210' font-weight='700' fill='%23C9A84C'%3EC%3C/text%3E%3Ctext x='268' y='310' font-family='Georgia,serif' font-size='210' font-style='italic' font-weight='400' fill='%23F5F0E8'%3Ep%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+  /* Same CSS as article-7-expat-local.html – identical */
   :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --cream: #F5F0E8; --cream-soft: #EDE8DF; --text-muted: #888880; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -79,14 +80,7 @@
     z-index: 300;
     flex-shrink: 0;
   }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--gold);
-    border-radius: 2px;
-    transition: all 0.35s ease;
-  }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.35s ease; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -101,53 +95,13 @@
     justify-content: center;
   }
   .mobile-menu.open { display: flex; }
-  .mobile-menu-logo {
-    position: absolute;
-    top: 24px; left: 24px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 2px;
-  }
+  .mobile-menu-logo { position: absolute; top: 24px; left: 24px; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; }
   .mobile-menu-logo em { color: var(--cream); font-style: italic; }
-  .mobile-menu-close {
-    position: absolute;
-    top: 20px; right: 24px;
-    color: var(--text-muted);
-    font-size: 2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    line-height: 1;
-    transition: color 0.3s;
-  }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; color: var(--text-muted); font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; transition: color 0.3s; }
   .mobile-menu-close:hover { color: var(--gold); }
-  .mobile-menu a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 2px;
-    padding: 18px 0;
-    width: 80%;
-    text-align: center;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    transition: color 0.3s;
-  }
+  .mobile-menu a { color: var(--cream); text-decoration: none; font-size: 1.6rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; padding: 18px 0; width: 80%; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.1); transition: color 0.3s; }
   .mobile-menu a:hover { color: var(--gold); }
-  .mobile-menu .mobile-subscribe {
-    margin-top: 32px;
-    padding: 14px 40px;
-    border: 1px solid var(--gold);
-    color: var(--gold) !important;
-    font-size: 0.8rem !important;
-    font-family: 'Tajawal', sans-serif !important;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    width: auto !important;
-    border-bottom: 1px solid var(--gold) !important;
-  }
+  .mobile-menu .mobile-subscribe { margin-top: 32px; padding: 14px 40px; border: 1px solid var(--gold); color: var(--gold) !important; font-size: 0.8rem !important; font-family: 'Tajawal', sans-serif !important; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; width: auto !important; border-bottom: 1px solid var(--gold) !important; }
   @media (max-width: 768px) {
     .hamburger { display: flex !important; }
     nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
@@ -165,7 +119,7 @@
     <li><a href="books-resources.html">Books</a></li>
     <li><a href="crypto-islamic-trading.html">Crypto</a></li>
     <li><a href="impact-products.html">Deals</a></li>
-    <li><a href="https://crypode.ghost.io" target="_blank">Blog</a></li>
+    <li><a href="https://medium.com/@crypode" target="_blank">Blog</a></li>
     <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
   </ul>
   <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu">
@@ -187,97 +141,42 @@
 </div>
 
 <div class="article-body">
+  <!-- Original content from article-8-retirement.html – unchanged -->
   <p>Here is a question most Gulf professionals avoid asking until it is almost too late: what happens when you can no longer work?</p>
-
   <p>In the UK, Australia, or most of Europe, the answer involves a state pension, superannuation, or some structured government support. In the Gulf, the answer for most working professionals is far simpler and far more uncomfortable: whatever you have saved is what you have. And for the majority of people currently working in this region, that number is not where it needs to be.</p>
-
   <p>This article is about facing that reality honestly — and doing something about it while there is still time. <a href="https://www.amazon.com/dp/1535912707/?tag=wwwmybestabsw-20" target="_blank" style="color:var(--gold);text-decoration:underline;">The Little Book of Common Sense Investing by John Bogle</a> is the clearest guide I have found on how to build long-term wealth through simple, consistent investing — essential reading for anyone starting to think about retirement seriously.</p>
-
   <blockquote><p>"The best time to start planning for retirement was twenty years ago. The second best time is today."</p></blockquote>
-
   <h2>The Gulf retirement <em>reality check</em></h2>
-
   <p>Let us be specific about what Gulf professionals actually have access to when they stop working:</p>
-
   <p>For Omani nationals in the private sector, the Social Protection Fund provides some coverage — but the benefit depends entirely on years of contribution and salary history. Many private sector workers have incomplete contribution records, leaving them with far less than they expect.</p>
-
   <p>For expat professionals, the picture is starker. End-of-service gratuity — typically calculated at 15 to 30 days salary per year of service — is the primary financial benefit at the end of employment. For someone who spent twenty years in the Gulf, this might amount to one to two years of salary. Enough to breathe for a while. Not enough to retire on.</p>
-
   <p>There is no Gulf equivalent of a 401k, ISA, or superannuation. No employer-matched pension fund. No state pension for expats at all. The retirement safety net that workers in other parts of the world take for granted simply does not exist here in the same form.</p>
-
-  <div class="highlight-box">
-    <p>The average Gulf professional retires with significantly less saved than their peers in Western countries — not because they earned less, but because the system does not force saving the way pensions do. Everything has to be built deliberately and personally.</p>
-  </div>
-
+  <div class="highlight-box"><p>The average Gulf professional retires with significantly less saved than their peers in Western countries — not because they earned less, but because the system does not force saving the way pensions do. Everything has to be built deliberately and personally.</p></div>
   <h2>Why Gulf professionals <em>underinvest</em> for retirement</h2>
-
   <p>The reasons are understandable even when the outcome is damaging. High living costs consume high salaries. Family obligations — children's education, ageing parents, extended family support — leave little margin. Debt repayments take their share. And the psychological reality of living well today makes it genuinely difficult to sacrifice for a future that feels abstract.</p>
-
   <p>There is also a cultural assumption — particularly among nationals — that family will provide in old age. And often, family does. But relying entirely on that safety net places an enormous burden on the next generation, who will face their own financial pressures in a changing economy.</p>
-
   <p><a href="https://www.amazon.com/dp/0143115766/?tag=wwwmybestabsw-20" target="_blank" style="color:var(--gold);text-decoration:underline;">The Millionaire Next Door by Thomas Stanley</a> makes a powerful point that applies directly here: most people who end up financially secure in retirement are not those who earned the most — they are those who consistently spent less than they earned and invested the difference over many years. The Gulf provides the income. The discipline has to come from us.</p>
-
   <h2>A realistic <em>retirement plan</em> for Gulf professionals</h2>
-
   <p>Given the constraints most Gulf professionals operate under — high obligations, limited surplus, complex family responsibilities — a retirement plan needs to be realistic rather than theoretical. Here is a framework that actually works in this context:</p>
-
   <div class="steps-list">
-    <div class="step-item">
-      <div class="step-number">01</div>
-      <div class="step-content">
-        <h4>Know your number</h4>
-        <p>Before anything else, calculate what monthly income you would need in retirement to live comfortably. Multiply that by 12, then by the number of years you expect to live after stopping work. That is your target. Most people have never done this calculation — and the number is usually sobering but manageable.</p>
-      </div>
-    </div>
-    <div class="step-item">
-      <div class="step-number">02</div>
-      <div class="step-content">
-        <h4>Treat savings as a non-negotiable expense</h4>
-        <p>Pay yourself first — before discretionary spending, before lifestyle upgrades. Even 10% of salary invested consistently from your 30s produces remarkable results by your 60s. The amount matters less than the consistency.</p>
-      </div>
-    </div>
-    <div class="step-item">
-      <div class="step-number">03</div>
-      <div class="step-content">
-        <h4>Use halal investment vehicles</h4>
-        <p>For Muslim professionals, the investment options need to be Sharia-compliant. Islamic investment accounts, halal ETFs, and Sukuk bonds are available through several Gulf financial institutions. Bank Nizwa and several UAE-based Islamic wealth managers offer structured retirement products worth exploring.</p>
-      </div>
-    </div>
-    <div class="step-item">
-      <div class="step-number">04</div>
-      <div class="step-content">
-        <h4>Consider property in your home country</h4>
-        <p>For expats especially, owning property back home provides both a retirement asset and a fallback living situation when Gulf employment ends. For nationals, real estate in Oman can provide rental income in retirement without requiring active work.</p>
-      </div>
-    </div>
-    <div class="step-item">
-      <div class="step-number">05</div>
-      <div class="step-content">
-        <h4>Build income that does not require your presence</h4>
-        <p>A website, a newsletter, a digital product, a rental property — any income stream that continues without you actively working every day is a retirement asset. Building even one of these over the next five years changes the retirement equation significantly.</p>
-      </div>
-    </div>
+    <div class="step-item"><div class="step-number">01</div><div class="step-content"><h4>Know your number</h4><p>Before anything else, calculate what monthly income you would need in retirement to live comfortably. Multiply that by 12, then by the number of years you expect to live after stopping work. That is your target. Most people have never done this calculation — and the number is usually sobering but manageable.</p></div></div>
+    <div class="step-item"><div class="step-number">02</div><div class="step-content"><h4>Treat savings as a non-negotiable expense</h4><p>Pay yourself first — before discretionary spending, before lifestyle upgrades. Even 10% of salary invested consistently from your 30s produces remarkable results by your 60s. The amount matters less than the consistency.</p></div></div>
+    <div class="step-item"><div class="step-number">03</div><div class="step-content"><h4>Use halal investment vehicles</h4><p>For Muslim professionals, the investment options need to be Sharia-compliant. Islamic investment accounts, halal ETFs, and Sukuk bonds are available through several Gulf financial institutions. Bank Nizwa and several UAE-based Islamic wealth managers offer structured retirement products worth exploring.</p></div></div>
+    <div class="step-item"><div class="step-number">04</div><div class="step-content"><h4>Consider property in your home country</h4><p>For expats especially, owning property back home provides both a retirement asset and a fallback living situation when Gulf employment ends. For nationals, real estate in Oman can provide rental income in retirement without requiring active work.</p></div></div>
+    <div class="step-item"><div class="step-number">05</div><div class="step-content"><h4>Build income that does not require your presence</h4><p>A website, a newsletter, a digital product, a rental property — any income stream that continues without you actively working every day is a retirement asset. Building even one of these over the next five years changes the retirement equation significantly.</p></div></div>
   </div>
-
   <h2>The <em>Islamic perspective</em> on provision in old age</h2>
-
   <p>Islam has always emphasised planning and preparation alongside trust in Allah. The Prophet ﷺ tied his camel before trusting in Allah — tawakkul does not mean passivity. It means full effort followed by genuine trust.</p>
-
   <p>Planning for retirement is not a lack of faith. It is responsibility — to yourself, to your spouse, to your children who should not be burdened by a parent who did not plan. The Quran repeatedly calls believers to prepare for the future as well as live in the present.</p>
-
   <div class="arabic">وَلْيَخْشَ الَّذِينَ لَوْ تَرَكُوا مِنْ خَلْفِهِمْ ذُرِّيَّةً ضِعَافًا خَافُوا عَلَيْهِمْ</div>
   <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);margin-top:-16px;">Let those fear who would leave behind weak offspring — let them fear for them. — An-Nisa 9</p>
-
   <h2>Starting <em>now</em> — wherever you are</h2>
-
   <p>If you are in your 30s, you have time — but not unlimited time. If you are in your 40s, urgency is appropriate but panic is not. If you are in your 50s, the window is narrower but something is always better than nothing.</p>
-
   <p>The worst position is to arrive at retirement having never thought about it and having nothing to show for decades of work. That outcome is entirely avoidable — but only with deliberate action, starting now.</p>
-
   <p>Crypode will continue to cover halal investment options, retirement planning tools, and practical strategies for Gulf professionals at every stage. Subscribe to the newsletter to be notified as new content is published. بإذن الله — the future is being built today.</p>
 </div>
 
-<!-- Recommended Reading -->
+<!-- Recommended Reading (same as original) -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📚 Recommended Reading</div>
@@ -314,24 +213,14 @@
   <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
   <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
   <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
-  <a href="https://crypode.ghost.io" target="_blank" onclick="closeMobileMenu()">Blog</a>
+  <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
 
 <script>
-  function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
-    document.getElementById('hamburgerBtn').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburgerBtn').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeMobileMenu();
-  });
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('hamburgerBtn').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow = ''; }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
 </body>
 </html>

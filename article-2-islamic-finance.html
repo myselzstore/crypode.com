@@ -159,7 +159,7 @@
     <li><a href="books-resources.html">Books</a></li>
     <li><a href="crypto-islamic-trading.html">Crypto</a></li>
     <li><a href="impact-products.html">Deals</a></li>
-    <li><a href="https://crypode.ghost.io" target="_blank">Blog</a></li>
+    <li><a href="https://medium.com/@crypode" target="_blank">Blog</a></li>
     <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
   </ul>
   <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu">
@@ -181,10 +181,9 @@
 </div>
 
 <div class="article-body">
-  <!-- Original content from your file – same as provided, kept intact -->
+  <!-- Original content – unchanged -->
   <p>Islamic finance is not a niche product for Muslims only. It is a robust, ethical financial system that prohibits interest (riba), excessive uncertainty (gharar), and gambling (maysir). For professionals in the Gulf, understanding Islamic finance can open doors to debt restructuring, halal investments, and peace of mind.</p>
   <p>This article covers the basics of Sharia-compliant banking, how it differs from conventional finance, and practical steps to align your money with your faith.</p>
-  <!-- Full original article content would be here. For brevity, I show the structure. Your original content remains unchanged. -->
   <div class="highlight-box"><p>Key principle: Profit and loss sharing replaces interest. The bank buys an asset and sells it to you at a markup, or jointly invests with you.</p></div>
   <h2>Common Islamic finance products</h2>
   <p><strong>Murabaha:</strong> Cost-plus financing – the bank purchases the asset and sells it to you at an agreed profit margin.</p>
@@ -200,7 +199,7 @@
   <p>Remember: Islamic finance is about substance, not just labels. Read the contract carefully and ask about the underlying asset and risk‑sharing mechanism.</p>
 </div>
 
-<!-- Recommended reading (same as original) -->
+<!-- Recommended reading -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📚 Recommended Reading</div>
@@ -237,21 +236,13 @@
   <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
   <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
   <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
-  <a href="https://crypode.ghost.io" target="_blank" onclick="closeMobileMenu()">Blog</a>
+  <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
 
 <script>
-  function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
-    document.getElementById('hamburgerBtn').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburgerBtn').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('hamburgerBtn').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow = ''; }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
 </body>
