@@ -146,6 +146,104 @@
         .hamburger { display: flex; }
   }
 
+
+  /* ── MOBILE HAMBURGER NAV (override) ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 3px;
+    background: transparent;
+    position: relative;
+    z-index: 300;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: all 0.35s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,13,13,0.98);
+    z-index: 250;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-logo {
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+  .mobile-menu-logo em { color: var(--cream); font-style: italic; }
+  .mobile-menu-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .mobile-menu-close:hover { color: var(--gold); }
+  .mobile-menu a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    padding: 18px 0;
+    width: 80%;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-subscribe {
+    margin-top: 32px;
+    padding: 14px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    font-size: 0.8rem !important;
+    font-family: 'Tajawal', sans-serif !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    width: auto !important;
+    border-bottom: 1px solid var(--gold) !important;
+  }
+
+  @media (max-width: 768px) {
+    nav { 
+      padding: 16px 20px !important;
+      flex-wrap: nowrap !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+    nav > ul { display: none !important; }
+    .hamburger { display: flex !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -159,8 +257,7 @@
     <li><a href="https://crypode.ghost.io" target="_blank">Blog</a></li>
     <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
   </ul>
-
-  <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -256,6 +353,23 @@
   }
   // Close on ESC
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { const m = document.getElementById('mobileMenu'); if (m.classList.contains('open')) toggleMenu(); }});
+</script>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-logo">Cry<em>pode</em></span>
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+  <a href="index.html#topics" onclick="closeMobileMenu()">Topics</a>
+  <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
+  <a href="https://crypode.ghost.io" target="_blank" onclick="closeMobileMenu()">Blog</a>
+  <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
+</div>
+<script>
+  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');    document.getElementById('hamburgerBtn').classList.add('open');    document.body.style.overflow='hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow=''; }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMobileMenu(); });
 </script>
 </body>
 </html>
