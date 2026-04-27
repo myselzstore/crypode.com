@@ -149,7 +149,17 @@
   .affiliate-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 32px; }
   .affiliate-card { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.15); border-radius: 12px; padding: 24px; width: 220px; text-align: center; transition: transform 0.2s; }
   .affiliate-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.4); }
-  .affiliate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 16px; background: white; padding: 8px; }
+  /* Consistent image dimensions for all affiliate logos */
+  .affiliate-card img { 
+    width: 120px; 
+    height: 120px; 
+    object-fit: contain; 
+    background: rgba(255,255,255,0.95); 
+    padding: 12px; 
+    border-radius: 12px; 
+    margin: 0 auto 16px; 
+    display: block;
+  }
   .affiliate-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 12px; }
   .affiliate-links { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
   .affiliate-links a { color: var(--cream); text-decoration: none; font-size: 0.8rem; background: rgba(201,168,76,0.1); padding: 6px 12px; border-radius: 20px; transition: background 0.2s; }
@@ -220,7 +230,6 @@
 </div>
 
 <div class="article-body">
-  <!-- original content unchanged for brevity, but same as provided -->
   <p>The Gulf region is quietly becoming a global hub for digital assets. From Dubai's Virtual Assets Regulatory Authority (VARA) licensing crypto exchanges to Saudi Arabia exploring real estate tokenisation, the shift is real. For Muslim professionals in Oman, UAE, Saudi, Qatar, Kuwait, and Bahrain, this raises an important question: <strong>Can I participate in crypto trading while staying true to Islamic finance principles?</strong></p>
   <p>The short answer is <strong>yes — with clear guidelines</strong>. This guide explains what is halal, what is haram, and how you can trade ethically using platforms that respect Shariah rules, all while taking advantage of opportunities emerging across the Gulf.</p>
   <div class="highlight-box"><p><strong>💡 The Big Picture:</strong> The Gulf's digital asset market is maturing fast. The UAE alone saw over $30 billion in digital assets flow into its market recently. Regulated, Shariah-compliant options are expanding. You don't need to choose between faith and financial opportunity.</p></div>
@@ -236,36 +245,72 @@
   <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: -16px;">Allah has permitted trade and forbidden riba. — Al-Baqarah 275</p>
   <h2>Halal Crypto Trading <em>The Guidelines</em></h2>
   <div class="highlight-box"><p><strong>✅ Generally Halal (with caution):</strong><br>• Spot trading — buying and holding cryptocurrencies you fully own<br>• Long-term holding (HODL) of major coins like Bitcoin and Ethereum<br>• Using Shariah-compliant accounts like Bybit Islamic Account<br>• Participating in Binance Sharia Earn (certified by Amanie Advisors)<br>• Investing in asset-backed or utility tokens</p><p style="margin-top: 16px;"><strong>❌ Haram (prohibited):</strong><br>• Leverage trading, margin trading, futures, perpetual swaps<br>• Any form of interest-bearing lending or staking with fixed returns<br>• Day-trading primarily for speculation<br>• Meme coins and tokens with no underlying utility</p></div>
-  <!-- The rest of the article content remains exactly as in your original file -->
 </div>
 
-<!-- (Affiliate grid, book recommendations, related articles, footer remain unchanged from original) -->
-<!-- For brevity I am showing the structure; the full content from your original file stays in place -->
-
+<!-- Affiliate grid with consistent image sizes -->
 <section style="max-width:1000px;margin:0 auto;padding:0 48px 60px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📢 Affiliate Resources</div>
     <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:var(--cream);margin-bottom:32px;">Start Your Halal Crypto Journey</h3>
     <div class="affiliate-grid">
-      <div class="affiliate-card"><img src="binance.png" alt="Binance" style="width:100%;max-width:160px;margin:0 auto 16px;display:block;"><h3>Binance</h3><p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">World's largest exchange — Sharia Earn certified by Amanie Advisors</p><div class="affiliate-links"><a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_NEIYO&utm_source=referral_entrance" target="_blank">🔗 Referral Earn →</a><a href="https://www.binance.com/register?ref=RDZGRAZG" target="_blank">🔗 Register →</a></div></div>
-      <div class="affiliate-card"><img src="ByBit.png" alt="Bybit" style="width:100%;max-width:160px;margin:0 auto 16px;display:block;"><h3>Bybit</h3><p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">First exchange with Islamic Account — trade only Halal tokens</p><div class="affiliate-links"><a href="https://www.bybit.com/invite?ref=YX8JYW" target="_blank">🔗 Open Islamic Account →</a></div></div>
-      <div class="affiliate-card"><img src="MEXC.png" alt="MEXC" style="width:100%;max-width:160px;margin:0 auto 16px;display:block;"><h3>MEXC</h3><p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">Low fees, spot trading only — use with caution</p><div class="affiliate-links"><a href="https://www.mexc.com/acquisition/custom-sign-up?shareCode=mexc-crypde" target="_blank">🔗 Sign Up →</a><a href="https://promote.mexc.com/a/lHDbTMqY" target="_blank">🔗 Promo Link →</a></div></div>
-      <div class="affiliate-card"><img src="Bitrue.png" alt="Bitrue" style="width:100%;max-width:160px;margin:0 auto 16px;display:block;"><h3>Bitrue</h3><p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">Secure platform for Bitcoin and altcoin investors</p><div class="affiliate-links"><a href="https://www.bitrue.com/referral/landing?cn=600000&inviteCode=EETGTHV" target="_blank">🔗 Join Bitrue →</a></div></div>
+      <!-- Binance -->
+      <div class="affiliate-card">
+        <img src="binance.png" alt="Binance">
+        <h3>Binance</h3>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">World's largest exchange — Sharia Earn certified by Amanie Advisors</p>
+        <div class="affiliate-links">
+          <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_NEIYO&utm_source=referral_entrance" target="_blank">🔗 Referral Earn →</a>
+          <a href="https://www.binance.com/register?ref=RDZGRAZG" target="_blank">🔗 Register →</a>
+        </div>
+      </div>
+      <!-- Bybit -->
+      <div class="affiliate-card">
+        <img src="ByBit.png" alt="Bybit">
+        <h3>Bybit</h3>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">First exchange with Islamic Account — trade only Halal tokens</p>
+        <div class="affiliate-links">
+          <a href="https://www.bybit.com/invite?ref=YX8JYW" target="_blank">🔗 Open Islamic Account →</a>
+        </div>
+      </div>
+      <!-- MEXC -->
+      <div class="affiliate-card">
+        <img src="MEXC.png" alt="MEXC">
+        <h3>MEXC</h3>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">Low fees, spot trading only — use with caution</p>
+        <div class="affiliate-links">
+          <a href="https://www.mexc.com/acquisition/custom-sign-up?shareCode=mexc-crypde" target="_blank">🔗 Sign Up →</a>
+          <a href="https://promote.mexc.com/a/lHDbTMqY" target="_blank">🔗 Promo Link →</a>
+        </div>
+      </div>
+      <!-- Bitrue -->
+      <div class="affiliate-card">
+        <img src="Bitrue.png" alt="Bitrue">
+        <h3>Bitrue</h3>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;">Secure platform for Bitcoin and altcoin investors</p>
+        <div class="affiliate-links">
+          <a href="https://www.bitrue.com/referral/landing?cn=600000&inviteCode=EETGTHV" target="_blank">🔗 Join Bitrue →</a>
+        </div>
+      </div>
     </div>
     <p style="margin-top:32px;font-size:0.78rem;color:var(--text-muted);text-align:center;">Affiliate links — small commission at no extra cost. JazakAllah khair. 🤲</p>
   </div>
 </section>
 
-<!-- Books and related articles sections (same as original) -->
+<!-- Recommended books -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 60px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📚 Recommended Reading</div>
     <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:var(--cream);margin-bottom:32px;">Go deeper on this topic</h3>
-    <!-- book cards as in original -->
     <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;margin-bottom:16px;">
       <div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);">Best for Understanding Bitcoin</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);">The Bitcoin Standard — Saifedean Ammous</h4><a href="https://www.amazon.com/dp/1119473861/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;border-radius:2px;text-decoration:none;">View on Amazon →</a></div>
     </div>
-    <!-- other book entries omitted for brevity, but keep original content -->
+    <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;margin-bottom:16px;">
+      <div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);">Best for Crypto Asset Strategy</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);">Cryptoassets — Chris Burniske & Jack Tatar</h4><a href="https://www.amazon.com/dp/1260026671/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;border-radius:2px;text-decoration:none;">View on Amazon →</a></div>
+    </div>
+    <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;">
+      <div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);">Best for Islamic Finance Foundation</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);">An Introduction to Islamic Finance — Mufti Taqi Usmani</h4><a href="https://www.amazon.com/dp/8171012361/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;border-radius:2px;text-decoration:none;">View on Amazon →</a></div>
+    </div>
+    <p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);text-align:center;">Amazon affiliate links – Crypode earns a small commission at no extra cost.</p>
   </div>
 </section>
 

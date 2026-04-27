@@ -151,13 +151,12 @@
     }
     .product-logo {
       width: 120px;
-      height: auto;
-      max-height: 100px;
+      height: 120px;
       object-fit: contain;
       margin-bottom: 20px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.95);
       border-radius: 12px;
-      padding: 8px;
+      padding: 12px;
     }
     .product-title {
       font-family: 'Playfair Display', serif;
@@ -478,7 +477,7 @@
       <a href="https://martinic.evyy.net/0GxadM" target="_blank" class="product-link" rel="sponsored">Shop Plugins →</a>
     </div>
 
-    <!-- SentryPC (new) -->
+    <!-- SentryPC -->
     <div class="product-card">
       <div class="badge">✦ parental control</div>
       <img src="SentryPC.jpeg" alt="SentryPC" class="product-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/120?text=SentryPC'">
@@ -487,7 +486,7 @@
       <a href="https://sentrypc.7eer.net/K0OvQn" target="_blank" class="product-link" rel="sponsored">Get Started →</a>
     </div>
 
-    <!-- jAlbum (new) -->
+    <!-- jAlbum -->
     <div class="product-card">
       <div class="badge">✦ photo galleries</div>
       <img src="jAlbum.jpeg" alt="jAlbum" class="product-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/120?text=jAlbum'">
@@ -496,13 +495,41 @@
       <a href="https://jalbum-affiliate-program.sjv.io/0GxaBL" target="_blank" class="product-link" rel="sponsored">Free Download →</a>
     </div>
 
-    <!-- Nexo (new) -->
+    <!-- Nexo -->
     <div class="product-card">
       <div class="badge">✦ crypto wealth</div>
       <img src="Nexo Acquisition.png" alt="Nexo" class="product-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/120?text=Nexo'">
       <h3 class="product-title">Nexo</h3>
       <p class="product-desc">Grow & preserve your wealth. Earn up to 16% per year on digital assets. Interest earned shown in real time.</p>
       <a href="https://nexo.sjv.io/4arVAL" target="_blank" class="product-link" rel="sponsored">Sign up →</a>
+    </div>
+
+    <!-- ===== NEW CRYPTO EXCHANGE DEALS (Binance, Bybit, MEXC) ===== -->
+    <!-- Binance -->
+    <div class="product-card">
+      <div class="badge">✦ crypto exchange</div>
+      <img src="binance.png" alt="Binance" class="product-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/120?text=Binance'">
+      <h3 class="product-title">Binance</h3>
+      <p class="product-desc">World's largest crypto exchange. Sharia Earn certified by Amanie Advisors – passive income in a halal way.</p>
+      <a href="https://www.binance.com/register?ref=RDZGRAZG" target="_blank" class="product-link" rel="sponsored">Register →</a>
+    </div>
+
+    <!-- Bybit -->
+    <div class="product-card">
+      <div class="badge">✦ Islamic account</div>
+      <img src="ByBit.png" alt="Bybit" class="product-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/120?text=Bybit'">
+      <h3 class="product-title">Bybit</h3>
+      <p class="product-desc">First exchange with a dedicated Islamic Account – spot trade only halal tokens, no interest, full transparency.</p>
+      <a href="https://www.bybit.com/invite?ref=YX8JYW" target="_blank" class="product-link" rel="sponsored">Open Islamic Account →</a>
+    </div>
+
+    <!-- MEXC -->
+    <div class="product-card">
+      <div class="badge">✦ low fees</div>
+      <img src="MEXC.png" alt="MEXC" class="product-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/120?text=MEXC'">
+      <h3 class="product-title">MEXC</h3>
+      <p class="product-desc">Low‑fee spot trading with hundreds of altcoins. Use with caution – avoid leverage and interest products.</p>
+      <a href="https://www.mexc.com/acquisition/custom-sign-up?shareCode=mexc-crypde" target="_blank" class="product-link" rel="sponsored">Sign Up →</a>
     </div>
 
   </div>
@@ -555,7 +582,6 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeMobileMenu();
   });
-  // Lazy load images – simple fallback
   document.querySelectorAll('.product-logo').forEach(img => {
     img.setAttribute('loading', 'lazy');
   });
