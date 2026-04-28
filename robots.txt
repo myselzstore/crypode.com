@@ -1,0 +1,12 @@
+# robots.txt — crypode.com
+# Generated for GitHub Pages deployment
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://crypode.com/sitemap.xml
+
+# Block access to any private or system files (none expected, but good practice)
+Disallow: /.git/
+Disallow: /node_modules/
