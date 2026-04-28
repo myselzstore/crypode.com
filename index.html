@@ -548,12 +548,6 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
   }
-  /* Blog grid uses same responsive pattern */
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
   .topic-card {
     background: var(--dark-2);
     padding: 40px 36px;
@@ -687,7 +681,7 @@
     .hero-stats { display: none; }
     .about { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
     .topics { padding: 40px 24px 80px; }
-    .topics-grid, .blog-grid { grid-template-columns: 1fr; }
+    .topics-grid { grid-template-columns: 1fr; }
     .newsletter { margin: 0 24px 80px; padding: 48px 24px; }
     .support-section { margin: 0 24px 60px; padding: 40px 24px; }
     .support-grid { flex-direction: column; }
@@ -696,6 +690,92 @@
   }
 
   /* HAMBURGER MOBILE MENU */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 3px;
+    background: transparent;
+    z-index: 200;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13,13,13,0.98);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    padding: 20px 48px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    transition: color 0.3s, background 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
+  .mobile-menu a:last-child { 
+    color: var(--gold); 
+    border: 1px solid rgba(201,168,76,0.4);
+    margin-top: 24px;
+    width: auto;
+    padding: 14px 36px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Tajawal', sans-serif;
+  }
+  .mobile-menu-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    color: var(--text-muted);
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .mobile-menu-logo {
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+  .mobile-menu-logo span { color: var(--cream); font-style: italic; }
+
+  @media (max-width: 768px) {
+        .hamburger { display: flex; }
+  }
+
+
+  /* ── MOBILE HAMBURGER NAV (override) ── */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -782,7 +862,6 @@
   }
 
   @media (max-width: 768px) {
-    .hamburger { display: flex !important; }
     nav { 
       padding: 16px 20px !important;
       flex-wrap: nowrap !important;
@@ -790,6 +869,35 @@
       align-items: center !important;
     }
     nav > ul { display: none !important; }
+    .hamburger { display: flex !important; }
+  }
+
+
+  /* Mobile: Latest from Blog section */
+  @media (max-width: 768px) {
+    .blog-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+    .blog-grid .topic-card {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 28px 24px !important;
+    }
+    .blog-grid .topic-icon {
+      font-size: 2rem !important;
+      margin-bottom: 12px !important;
+    }
+    .blog-grid .topic-card h3 {
+      font-size: 1.1rem !important;
+      line-height: 1.4 !important;
+      margin-bottom: 10px !important;
+    }
+    .blog-grid .topic-card p {
+      font-size: 0.9rem !important;
+      line-height: 1.7 !important;
+    }
   }
 </style>
 </head>
@@ -889,6 +997,45 @@
   </div>
 </section>
 
+
+<!-- TOPICS (What We Cover) -->
+<section class="topics" id="topics">
+  <div class="section-header"><h2>What We Cover</h2><a href="https://medium.com/@crypode" target="_blank">Read All Articles →</a></div>
+  <div class="topics-grid">
+    <a href="article-1-debt.html" class="topic-card"><div class="topic-number">01</div><div class="topic-icon">⚖️</div><h3>Navigating Debt in the Gulf</h3><p>How to manage bank loans, credit cards, and repayment pressure in systems that don't negotiate — and still move forward.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-2-islamic-finance.html" class="topic-card"><div class="topic-number">02</div><div class="topic-icon">🌙</div><h3>Islamic Finance Explained</h3><p>Understanding halal banking, interest-free alternatives, and how to align your financial decisions with your faith.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-3-career.html" class="topic-card"><div class="topic-number">03</div><div class="topic-icon">💼</div><h3>Career as Your Greatest Asset</h3><p>How to leverage your skills, explore Gulf opportunities, and turn experience into greater income without starting over.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-4-income.html" class="topic-card"><div class="topic-number">04</div><div class="topic-icon">🌱</div><h3>Building Income on the Side</h3><p>Realistic passive and side income strategies for professionals with limited time, limited capital, and real responsibilities.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-5-family.html" class="topic-card"><div class="topic-number">05</div><div class="topic-icon">👨‍👩‍👧‍👦</div><h3>Providing for a Large Family</h3><p>Practical money management when you are the sole provider — budgeting, priorities, and protecting what matters most.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-6-stress.html" class="topic-card"><div class="topic-number">06</div><div class="topic-icon">🧠</div><h3>The Weight of Financial Stress</h3><p>Honest conversations about the mental and emotional toll of financial pressure — and how to carry it without breaking.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-7-expat-local.html" class="topic-card"><div class="topic-number">07</div><div class="topic-icon">🌍</div><h3>Expat vs Local: The Financial Divide</h3><p>The Gulf offers opportunity to both nationals and expats — but the financial realities are vastly different. Here is what both sides need to know.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="article-8-retirement.html" class="topic-card"><div class="topic-number">08</div><div class="topic-icon">🌅</div><h3>Retirement in a Region With No Safety Net</h3><p>No state pension. No guaranteed gratuity. No fallback. How Gulf professionals can plan for retirement before it is too late.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="crypto-islamic-trading.html" class="topic-card"><div class="topic-number">09</div><div class="topic-icon">🪙</div><h3>Islamic Crypto Trading</h3><p>Halal crypto trading for Gulf professionals — spot trading, Shariah-compliant exchanges, and Gulf digital asset opportunities.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW (Now linking to Medium) -->
+<section class="topics" id="blog" style="padding-top:0;">
+  <div class="section-header"><h2>Latest from the Blog</h2><a href="https://medium.com/@crypode" target="_blank">Read All Articles →</a></div>
+  <div class="blog-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+    <a href="https://medium.com/readers-digests/the-billionaire-mindset-rooted-in-islam-ca73939cb086" target="_blank" class="topic-card"><div class="topic-icon">🌙</div><h3>The Billionaire Mindset Rooted in Islam</h3><p>A wealth secret hiding in plain sight — how Islamic principles align perfectly with long-term financial success.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="https://medium.com/readers-digests/the-day-i-faced-a-future-emir-on-the-tennis-court-b4e9aee55495" target="_blank" class="topic-card"><div class="topic-icon">🎾</div><h3>The Day He Faced a Future Emir of Qatar on the Tennis Court</h3><p>An unforgettable story about representing Oman — and what sport teaches us about life, pressure, and showing up.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
+    <a href="https://medium.com/@crypode" target="_blank" class="topic-card"><div class="topic-icon">✍️</div><h3>More Stories Coming Soon</h3><p>Real, honest articles about debt, family, faith, and building something better — written from lived experience in Oman.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Visit Blog →</div></a>
+  </div>
+</section>
+
+<!-- NEWSLETTER (Now linking to Medium Subscribe) -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-bg"></div>
+  <div class="newsletter-content">
+    <div class="hero-tag" style="margin-bottom:24px;">✦ Join the Community</div>
+    <h2>Honest money conversations, <em>delivered to you</em></h2>
+    <p>No spam. No get-rich-quick schemes. Just real, grounded financial wisdom for Gulf professionals building a better future — one step at a time.</p>
+    <div class="newsletter-form"><input type="email" placeholder="Your email address" id="newsletter-email"><button class="btn-primary" onclick="handleSubscribe()">Subscribe</button></div>
+    <p style="margin-top:20px;font-size:0.75rem;color:var(--text-muted);">Free forever. Unsubscribe anytime. بإذن الله</p>
+  </div>
+</section>
+
 <!-- AI ASSISTANCE -->
 <section class="chat-section">
   <div class="chat-container">
@@ -907,45 +1054,6 @@
     </div>
   </div>
 </section>
-
-<!-- TOPICS (What We Cover) -->
-<section class="topics" id="topics">
-  <div class="section-header"><h2>What We Cover</h2><a href="https://medium.com/@crypode" target="_blank">Read All Articles →</a></div>
-  <div class="topics-grid">
-    <a href="article-1-debt.html" class="topic-card"><div class="topic-number">01</div><div class="topic-icon">⚖️</div><h3>Navigating Debt in the Gulf</h3><p>How to manage bank loans, credit cards, and repayment pressure in systems that don't negotiate — and still move forward.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-2-islamic-finance.html" class="topic-card"><div class="topic-number">02</div><div class="topic-icon">🌙</div><h3>Islamic Finance Explained</h3><p>Understanding halal banking, interest-free alternatives, and how to align your financial decisions with your faith.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-3-career.html" class="topic-card"><div class="topic-number">03</div><div class="topic-icon">💼</div><h3>Career as Your Greatest Asset</h3><p>How to leverage your skills, explore Gulf opportunities, and turn experience into greater income without starting over.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-4-income.html" class="topic-card"><div class="topic-number">04</div><div class="topic-icon">🌱</div><h3>Building Income on the Side</h3><p>Realistic passive and side income strategies for professionals with limited time, limited capital, and real responsibilities.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-5-family.html" class="topic-card"><div class="topic-number">05</div><div class="topic-icon">👨‍👩‍👧‍👦</div><h3>Providing for a Large Family</h3><p>Practical money management when you are the sole provider — budgeting, priorities, and protecting what matters most.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-6-stress.html" class="topic-card"><div class="topic-number">06</div><div class="topic-icon">🧠</div><h3>The Weight of Financial Stress</h3><p>Honest conversations about the mental and emotional toll of financial pressure — and how to carry it without breaking.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-7-expat-local.html" class="topic-card"><div class="topic-number">07</div><div class="topic-icon">🌍</div><h3>Expat vs Local: The Financial Divide</h3><p>The Gulf offers opportunity to both nationals and expats — but the financial realities are vastly different. Here is what both sides need to know.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="article-8-retirement.html" class="topic-card"><div class="topic-number">08</div><div class="topic-icon">🌅</div><h3>Retirement in a Region With No Safety Net</h3><p>No state pension. No guaranteed gratuity. No fallback. How Gulf professionals can plan for retirement before it is too late.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="crypto-islamic-trading.html" class="topic-card"><div class="topic-number">09</div><div class="topic-icon">🪙</div><h3>Islamic Crypto Trading</h3><p>Halal crypto trading for Gulf professionals — spot trading, Shariah-compliant exchanges, and Gulf digital asset opportunities.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-  </div>
-</section>
-
-<!-- BLOG PREVIEW (Now using .blog-grid class for responsive stacking) -->
-<section class="topics" id="blog" style="padding-top:0;">
-  <div class="section-header"><h2>Latest from the Blog</h2><a href="https://medium.com/@crypode" target="_blank">Read All Articles →</a></div>
-  <div class="blog-grid">
-    <a href="https://medium.com/readers-digests/the-billionaire-mindset-rooted-in-islam-ca73939cb086" target="_blank" class="topic-card"><div class="topic-icon">🌙</div><h3>The Billionaire Mindset Rooted in Islam</h3><p>A wealth secret hiding in plain sight — how Islamic principles align perfectly with long-term financial success.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="https://medium.com/readers-digests/the-day-i-faced-a-future-emir-on-the-tennis-court-b4e9aee55495" target="_blank" class="topic-card"><div class="topic-icon">🎾</div><h3>The Day He Faced a Future Emir of Qatar on the Tennis Court</h3><p>An unforgettable story about representing Oman — and what sport teaches us about life, pressure, and showing up.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Read Article →</div></a>
-    <a href="https://medium.com/@crypode" target="_blank" class="topic-card"><div class="topic-icon">✍️</div><h3>More Stories Coming Soon</h3><p>Real, honest articles about debt, family, faith, and building something better — written from lived experience in Oman.</p><div style="margin-top:20px;font-size:0.75rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Visit Blog →</div></a>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="newsletter" id="newsletter">
-  <div class="newsletter-bg"></div>
-  <div class="newsletter-content">
-    <div class="hero-tag" style="margin-bottom:24px;">✦ Join the Community</div>
-    <h2>Honest money conversations, <em>delivered to you</em></h2>
-    <p>No spam. No get-rich-quick schemes. Just real, grounded financial wisdom for Gulf professionals building a better future — one step at a time.</p>
-    <div class="newsletter-form"><input type="email" placeholder="Your email address" id="newsletter-email"><button class="btn-primary" onclick="handleSubscribe()">Subscribe</button></div>
-    <p style="margin-top:20px;font-size:0.75rem;color:var(--text-muted);">Free forever. Unsubscribe anytime. بإذن الله</p>
-  </div>
-</section>
-
 <!-- SUPPORT SECTION -->
 <section class="support-section">
   <div style="text-align:center;"><div class="hero-tag" style="margin-bottom:16px;">☕ Support the Mission</div><h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;">Fuel honest financial guidance</h2><p style="max-width:540px;margin:16px auto 0;color:var(--text-muted);">If these articles have helped you navigate debt, faith, and family, consider supporting Crypode to keep this work sustainable.</p></div>
@@ -1058,8 +1166,7 @@
     });
   }
 </script>
-
-<!-- MOBILE MENU OVERLAY -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <span class="mobile-menu-logo">Cry<em>pode</em></span>
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
@@ -1072,21 +1179,10 @@
   <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
-
 <script>
-  function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
-    document.getElementById('hamburgerBtn').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburgerBtn').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeMobileMenu();
-  });
+  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');    document.getElementById('hamburgerBtn').classList.add('open');    document.body.style.overflow='hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow=''; }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMobileMenu(); });
 </script>
 </body>
 </html>
