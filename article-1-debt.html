@@ -148,6 +148,63 @@
     nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
     nav > ul { display: none !important; }
   }
+
+  /* ── DEBT CALCULATOR ─────────────────────────────── */
+  .tool-section { background: var(--dark-2); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); padding: 72px 48px; margin-bottom: 0; }
+  .tool-inner { max-width: 800px; margin: 0 auto; }
+  .tool-header { margin-bottom: 40px; }
+  .tool-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--cream); margin-bottom: 12px; }
+  .tool-header h2 em { color: var(--gold); font-style: italic; }
+  .tool-header p { font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); max-width: 560px; }
+  .t-card { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.12); border-radius: 4px; padding: 28px 32px; margin-bottom: 14px; position: relative; overflow: hidden; }
+  .t-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent); }
+  .t-card-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 18px; }
+  .t-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .t-field { display: flex; flex-direction: column; gap: 6px; }
+  .t-field label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em; }
+  .t-input-wrap { position: relative; }
+  .t-prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-size: 0.78rem; color: rgba(201,168,76,0.55); pointer-events: none; font-family: 'Tajawal', sans-serif; }
+  .t-input { width: 100%; background: var(--dark-2); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; padding: 11px 12px 11px 48px; color: var(--cream); font-family: 'Tajawal', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  .t-input::-webkit-outer-spin-button, .t-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .t-input:focus { border-color: var(--gold); }
+  .t-input::placeholder { color: var(--text-muted); opacity: 0.35; }
+  .t-input.no-prefix { padding-left: 14px; }
+  .method-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .method-tab { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.18); border-radius: 3px; padding: 8px 18px; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: 'Tajawal', sans-serif; letter-spacing: 0.04em; }
+  .method-tab:hover { border-color: var(--gold); color: var(--cream); }
+  .method-tab.active { background: rgba(201,168,76,0.1); border-color: var(--gold); color: var(--gold-light); }
+  .t-btn { width: 100%; padding: 15px; background: var(--gold); border: none; border-radius: 3px; font-family: 'Tajawal', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--dark); letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; margin-top: 6px; transition: all 0.3s; }
+  .t-btn:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(201,168,76,0.22); }
+  .t-btn-ghost { width: 100%; padding: 11px; background: transparent; border: 1px solid rgba(201,168,76,0.18); border-radius: 3px; font-family: 'Tajawal', sans-serif; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .t-btn-ghost:hover { border-color: var(--gold); color: var(--cream); }
+  .results-box { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.28); border-radius: 4px; padding: 28px 32px; margin-top: 20px; display: none; animation: fadeUp 0.35s ease; }
+  .results-box.show { display: block; }
+  .res-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+  .res-item { background: rgba(0,0,0,0.25); border-radius: 3px; padding: 16px 18px; }
+  .res-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px; }
+  .res-value { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--cream); line-height: 1; }
+  .res-value.gold { color: var(--gold-light); }
+  .res-value.green { color: #4CAF7D; }
+  .res-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+  .payoff-bar-wrap { margin: 16px 0; }
+  .payoff-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; }
+  .payoff-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+  .payoff-bar-fill { height: 100%; border-radius: 3px; transition: width 0.7s ease; }
+  .payoff-bar-principal { background: linear-gradient(to right, rgba(201,168,76,0.4), var(--gold)); }
+  .payoff-bar-interest { background: linear-gradient(to right, rgba(224,85,85,0.5), #E05555); }
+  .schedule-toggle { font-size: 0.75rem; color: var(--gold); cursor: pointer; letter-spacing: 1px; text-transform: uppercase; margin-top: 16px; display: inline-block; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 2px; }
+  .schedule-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.8rem; display: none; }
+  .schedule-table.show { display: table; }
+  .schedule-table th { text-align: left; padding: 8px 10px; font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid rgba(201,168,76,0.15); font-family: 'Tajawal', sans-serif; font-weight: 500; }
+  .schedule-table td { padding: 8px 10px; color: var(--cream-soft); border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .schedule-table tr:hover td { background: rgba(201,168,76,0.03); }
+  .res-note { font-size: 0.75rem; color: var(--text-muted); line-height: 1.7; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.1); }
+  @media (max-width: 768px) {
+    .tool-section { padding: 48px 20px; }
+    .t-grid { grid-template-columns: 1fr; }
+    .res-grid { grid-template-columns: 1fr; }
+    .t-card { padding: 20px; }
+  }
 </style>
 </head>
 <body>
@@ -160,6 +217,7 @@
     <li><a href="books-resources.html">Books</a></li>
     <li><a href="crypto-islamic-trading.html">Crypto</a></li>
     <li><a href="halal-investing.html">Halal</a></li>
+    <li><a href="tools-budget-planner.html">Tools</a></li>
     <li><a href="impact-products.html">Deals</a></li>
     <li><a href="https://medium.com/@crypode" target="_blank">Blog</a></li>
     <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
@@ -213,6 +271,120 @@
   <p>You are not alone in this. And the road out, while slow, is real.</p>
 </div>
 
+
+<!-- ══ DEBT PAYOFF CALCULATOR ══════════════════════════ -->
+<section class="tool-section" id="debt-calculator">
+  <div class="tool-inner">
+    <div class="tool-header">
+      <div class="article-tag" style="margin-bottom:20px;">🧮 Interactive Tool</div>
+      <h2>Gulf Debt Payoff <em>Calculator</em></h2>
+      <p>Enter your loan details and see exactly when you will be debt-free, how much interest you will pay in total, and what happens if you make small additional payments each month.</p>
+    </div>
+
+    <!-- Method selector -->
+    <div style="margin-bottom:6px;font-size:0.75rem;color:var(--text-muted);letter-spacing:0.05em;">Payoff strategy</div>
+    <div class="method-tabs" id="methodTabs">
+      <button class="method-tab active" data-method="avalanche" onclick="setMethod('avalanche',this)">Avalanche (Highest Interest First)</button>
+      <button class="method-tab" data-method="snowball" onclick="setMethod('snowball',this)">Snowball (Smallest Balance First)</button>
+    </div>
+
+    <!-- Loan inputs -->
+    <div class="t-card">
+      <div class="t-card-title">💳 Your Loan Details</div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Total Outstanding Balance</label>
+          <div class="t-input-wrap"><span class="t-prefix">OMR</span><input class="t-input" type="number" id="balance" placeholder="e.g. 8000" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Annual Interest Rate (%)</label>
+          <div class="t-input-wrap"><span class="t-prefix">%</span><input class="t-input" type="number" id="rate" placeholder="e.g. 9.5" min="0" step="0.1"></div>
+        </div>
+        <div class="t-field">
+          <label>Monthly Repayment (fixed)</label>
+          <div class="t-input-wrap"><span class="t-prefix">OMR</span><input class="t-input" type="number" id="monthly" placeholder="e.g. 220" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Extra Payment per Month (optional)</label>
+          <div class="t-input-wrap"><span class="t-prefix">OMR</span><input class="t-input" type="number" id="extra" placeholder="e.g. 50" min="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second loan (optional) -->
+    <div class="t-card" id="loan2card">
+      <div class="t-card-title">💳 Second Loan / Credit Card <span style="font-size:0.72rem;color:var(--text-muted);font-family:'Tajawal',sans-serif;font-style:normal;">(optional)</span></div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Balance</label>
+          <div class="t-input-wrap"><span class="t-prefix">OMR</span><input class="t-input" type="number" id="balance2" placeholder="e.g. 1200" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Annual Interest Rate (%)</label>
+          <div class="t-input-wrap"><span class="t-prefix">%</span><input class="t-input" type="number" id="rate2" placeholder="e.g. 24" min="0" step="0.1"></div>
+        </div>
+        <div class="t-field">
+          <label>Minimum Monthly Payment</label>
+          <div class="t-input-wrap"><span class="t-prefix">OMR</span><input class="t-input" type="number" id="monthly2" placeholder="e.g. 60" min="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="t-btn" onclick="calcDebt()">Calculate My Payoff Date →</button>
+    <button class="t-btn-ghost" onclick="resetDebt()">Reset</button>
+
+    <!-- Results -->
+    <div class="results-box" id="debtResults">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold-light);">✦ Your Payoff Summary</div>
+        <div id="strategyBadge" style="font-size:0.68rem;padding:3px 12px;border-radius:20px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);letter-spacing:0.05em;text-transform:uppercase;">Avalanche Strategy</div>
+      </div>
+      <div class="res-grid">
+        <div class="res-item">
+          <div class="res-label">Debt-Free Date</div>
+          <div class="res-value gold" id="payoffDate">—</div>
+          <div class="res-sub" id="payoffMonths"></div>
+        </div>
+        <div class="res-item">
+          <div class="res-label">Total Interest Paid</div>
+          <div class="res-value" id="totalInterest" style="color:#E05555;">—</div>
+          <div class="res-sub">Cost of borrowing</div>
+        </div>
+        <div class="res-item">
+          <div class="res-label">Total Amount Paid</div>
+          <div class="res-value" id="totalPaid">—</div>
+          <div class="res-sub">Principal + interest</div>
+        </div>
+        <div class="res-item">
+          <div class="res-label">Interest Saved (extra pmts)</div>
+          <div class="res-value green" id="interestSaved">—</div>
+          <div class="res-sub" id="monthsSaved"></div>
+        </div>
+      </div>
+
+      <!-- Visual breakdown bar -->
+      <div class="payoff-bar-wrap">
+        <div class="payoff-bar-label">
+          <span id="principalPct">Principal</span>
+          <span id="interestPct">Interest</span>
+        </div>
+        <div class="payoff-bar-track" style="display:flex;height:8px;border-radius:4px;overflow:hidden;">
+          <div class="payoff-bar-fill payoff-bar-principal" id="principalBar" style="width:70%;border-radius:0;"></div>
+          <div class="payoff-bar-fill payoff-bar-interest" id="interestBar" style="width:30%;border-radius:0;"></div>
+        </div>
+      </div>
+
+      <span class="schedule-toggle" onclick="toggleSchedule()">View year-by-year schedule ↓</span>
+      <table class="schedule-table" id="scheduleTable">
+        <thead><tr><th>Year</th><th>Balance Start</th><th>Paid</th><th>Interest</th><th>Balance End</th></tr></thead>
+        <tbody id="scheduleBody"></tbody>
+      </table>
+
+      <div class="res-note">⚠️ This calculator provides estimates based on fixed-rate amortisation. Gulf loans may use different calculation methods. Always verify your exact payoff date with your bank. Figures are in the same currency as your inputs.</div>
+    </div>
+  </div>
+</section>
+
 <!-- Recommended reading section – unchanged -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
@@ -251,6 +423,7 @@
   <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
   <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
   <a href="halal-investing.html" onclick="closeMobileMenu()">Halal</a>
+  <a href="tools-budget-planner.html" onclick="closeMobileMenu()">Tools</a>
   <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
   <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
   <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
@@ -270,6 +443,122 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeMobileMenu();
   });
+
+  /* ── DEBT CALCULATOR JS ─────────────────────────── */
+  let payoffMethod = 'avalanche';
+  function setMethod(m, btn) {
+    payoffMethod = m;
+    document.querySelectorAll('.method-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('strategyBadge').textContent = m === 'avalanche' ? 'Avalanche Strategy' : 'Snowball Strategy';
+  }
+
+  function fmtOMR(n) { return 'OMR ' + Math.round(n).toLocaleString('en-US'); }
+  function fmtOMRDec(n) { return 'OMR ' + n.toFixed(2); }
+
+  function calcLoan(balance, annualRate, monthlyPayment, extraPayment) {
+    const r = annualRate / 100 / 12;
+    let bal = balance, months = 0, totalInterest = 0, schedule = [];
+    if (monthlyPayment <= 0 || (r > 0 && monthlyPayment <= bal * r)) return null;
+    while (bal > 0.01 && months < 600) {
+      const intCharge = bal * r;
+      const payment = Math.min(monthlyPayment + extraPayment, bal + intCharge);
+      const principal = payment - intCharge;
+      totalInterest += intCharge;
+      bal -= principal;
+      months++;
+      schedule.push({ month: months, interest: intCharge, principal, balance: Math.max(0, bal) });
+    }
+    return { months, totalInterest, schedule };
+  }
+
+  function calcDebt() {
+    const b1 = parseFloat(document.getElementById('balance').value) || 0;
+    const r1 = parseFloat(document.getElementById('rate').value) || 0;
+    const m1 = parseFloat(document.getElementById('monthly').value) || 0;
+    const extra = parseFloat(document.getElementById('extra').value) || 0;
+    const b2 = parseFloat(document.getElementById('balance2').value) || 0;
+    const r2 = parseFloat(document.getElementById('rate2').value) || 0;
+    const m2 = parseFloat(document.getElementById('monthly2').value) || 0;
+
+    if (!b1 || !r1 || !m1) { alert('Please enter at least the balance, interest rate, and monthly payment for Loan 1.'); return; }
+
+    // Calculate without extra first (baseline)
+    const base1 = calcLoan(b1, r1, m1, 0);
+    const base2 = b2 ? calcLoan(b2, r2, m2, 0) : null;
+    const baseMonths = Math.max(base1 ? base1.months : 0, base2 ? base2.months : 0);
+    const baseInterest = (base1 ? base1.totalInterest : 0) + (base2 ? base2.totalInterest : 0);
+
+    // Sort loans by strategy
+    let loans = [{ b: b1, r: r1, m: m1 }];
+    if (b2) loans.push({ b: b2, r: r2, m: m2 });
+    if (payoffMethod === 'avalanche') loans.sort((a, b) => b.r - a.r);
+    else loans.sort((a, b) => a.b - b.b);
+
+    // Calculate with extra payments applied to priority loan
+    const res1 = calcLoan(loans[0].b, loans[0].r, loans[0].m, extra);
+    const res2 = loans[1] ? calcLoan(loans[1].b, loans[1].r, loans[1].m, 0) : null;
+
+    const totalMonths = Math.max(res1 ? res1.months : 0, res2 ? res2.months : 0);
+    const totalInterestWithExtra = (res1 ? res1.totalInterest : 0) + (res2 ? res2.totalInterest : 0);
+    const totalBalances = b1 + b2;
+    const totalPaid = totalBalances + totalInterestWithExtra;
+    const saved = baseInterest - totalInterestWithExtra;
+    const monthsSaved = baseMonths - totalMonths;
+
+    // Payoff date
+    const now = new Date();
+    const payoff = new Date(now.getFullYear(), now.getMonth() + totalMonths, 1);
+    const months_names = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const payoffStr = months_names[payoff.getMonth()] + ' ' + payoff.getFullYear();
+
+    document.getElementById('payoffDate').textContent = payoffStr;
+    document.getElementById('payoffMonths').textContent = totalMonths + ' months from today';
+    document.getElementById('totalInterest').textContent = fmtOMR(totalInterestWithExtra);
+    document.getElementById('totalPaid').textContent = fmtOMR(totalPaid);
+    document.getElementById('interestSaved').textContent = saved > 0 ? fmtOMR(saved) : 'OMR 0';
+    document.getElementById('monthsSaved').textContent = monthsSaved > 0 ? monthsSaved + ' months sooner' : 'Add extra payments to save';
+
+    const pPct = Math.round((totalBalances / totalPaid) * 100);
+    const iPct = 100 - pPct;
+    document.getElementById('principalBar').style.width = pPct + '%';
+    document.getElementById('interestBar').style.width = iPct + '%';
+    document.getElementById('principalPct').textContent = 'Principal ' + pPct + '%';
+    document.getElementById('interestPct').textContent = 'Interest ' + iPct + '%';
+
+    // Year-by-year schedule from loan 1
+    const sched = res1 ? res1.schedule : [];
+    const tbody = document.getElementById('scheduleBody');
+    tbody.innerHTML = '';
+    let yearlyData = [];
+    for (let y = 0; y < Math.ceil(sched.length / 12); y++) {
+      const slice = sched.slice(y * 12, (y + 1) * 12);
+      const startBal = y === 0 ? b1 : yearlyData[y-1].endBal;
+      const paid = slice.reduce((s, r) => s + r.interest + r.principal, 0);
+      const interest = slice.reduce((s, r) => s + r.interest, 0);
+      const endBal = slice[slice.length - 1].balance;
+      yearlyData.push({ endBal });
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>Year ${y+1}</td><td>${fmtOMR(startBal)}</td><td>${fmtOMR(paid)}</td><td>${fmtOMR(interest)}</td><td>${fmtOMR(endBal)}</td>`;
+      tbody.appendChild(tr);
+    }
+
+    document.getElementById('debtResults').classList.add('show');
+    document.getElementById('debtResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function resetDebt() {
+    ['balance','rate','monthly','extra','balance2','rate2','monthly2'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+    document.getElementById('debtResults').classList.remove('show');
+    document.getElementById('scheduleTable').classList.remove('show');
+  }
+
+  function toggleSchedule() {
+    const t = document.getElementById('scheduleTable');
+    const tog = document.querySelector('.schedule-toggle');
+    t.classList.toggle('show');
+    tog.textContent = t.classList.contains('show') ? 'Hide schedule ↑' : 'View year-by-year schedule ↓';
+  }
 </script>
 </body>
 </html>

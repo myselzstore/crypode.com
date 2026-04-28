@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulf Salary Budget Planner — Crypode</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --cream: #F5F0E8; --cream-soft: #EDE8DF; --text-muted: #888880; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--cream); font-family: 'Tajawal', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.4; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent); flex-wrap: wrap; gap: 12px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 2px; text-decoration: none; }
+  .logo span { color: var(--cream); font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 36px; flex-wrap: wrap; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+  nav ul a:hover { color: var(--gold); }
+  .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 24px; border-radius: 2px; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+
+  /* HERO */
+  .page-hero { padding: 140px 48px 60px; max-width: 900px; margin: 0 auto; animation: fadeUp 1s ease both; }
+  .article-tag { display: inline-block; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 6px 16px; margin-bottom: 32px; border-radius: 1px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.15; color: var(--cream); margin-bottom: 20px; font-weight: 400; }
+  .page-hero h1 em { color: var(--gold); font-style: italic; }
+  .page-hero p { font-size: 1rem; line-height: 1.85; color: var(--text-muted); max-width: 580px; }
+
+  /* MARQUEE */
+  .marquee-section { border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); padding: 16px 0; overflow: hidden; background: var(--dark-2); }
+  .marquee-track { display: flex; gap: 60px; animation: marquee 28s linear infinite; white-space: nowrap; }
+  .marquee-item { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+  .marquee-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+
+  /* TOOL */
+  .tool-section { padding: 72px 48px 80px; }
+  .tool-inner { max-width: 860px; margin: 0 auto; }
+
+  /* Currency toggle */
+  .currency-row { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+  .currency-btn { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.2); border-radius: 3px; padding: 7px 16px; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: 'Tajawal', sans-serif; font-weight: 500; letter-spacing: 0.04em; }
+  .currency-btn:hover { border-color: var(--gold); color: var(--cream); }
+  .currency-btn.active { background: rgba(201,168,76,0.1); border-color: var(--gold); color: var(--gold-light); }
+
+  /* Cards */
+  .t-card { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.12); border-radius: 4px; padding: 28px 32px; margin-bottom: 14px; position: relative; overflow: hidden; }
+  .t-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent); }
+  .t-card-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 6px; }
+  .t-card-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+  .t-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .t-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .t-field { display: flex; flex-direction: column; gap: 6px; }
+  .t-field label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.03em; }
+  .t-input-wrap { position: relative; }
+  .t-prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-size: 0.78rem; color: rgba(201,168,76,0.55); pointer-events: none; font-family: 'Tajawal', sans-serif; }
+  .t-input { width: 100%; background: var(--dark-2); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; padding: 11px 12px 11px 48px; color: var(--cream); font-family: 'Tajawal', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  .t-input::-webkit-outer-spin-button, .t-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .t-input:focus { border-color: var(--gold); }
+  .t-input::placeholder { color: var(--text-muted); opacity: 0.35; }
+
+  /* Slider */
+  .slider-row { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+  .slider-row input[type=range] { flex: 1; height: 4px; background: rgba(201,168,76,0.15); border-radius: 2px; outline: none; -webkit-appearance: none; cursor: pointer; }
+  .slider-row input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: var(--gold); border-radius: 50%; cursor: pointer; }
+  .slider-val { font-size: 0.85rem; color: var(--gold-light); min-width: 36px; text-align: right; font-family: 'Tajawal', sans-serif; font-weight: 500; }
+
+  /* Buttons */
+  .t-btn { width: 100%; padding: 15px; background: var(--gold); border: none; border-radius: 3px; font-family: 'Tajawal', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--dark); letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; margin-top: 6px; transition: all 0.3s; }
+  .t-btn:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(201,168,76,0.22); }
+  .t-btn-ghost { width: 100%; padding: 11px; background: transparent; border: 1px solid rgba(201,168,76,0.18); border-radius: 3px; font-family: 'Tajawal', sans-serif; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .t-btn-ghost:hover { border-color: var(--gold); color: var(--cream); }
+
+  /* Results */
+  .results-box { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.28); border-radius: 4px; padding: 32px; margin-top: 20px; display: none; animation: fadeUp 0.35s ease; }
+  .results-box.show { display: block; }
+  .res-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 10px; }
+  .res-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold-light); }
+  .health-badge { font-size: 0.7rem; padding: 4px 14px; border-radius: 20px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid; }
+  .badge-green { background: rgba(76,175,125,0.1); border-color: rgba(76,175,125,0.35); color: #4CAF7D; }
+  .badge-amber { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.35); color: var(--gold); }
+  .badge-red { background: rgba(224,85,85,0.1); border-color: rgba(224,85,85,0.35); color: #E05555; }
+
+  /* Summary row */
+  .summary-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+  .sum-item { background: rgba(0,0,0,0.25); border-radius: 3px; padding: 16px; }
+  .sum-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px; }
+  .sum-value { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); line-height: 1; }
+  .sum-value.gold { color: var(--gold-light); }
+  .sum-value.green { color: #4CAF7D; }
+  .sum-value.red { color: #E05555; }
+  .sum-sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+
+  /* Donut + breakdown */
+  .viz-row { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; margin-bottom: 24px; }
+  .donut-wrap { position: relative; width: 180px; height: 180px; flex-shrink: 0; }
+  .donut-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .donut-centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .donut-centre-pct { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); line-height: 1; }
+  .donut-centre-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
+  .breakdown-list { display: flex; flex-direction: column; gap: 10px; }
+  .breakdown-item { display: flex; align-items: center; gap: 10px; }
+  .b-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .b-label { font-size: 0.82rem; color: var(--text-muted); flex: 1; }
+  .b-pct { font-size: 0.82rem; color: var(--cream); min-width: 36px; text-align: right; }
+  .b-amount { font-size: 0.78rem; color: var(--text-muted); min-width: 80px; text-align: right; }
+
+  /* Recommendations */
+  .recs-section { margin-top: 20px; }
+  .recs-title { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .rec-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .rec-text { font-size: 0.85rem; line-height: 1.6; color: var(--cream-soft); }
+  .rec-text strong { color: var(--gold-light); }
+  .res-note { font-size: 0.75rem; color: var(--text-muted); line-height: 1.7; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.1); }
+
+  /* Related tools */
+  .related-section { background: var(--dark-2); border-top: 1px solid rgba(201,168,76,0.1); padding: 72px 48px; }
+  .related-inner { max-width: 1000px; margin: 0 auto; }
+  .related-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); font-weight: 400; text-align: center; margin-bottom: 40px; }
+  .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .related-card { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.08); padding: 32px; text-decoration: none; transition: all 0.3s; display: block; }
+  .related-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .rc-icon { font-size: 1.5rem; margin-bottom: 16px; display: block; }
+  .related-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); margin-bottom: 10px; font-weight: 400; line-height: 1.4; }
+  .related-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* Footer */
+  footer { border-top: 1px solid rgba(201,168,76,0.1); padding: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; }
+  .footer-logo span { color: var(--cream); font-style: italic; }
+  footer p { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* Mobile */
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 8px 10px; border: 1px solid rgba(201,168,76,0.4); border-radius: 3px; background: transparent; z-index: 300; flex-shrink: 0; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.35s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(13,13,13,0.98); z-index: 250; flex-direction: column; align-items: center; justify-content: center; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-logo { position: absolute; top: 24px; left: 24px; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; }
+  .mobile-menu-logo em { color: var(--cream); font-style: italic; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; color: var(--text-muted); font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; transition: color 0.3s; }
+  .mobile-menu-close:hover { color: var(--gold); }
+  .mobile-menu a { color: var(--cream); text-decoration: none; font-size: 1.6rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; padding: 18px 0; width: 80%; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.1); transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-subscribe { margin-top: 32px; padding: 14px 40px; border: 1px solid var(--gold); color: var(--gold) !important; font-size: 0.8rem !important; font-family: 'Tajawal', sans-serif !important; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; width: auto !important; border-bottom: 1px solid var(--gold) !important; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
+    nav > ul { display: none !important; }
+    .hamburger { display: flex !important; }
+    .page-hero { padding: 120px 20px 40px; }
+    .tool-section { padding: 48px 20px 60px; }
+    .t-grid, .t-grid-3 { grid-template-columns: 1fr; }
+    .summary-strip { grid-template-columns: 1fr; }
+    .viz-row { grid-template-columns: 1fr; }
+    .donut-wrap { margin: 0 auto; }
+    .related-section { padding: 48px 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+    .t-card { padding: 20px; }
+    footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Cry<span>pode</span></a>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="books-resources.html">Books</a></li>
+    <li><a href="crypto-islamic-trading.html">Crypto</a></li>
+    <li><a href="halal-investing.html">Halal</a></li>
+    <li><a href="impact-products.html">Deals</a></li>
+    <li><a href="https://medium.com/@crypode" target="_blank">Blog</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;color:var(--gold);text-decoration:none;font-size:0.8rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:32px;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">← Back to Home</a>
+  <div class="article-tag">📊 Interactive Tool</div>
+  <h1>Gulf Salary <em>Budget Planner</em></h1>
+  <p>Enter your salary, deductions, and expenses to see exactly where your money goes — and get a personalised Gulf-specific action plan based on your actual numbers.</p>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span> Salary Breakdown</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Gulf Budgeting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Debt vs Savings</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Family Finances</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> OMR · AED · SAR</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Financial Health</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Salary Breakdown</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Gulf Budgeting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Debt vs Savings</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Family Finances</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> OMR · AED · SAR</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Financial Health</div>
+  </div>
+</div>
+
+<!-- TOOL -->
+<section class="tool-section">
+  <div class="tool-inner">
+
+    <!-- Currency -->
+    <div style="margin-bottom:8px;font-size:0.75rem;color:var(--text-muted);letter-spacing:0.05em;">Select currency</div>
+    <div class="currency-row">
+      <button class="currency-btn active" data-curr="OMR" onclick="setCurr('OMR',this)">OMR</button>
+      <button class="currency-btn" data-curr="AED" onclick="setCurr('AED',this)">AED</button>
+      <button class="currency-btn" data-curr="SAR" onclick="setCurr('SAR',this)">SAR</button>
+      <button class="currency-btn" data-curr="USD" onclick="setCurr('USD',this)">USD</button>
+      <button class="currency-btn" data-curr="GBP" onclick="setCurr('GBP',this)">GBP</button>
+    </div>
+
+    <!-- Income -->
+    <div class="t-card">
+      <div class="t-card-title">💼 Monthly Income</div>
+      <div class="t-card-desc">Enter your take-home salary after any government deductions. If you have a spouse or secondary income, include it in the additional income field.</div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Take-Home Salary</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="salary" placeholder="e.g. 1200" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Additional Income (optional)</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="extra_income" placeholder="e.g. 150" min="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loan deductions -->
+    <div class="t-card">
+      <div class="t-card-title">🏦 Loan & Debt Deductions</div>
+      <div class="t-card-desc">Monthly amounts deducted from your salary or paid to lenders. In the Gulf, these often leave before you even see your payslip.</div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Personal Loan Repayment</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="loan1" placeholder="e.g. 380" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Credit Card Minimum</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="cc" placeholder="e.g. 60" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Car Loan</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="car_loan" placeholder="e.g. 120" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Other Loans</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="other_loan" placeholder="e.g. 0" min="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fixed expenses -->
+    <div class="t-card">
+      <div class="t-card-title">🏠 Fixed Monthly Expenses</div>
+      <div class="t-card-desc">Recurring costs that are the same or similar every month — non-negotiables.</div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Rent / Housing</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="rent" placeholder="e.g. 200" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Utilities (electric, water, internet)</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="utilities" placeholder="e.g. 60" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>School Fees</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="school" placeholder="e.g. 150" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Insurance / Health</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="insurance" placeholder="e.g. 40" min="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variable expenses -->
+    <div class="t-card">
+      <div class="t-card-title">🛒 Variable Monthly Expenses</div>
+      <div class="t-card-desc">Costs that fluctuate — estimate a realistic monthly average for each.</div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Groceries & Food</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="groceries" placeholder="e.g. 180" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Fuel & Transport</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="fuel" placeholder="e.g. 60" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Family Support / Remittances</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="remittances" placeholder="e.g. 80" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Other / Misc</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="misc" placeholder="e.g. 50" min="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Savings & goals -->
+    <div class="t-card">
+      <div class="t-card-title">🌱 Savings & Investments</div>
+      <div class="t-card-desc">What you currently set aside each month. If the answer is zero, that's okay — the planner will show you what's possible.</div>
+      <div class="t-grid">
+        <div class="t-field">
+          <label>Monthly Savings Target</label>
+          <div class="t-input-wrap"><span class="t-prefix curr-sym">OMR</span><input class="t-input" type="number" id="savings_target" placeholder="e.g. 50" min="0"></div>
+        </div>
+        <div class="t-field">
+          <label>Number of Dependents</label>
+          <div class="t-input-wrap"><span class="t-prefix">#</span><input class="t-input" type="number" id="dependents" placeholder="e.g. 4" min="0" max="20"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="t-btn" onclick="calcBudget()">Generate My Budget Plan →</button>
+    <button class="t-btn-ghost" onclick="resetBudget()">Reset All Fields</button>
+
+    <!-- RESULTS -->
+    <div class="results-box" id="budgetResults">
+      <div class="res-header">
+        <div class="res-title">✦ Your Monthly Budget Snapshot</div>
+        <div class="health-badge badge-green" id="healthBadge">Healthy</div>
+      </div>
+
+      <!-- Summary strip -->
+      <div class="summary-strip">
+        <div class="sum-item">
+          <div class="sum-label">Total Income</div>
+          <div class="sum-value gold" id="totalIncome">—</div>
+          <div class="sum-sub">per month</div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-label">Total Outgoings</div>
+          <div class="sum-value" id="totalOut" style="color:#E05555;">—</div>
+          <div class="sum-sub">loans + expenses</div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-label">Net Remaining</div>
+          <div class="sum-value green" id="netRemaining">—</div>
+          <div class="sum-sub">after all costs</div>
+        </div>
+      </div>
+
+      <!-- Donut + breakdown -->
+      <div class="viz-row">
+        <div class="donut-wrap">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="16"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#C9A84C" stroke-width="16" stroke-dasharray="0 314" id="donutDebt" stroke-linecap="butt"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#3a6e54" stroke-width="16" stroke-dasharray="0 314" id="donutFixed" stroke-linecap="butt"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#5a8fa8" stroke-width="16" stroke-dasharray="0 314" id="donutVar" stroke-linecap="butt"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#4CAF7D" stroke-width="16" stroke-dasharray="0 314" id="donutSav" stroke-linecap="butt"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#888880" stroke-width="16" stroke-dasharray="0 314" id="donutRem" stroke-linecap="butt"/>
+          </svg>
+          <div class="donut-centre">
+            <div class="donut-centre-pct" id="debtPctLabel">—</div>
+            <div class="donut-centre-label">on debt</div>
+          </div>
+        </div>
+        <div class="breakdown-list" id="breakdownList"></div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="recs-section">
+        <div class="recs-title">✦ Personalised Recommendations</div>
+        <div id="recsList"></div>
+      </div>
+
+      <div class="res-note">This planner provides a monthly snapshot based on your inputs. Actual figures may vary. This is not financial advice — for personalised guidance, consult a qualified financial advisor familiar with Gulf banking regulations.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related-section">
+  <div class="related-inner">
+    <h3 class="related-title">Related Tools & Articles</h3>
+    <div class="related-grid">
+      <a href="article-1-debt.html#debt-calculator" class="related-card">
+        <span class="rc-icon">🧮</span>
+        <h4>Debt Payoff Calculator</h4>
+        <p>See exactly when you'll be debt-free and how much interest you'll pay — with year-by-year breakdown.</p>
+      </a>
+      <a href="halal-investing.html#zakat-calculator" class="related-card">
+        <span class="rc-icon">☪</span>
+        <h4>Zakat Calculator</h4>
+        <p>Calculate your annual Zakat obligation across cash, gold, investments, and business assets.</p>
+      </a>
+      <a href="article-1-debt.html" class="related-card">
+        <span class="rc-icon">⚖️</span>
+        <h4>Navigating Debt in the Gulf</h4>
+        <p>Why Gulf debt is different — and the strategies that actually work when the system won't negotiate.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Cry<span>pode</span></div>
+  <p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p>
+  <div style="display:flex;gap:28px;">
+    <a href="index.html#about" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;text-transform:uppercase;">About</a>
+    <a href="index.html#topics" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;text-transform:uppercase;">Topics</a>
+    <a href="https://medium.com/@crypode" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;text-transform:uppercase;">Blog</a>
+  </div>
+</footer>
+
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-logo">Cry<em>pode</em></span>
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+  <a href="index.html#topics" onclick="closeMobileMenu()">Topics</a>
+  <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
+  <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
+  <a href="halal-investing.html" onclick="closeMobileMenu()">Halal</a>
+  <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
+  <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
+  <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
+</div>
+
+<script>
+  let currency = 'OMR';
+  function setCurr(c, btn) {
+    currency = c;
+    document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.curr-sym').forEach(el => el.textContent = c);
+  }
+
+  function v(id) { return parseFloat(document.getElementById(id).value) || 0; }
+  function fmt(n) { return currency + ' ' + Math.round(n).toLocaleString('en-US'); }
+
+  const CIRCUMFERENCE = 2 * Math.PI * 50; // ~314
+
+  function setDonutSegment(id, pct, offset) {
+    const el = document.getElementById(id);
+    const len = (pct / 100) * CIRCUMFERENCE;
+    el.setAttribute('stroke-dasharray', len + ' ' + (CIRCUMFERENCE - len));
+    el.setAttribute('stroke-dashoffset', -offset);
+    return offset + len;
+  }
+
+  function calcBudget() {
+    const salary      = v('salary');
+    const extraIncome = v('extra_income');
+    const totalIncome = salary + extraIncome;
+
+    if (!totalIncome) { alert('Please enter your monthly take-home salary.'); return; }
+
+    const debt  = v('loan1') + v('cc') + v('car_loan') + v('other_loan');
+    const fixed = v('rent') + v('utilities') + v('school') + v('insurance');
+    const vari  = v('groceries') + v('fuel') + v('remittances') + v('misc');
+    const savingsTarget = v('savings_target');
+    const dependents = v('dependents');
+
+    const totalOut = debt + fixed + vari + savingsTarget;
+    const remaining = totalIncome - totalOut;
+
+    const debtPct  = Math.round((debt  / totalIncome) * 100);
+    const fixedPct = Math.round((fixed / totalIncome) * 100);
+    const varPct   = Math.round((vari  / totalIncome) * 100);
+    const savPct   = Math.round((savingsTarget / totalIncome) * 100);
+    const remPct   = Math.max(0, 100 - debtPct - fixedPct - varPct - savPct);
+
+    // Summary
+    document.getElementById('totalIncome').textContent   = fmt(totalIncome);
+    document.getElementById('totalOut').textContent      = fmt(totalOut);
+    document.getElementById('netRemaining').textContent  = fmt(remaining);
+    document.getElementById('debtPctLabel').textContent  = debtPct + '%';
+
+    // Health badge
+    const badge = document.getElementById('healthBadge');
+    if (debtPct > 50) { badge.textContent = 'Under Pressure'; badge.className = 'health-badge badge-red'; }
+    else if (debtPct > 35) { badge.textContent = 'Manageable'; badge.className = 'health-badge badge-amber'; }
+    else { badge.textContent = 'Healthy'; badge.className = 'health-badge badge-green'; }
+
+    // Donut
+    let off = 0;
+    off = setDonutSegment('donutDebt',  debtPct,  off);
+    off = setDonutSegment('donutFixed', fixedPct, off);
+    off = setDonutSegment('donutVar',   varPct,   off);
+    off = setDonutSegment('donutSav',   savPct,   off);
+    setDonutSegment('donutRem', remPct, off);
+
+    // Breakdown list
+    const breakdown = [
+      { label: 'Debt repayments', pct: debtPct,  amount: debt,          color: '#C9A84C' },
+      { label: 'Fixed expenses',  pct: fixedPct, amount: fixed,         color: '#3a6e54' },
+      { label: 'Variable costs',  pct: varPct,   amount: vari,          color: '#5a8fa8' },
+      { label: 'Savings',         pct: savPct,   amount: savingsTarget, color: '#4CAF7D' },
+      { label: 'Remaining',       pct: remPct,   amount: Math.max(0, remaining), color: '#888880' },
+    ];
+    document.getElementById('breakdownList').innerHTML = breakdown.map(b =>
+      `<div class="breakdown-item">
+        <div class="b-dot" style="background:${b.color};"></div>
+        <div class="b-label">${b.label}</div>
+        <div class="b-pct">${b.pct}%</div>
+        <div class="b-amount">${fmt(b.amount)}</div>
+      </div>`
+    ).join('');
+
+    // Personalised recommendations
+    const recs = [];
+
+    if (debtPct > 50) {
+      recs.push({ icon: '🚨', text: '<strong>Debt is consuming over half your income.</strong> This is the Gulf\'s most common financial trap. Your immediate priority is stabilising — avoid any new debt and focus on the highest-interest balance first. Use our <a href="article-1-debt.html#debt-calculator" style="color:var(--gold);">Debt Payoff Calculator</a> to see your exact timeline.' });
+    } else if (debtPct > 35) {
+      recs.push({ icon: '⚠️', text: '<strong>' + debtPct + '% of your income goes to debt</strong> — above the recommended 35% ceiling. Consider directing any monthly surplus at your credit card balance first (highest interest) before saving.' });
+    } else {
+      recs.push({ icon: '✅', text: '<strong>Your debt load is within a manageable range</strong> at ' + debtPct + '% of income. Keep maintaining payments and consider directing any surplus toward a savings buffer before increasing investments.' });
+    }
+
+    if (savPct < 5 && remaining > 0) {
+      recs.push({ icon: '🌱', text: '<strong>You are saving less than 5% of your income.</strong> Even setting aside ' + fmt(totalIncome * 0.05) + ' per month builds meaningful security over time. Consider automating a small transfer on payday — before expenses reach it.' });
+    } else if (savPct >= 10) {
+      recs.push({ icon: '🏆', text: '<strong>Strong savings discipline at ' + savPct + '%.</strong> Once you have 3 months of expenses saved as an emergency fund (' + fmt((fixed + vari) * 3) + '), redirect additional savings toward halal investments.' });
+    }
+
+    if (dependents >= 4) {
+      recs.push({ icon: '👨‍👩‍👧‍👦', text: '<strong>With ' + dependents + ' dependents</strong>, your per-person spending is tight. Family takaful (Islamic insurance) and a dedicated education savings fund are worth exploring — even small monthly contributions compound significantly over school years.' });
+    }
+
+    if (remaining < 0) {
+      recs.push({ icon: '❗', text: '<strong>Your outgoings exceed your income by ' + fmt(Math.abs(remaining)) + ' per month.</strong> This gap needs urgent attention. Review your variable expenses for any reductions and explore side income options — see our <a href="halal-article-side-income.html" style="color:var(--gold);">Side Income Halal Checklist</a>.' });
+    } else if (remaining > totalIncome * 0.15) {
+      recs.push({ icon: '💡', text: '<strong>You have a meaningful surplus of ' + fmt(remaining) + ' per month.</strong> A disciplined allocation: 50% toward extra debt repayment, 30% emergency fund, 20% halal investments. This ratio accelerates your debt-free date significantly.' });
+    }
+
+    recs.push({ icon: '☪', text: '<strong>Don\'t forget Zakat.</strong> If your net savings exceed the nisab threshold over a lunar year, Zakat is due at 2.5%. Use our <a href="halal-investing.html#zakat-calculator" style="color:var(--gold);">Zakat Calculator</a> to check your obligation.' });
+
+    document.getElementById('recsList').innerHTML = recs.map(r =>
+      `<div class="rec-item"><div class="rec-icon">${r.icon}</div><div class="rec-text">${r.text}</div></div>`
+    ).join('');
+
+    document.getElementById('budgetResults').classList.add('show');
+    document.getElementById('budgetResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function resetBudget() {
+    document.querySelectorAll('.t-input').forEach(el => el.value = '');
+    document.getElementById('budgetResults').classList.remove('show');
+  }
+
+  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');    document.getElementById('hamburgerBtn').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow = ''; }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>
