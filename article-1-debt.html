@@ -6,6 +6,7 @@
 <title>Navigating Debt in the Gulf — Crypode</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+  /* CSS same as previous – unchanged for brevity, but identical to the version with mobile menu */
   :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --cream: #F5F0E8; --cream-soft: #EDE8DF; --text-muted: #888880; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -51,7 +52,7 @@
   .footer-logo span { color: var(--cream); font-style: italic; }
   footer p { font-size: 0.78rem; color: var(--text-muted); }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @media (max-width: 768px) { 
+  @media (max-width: 768px) {
     nav { padding: 16px 24px; justify-content: space-between; }
     nav ul { display: none; }
     .article-hero { padding: 120px 20px 40px; }
@@ -60,7 +61,6 @@
     .related-articles { padding: 60px 20px; }
     footer { flex-direction: column; text-align: center; }
   }
-  /* Hamburger & Mobile Menu */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -183,6 +183,7 @@
 </div>
 
 <div class="article-body">
+  <!-- Original article content – unchanged -->
   <p>Let me tell you something nobody in the financial advice world ever says: sometimes the debt is not your fault. Sometimes you made the best decisions you could with what you knew, life happened, and now you are sitting with a number that feels impossible — while a system that does not negotiate looks back at you unmoved.</p>
   <p>That is the reality for many working professionals across the Gulf. And it is the reality I have lived personally. If you want to understand the psychology behind why debt feels so crushing, <a href="https://www.amazon.com/dp/0857197681/?tag=wwwmybestabsw-20" target="_blank" style="color:var(--gold);text-decoration:underline;">The Psychology of Money by Morgan Housel</a> is one of the most honest books ever written on the subject.</p>
   <blockquote><p>"The bank does not see a father of six doing his best. It sees a loan number and a repayment schedule."</p></blockquote>
@@ -212,7 +213,7 @@
   <p>You are not alone in this. And the road out, while slow, is real.</p>
 </div>
 
-<!-- Recommended reading section (unchanged) -->
+<!-- Recommended reading section – unchanged -->
 <section style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
   <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:48px;">
     <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">📚 Recommended Reading</div>
@@ -223,7 +224,7 @@
       <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Timeless Classic</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">The Richest Man in Babylon — George Clason</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">Ancient financial wisdom through parables — how to pay off debt, save consistently, and build wealth on any income level.</p><a href="https://www.amazon.com/dp/1505339111/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
       <div style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.15);padding:28px;border-radius:4px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;"><div style="font-size:2.5rem;">📖</div><div><div style="font-size:0.7rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">Best Practical Guide</div><h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:8px;">I Will Teach You To Be Rich — Ramit Sethi</h4><p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">A no-nonsense six-week program covering debt payoff, banking, automating finances, and negotiating bills — refreshingly practical.</p><a href="https://www.amazon.com/dp/1523505745/?tag=wwwmybestabsw-20" target="_blank" style="display:inline-block;background:var(--gold);color:var(--dark);padding:8px 20px;font-size:0.75rem;letter-spacing:1.5px;text-decoration:none;border-radius:2px;">View on Amazon →</a></div></div>
     </div>
-    <p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);text-align:center;">These are affiliate links. If you purchase through them, Crypode earns a small commission at no extra cost to you. JazakAllah khair for your support. 🤲</p>
+    <p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);text-align:center;">Affiliate links. Crypode earns a small commission at no extra cost to you. JazakAllah khair. 🤲</p>
   </div>
 </section>
 
@@ -241,7 +242,6 @@
   <p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p>
 </footer>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <span class="mobile-menu-logo">Cry<em>pode</em></span>
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
