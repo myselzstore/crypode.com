@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Sukuk and Should You Invest in It? — Crypode</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --cream: #F5F0E8; --cream-soft: #EDE8DF; --text-muted: #888880; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--cream); font-family: 'Tajawal', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.4; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent); flex-wrap: wrap; gap: 12px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 2px; text-decoration: none; }
+  .logo span { color: var(--cream); font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 36px; flex-wrap: wrap; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+  nav ul a:hover { color: var(--gold); }
+  .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 24px; border-radius: 2px; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+  .article-hero { padding: 140px 48px 60px; max-width: 800px; margin: 0 auto; animation: fadeUp 1s ease both; }
+  .article-tag { display: inline-block; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 6px 16px; margin-bottom: 32px; border-radius: 1px; }
+  .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.2; color: var(--cream); margin-bottom: 24px; font-weight: 400; }
+  .article-hero h1 em { color: var(--gold); font-style: italic; }
+  .article-meta { display: flex; gap: 24px; align-items: center; padding: 24px 0; border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); margin-bottom: 60px; flex-wrap: wrap; }
+  .article-meta span { font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+  .article-meta .dot { color: var(--gold); }
+  .article-body { max-width: 800px; margin: 0 auto; padding: 0 48px 120px; }
+  .article-body p { font-size: 1.05rem; line-height: 1.9; color: var(--cream-soft); margin-bottom: 28px; }
+  .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); margin: 48px 0 20px; font-weight: 400; }
+  .article-body h2 em { color: var(--gold); font-style: italic; }
+  .article-body blockquote { border-left: 2px solid var(--gold); padding: 20px 32px; margin: 40px 0; background: var(--dark-3); border-radius: 0 4px 4px 0; }
+  .article-body blockquote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--cream); margin: 0; }
+  .highlight-box { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.2); padding: 32px; border-radius: 4px; margin: 40px 0; position: relative; }
+  .highlight-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+  .highlight-box p { margin: 0; color: var(--cream); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 32px; transition: opacity 0.3s; }
+  .back-link:hover { opacity: 0.7; }
+  .related-articles { background: var(--dark-2); border-top: 1px solid rgba(201,168,76,0.1); padding: 80px 48px; }
+  .related-articles h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--cream); margin-bottom: 40px; font-weight: 400; text-align: center; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; }
+  .related-card { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.08); padding: 32px; text-decoration: none; transition: all 0.3s; display: block; }
+  .related-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .related-card .icon { font-size: 1.5rem; margin-bottom: 16px; display: block; }
+  .related-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); margin-bottom: 10px; font-weight: 400; line-height: 1.4; }
+  .related-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 0.9rem; }
+  .comparison-table th { text-align: left; padding: 12px 16px; font-family: 'Tajawal', sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .comparison-table td { padding: 14px 16px; color: var(--cream-soft); border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.5; }
+  .comparison-table tr:hover td { background: rgba(201,168,76,0.03); }
+  footer { border-top: 1px solid rgba(201,168,76,0.1); padding: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; }
+  .footer-logo span { color: var(--cream); font-style: italic; }
+  footer p { font-size: 0.78rem; color: var(--text-muted); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 8px 10px; border: 1px solid rgba(201,168,76,0.4); border-radius: 3px; background: transparent; z-index: 300; flex-shrink: 0; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.35s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(13,13,13,0.98); z-index: 250; flex-direction: column; align-items: center; justify-content: center; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-logo { position: absolute; top: 24px; left: 24px; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; }
+  .mobile-menu-logo em { color: var(--cream); font-style: italic; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; color: var(--text-muted); font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; transition: color 0.3s; }
+  .mobile-menu-close:hover { color: var(--gold); }
+  .mobile-menu a { color: var(--cream); text-decoration: none; font-size: 1.6rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; padding: 18px 0; width: 80%; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.1); transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-subscribe { margin-top: 32px; padding: 14px 40px; border: 1px solid var(--gold); color: var(--gold) !important; font-size: 0.8rem !important; font-family: 'Tajawal', sans-serif !important; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; width: auto !important; border-bottom: 1px solid var(--gold) !important; }
+  @media (max-width: 768px) {
+    .hamburger { display: flex !important; }
+    nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
+    nav > ul { display: none !important; }
+    .article-hero { padding: 120px 20px 40px; }
+    .article-body { padding: 0 20px 60px; }
+    .related-grid { grid-template-columns: 1fr; }
+    .related-articles { padding: 60px 20px; }
+    footer { flex-direction: column; text-align: center; }
+    .comparison-table { font-size: 0.78rem; }
+    .comparison-table th, .comparison-table td { padding: 10px 10px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Cry<span>pode</span></a>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="books-resources.html">Books</a></li>
+    <li><a href="crypto-islamic-trading.html">Crypto</a></li>
+    <li><a href="halal-investing.html" style="color: var(--gold);">Halal</a></li>
+    <li><a href="impact-products.html">Deals</a></li>
+    <li><a href="https://medium.com/@crypode" target="_blank">Blog</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="article-hero">
+  <a href="halal-investing.html" class="back-link">← Back to Halal Investing</a>
+  <div class="article-tag">📜 Sukuk · Islamic Finance</div>
+  <h1>What is Sukuk and Should <em>You Invest in It?</em></h1>
+  <div class="article-meta">
+    <span>By Fahad</span><span class="dot">✦</span><span>Muscat, Oman</span><span class="dot">✦</span><span>9 min read</span>
+  </div>
+</div>
+<div class="article-body">
+  <p>If you have spent any time in Gulf financial circles, you have heard the word sukuk. It is often described as the "Islamic bond" — but that comparison, while useful, misses something important. Understanding what sukuk actually is, how it works, and whether it belongs in your portfolio could significantly change how you think about halal fixed-income investing.</p>
+
+  <h2>The Problem with <em>Conventional Bonds</em></h2>
+  <p>Conventional bonds are simple: you lend money to a government or company, they pay you interest over time, then return your principal. Clean, predictable — and entirely based on riba. For Muslim investors, that is a dealbreaker. Which means that in conventional markets, an entire asset class — fixed income — is effectively off-limits. Bonds represent trillions of dollars in global investment. That is a significant gap. Sukuk was developed to fill it.</p>
+
+  <h2>What is <em>Sukuk?</em></h2>
+  <p>Sukuk (plural of sakk, meaning "certificate") are Shariah-compliant financial instruments that represent ownership in an underlying asset, project, or business — rather than a debt obligation. When you buy a sukuk, you do not lend money and earn interest. You own a share of something real and earn a return from that asset's performance or revenue.</p>
+  <p>The underlying asset could be a building or property (Ijara sukuk), a commodity (Murabaha sukuk), a business venture (Musharakah sukuk), or an infrastructure project (Istisna sukuk). This asset-backed structure is what makes sukuk permissible under Islamic law.</p>
+
+  <h2>How a Simple Sukuk Works — <em>Ijara Example</em></h2>
+  <p>A government wants to raise $500 million to finance a new highway. Instead of issuing a conventional bond, it sells the highway to a Special Purpose Vehicle (SPV). The SPV issues sukuk certificates to investors — each representing partial ownership of the highway. The government leases the highway back and makes regular lease payments. Investors receive their share of those payments as returns. At maturity, the asset is sold back and investors receive their principal. No interest changes hands. Returns come from real economic activity.</p>
+
+  <div class="highlight-box">
+    <p>The global sukuk market surpassed $1 trillion in outstanding value in 2024. Saudi Arabia, the UAE, Malaysia, Indonesia, and Turkey are among the world's most active issuers. Gulf investors have direct home-market access to some of the highest-quality Shariah-compliant fixed-income products on earth.</p>
+  </div>
+
+  <h2>Types of Sukuk <em>You Will Encounter</em></h2>
+  <p><strong style="color: var(--gold);">Ijara Sukuk (Lease-based)</strong> — The most common type. Returns come from lease payments on a physical asset. Considered among the most straightforward and widely accepted by scholars.</p>
+  <p><strong style="color: var(--gold);">Musharakah Sukuk (Partnership)</strong> — Investors share in the profits and losses of a venture. Higher risk, potentially higher reward — and closest in spirit to equity investing.</p>
+  <p><strong style="color: var(--gold);">Wakalah Sukuk (Agency)</strong> — An investment manager invests the capital on behalf of sukuk holders, generating returns from a managed portfolio of assets.</p>
+  <p><strong style="color: var(--gold);">Green Sukuk</strong> — A rapidly growing category where the underlying asset is an environmental project — solar farms, water treatment plants, sustainable buildings. Extremely popular in the Gulf as ESG investing grows.</p>
+
+  <h2>Should You <em>Invest in Sukuk?</em></h2>
+  <p>Sukuk provides more predictable returns compared to equities — useful for Gulf professionals in their 40s and 50s planning for retirement. Adding sukuk alongside halal equities and ETFs reduces overall portfolio volatility. Many high-quality sukuk are issued by GCC governments and blue-chip regional companies, giving Gulf investors home-market advantage. Some sukuk — particularly real estate Ijara — also provide a natural hedge against inflation.</p>
+  <p>The caveats: some sukuk, particularly smaller corporate issues, can be harder to sell before maturity. The variety of structures means not all sukuk are equally permissible — research each one carefully. Many institutional issues have high minimums ($200,000+), though retail-accessible options exist through Tadawul, ADX, and Islamic ETFs.</p>
+
+  <h2>How Gulf Individual Investors Can <em>Access Sukuk</em></h2>
+  <p>The easiest entry point is sukuk ETFs tracking sukuk indices, accessible through international brokers. Saudi residents can access government sukuk through the National Debt Management Centre on Tadawul. UAE investors can find them through select local banks and the ADX. Banks like HSBC Amanah, Abu Dhabi Islamic Bank, and Dubai Islamic Bank also have dedicated sukuk desks for larger investors.</p>
+
+  <blockquote><p>"Sukuk is Islamic finance working exactly as it was designed to — real assets generating real returns for investors who believe their money should do good in the world, not just earn interest."</p></blockquote>
+
+  <p style="font-size:0.85rem;color:var(--text-muted);margin-top:40px;padding-top:20px;border-top:1px solid rgba(201,168,76,0.1);">Disclaimer: This article is for educational purposes only and does not constitute financial advice. Sukuk carry investment risks including potential capital loss. Always verify Shariah compliance and consult a financial advisor before investing.</p>
+</div>
+<section class="related-articles">
+  <h3>Continue Reading</h3>
+  <div class="related-grid">
+    <a href="halal-article-zoya-musaffa.html" class="related-card"><span class="icon">🔍</span><h4>Zoya vs Musaffa</h4><p>Which halal stock screener should Gulf investors use? A practical comparison.</p></a>
+    <a href="halal-article-etfs.html" class="related-card"><span class="icon">📈</span><h4>Best Halal ETFs</h4><p>The top Shariah-compliant ETFs for Gulf investors — costs, access routes, and strategy.</p></a>
+    <a href="halal-article-crypto.html" class="related-card"><span class="icon">🪙</span><h4>Is Crypto Halal?</h4><p>Where Islamic scholarship stands on Bitcoin, Ethereum, and DeFi in 2025.</p></a>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">Cry<span>pode</span></div>
+  <p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p>
+</footer>
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-logo">Cry<em>pode</em></span>
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+  <a href="index.html#topics" onclick="closeMobileMenu()">Topics</a>
+  <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
+  <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
+  <a href="halal-investing.html" onclick="closeMobileMenu()" style="color: var(--gold);">Halal</a>
+  <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
+  <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
+  <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
+</div>
+<script>
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('hamburgerBtn').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburgerBtn').classList.remove('open'); document.body.style.overflow = ''; }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>
