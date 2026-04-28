@@ -26,7 +26,7 @@
     flex-wrap: wrap;
     gap: 12px;
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 2px; text-decoration: none; display: flex; align-items: center; gap: 12px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 2px; text-decoration: none; }
   .logo span { color: var(--cream); font-style: italic; }
   nav ul { list-style: none; display: flex; gap: 36px; flex-wrap: wrap; }
   nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
@@ -178,19 +178,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">
-    <svg width="36" height="36" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-      <rect width="512" height="512" rx="64" fill="#0D0D0D"/>
-      <rect x="8" y="8" width="496" height="496" rx="58" fill="none" stroke="#C9A84C" stroke-width="6" stroke-opacity="0.5"/>
-      <line x1="80" y1="110" x2="432" y2="110" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.35"/>
-      <line x1="80" y1="402" x2="432" y2="402" stroke="#C9A84C" stroke-width="1.5" stroke-opacity="0.35"/>
-      <polygon points="256,50 268,38 280,50 268,62" fill="#C9A84C" opacity="0.7"/>
-      <polygon points="256,450 268,438 280,450 268,462" fill="#C9A84C" opacity="0.7"/>
-      <text x="108" y="310" font-family="Georgia,serif" font-size="210" font-weight="700" fill="#C9A84C">C</text>
-      <text x="268" y="310" font-family="Georgia,serif" font-size="210" font-style="italic" font-weight="400" fill="#F5F0E8">p</text>
-    </svg>
-    <span>Cry<span>pode</span></span>
-  </a>
+  <a href="index.html" class="logo">Cry<span>pode</span></a>
   <ul>
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#topics">Topics</a></li>
