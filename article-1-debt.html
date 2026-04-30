@@ -227,6 +227,31 @@
     .res-grid { grid-template-columns: 1fr; }
     .t-card { padding: 20px; }
   }
+
+  /* ── BUY GUIDE SECTION ─────────────────────────── */
+  .buy-section { background: var(--dark-2); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); padding: 72px 48px; }
+  .buy-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+  .buy-cover img { width: 100%; border-radius: 4px; box-shadow: 0 20px 52px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.15); display: block; }
+  .buy-content .article-tag { margin-bottom: 20px; }
+  .buy-content h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 400; color: var(--cream); margin-bottom: 10px; line-height: 1.2; }
+  .buy-content h2 em { color: var(--gold); font-style: italic; }
+  .buy-content p { font-size: 0.92rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 20px; max-width: 480px; }
+  .buy-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .buy-feature { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(201,168,76,0.7); border: 1px solid rgba(201,168,76,0.2); padding: 5px 12px; border-radius: 2px; }
+  .buy-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+  .buy-price { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold-light); line-height: 1; }
+  .buy-price-label { font-size: 0.82rem; color: var(--text-muted); }
+  .buy-btn { display: inline-block; background: var(--gold); color: var(--dark); font-family: 'Tajawal', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 15px 32px; border-radius: 2px; text-decoration: none; transition: all 0.3s; margin-bottom: 12px; width: 100%; max-width: 340px; text-align: center; display: block; }
+  .buy-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.25); }
+  .buy-secure { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+  .buy-preview { font-size: 0.78rem; color: var(--gold); text-decoration: none; display: inline-block; margin-top: 8px; letter-spacing: 0.5px; border-bottom: 1px solid rgba(201,168,76,0.3); }
+  .buy-preview:hover { border-color: var(--gold); }
+  @media (max-width: 768px) {
+    .buy-section { padding: 48px 20px; }
+    .buy-inner { grid-template-columns: 1fr; gap: 32px; }
+    .buy-cover { max-width: 220px; margin: 0 auto; }
+    .buy-btn { max-width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -403,6 +428,39 @@
       </table>
 
       <div class="res-note">⚠️ This calculator provides estimates based on fixed-rate amortisation. Gulf loans may use different calculation methods. Always verify your exact payoff date with your bank. Figures are in the same currency as your inputs.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ GET THE GUIDE ══════════════════════════════════════════ -->
+<section class="buy-section" id="get-the-guide">
+  <div class="buy-inner">
+    <div class="buy-cover">
+      <img src="crypode_product_cover_750x750.png" 
+           alt="The Gulf Debt Survival Guide by Fahad Al Rawahi — Crypode">
+    </div>
+    <div class="buy-content">
+      <div class="article-tag" style="margin-bottom:16px;">📖 Gulf Professional Series · Vol. 1</div>
+      <h2>The Gulf Debt <em>Survival Guide</em></h2>
+      <p>What your bank won't tell you — and the strategies that actually work when the system won't negotiate. 7 chapters, 90-day plan, 4 bank scripts, budget template, and halal strategy. Written from the Gulf, for the Gulf.</p>
+      <div class="buy-features">
+        <span class="buy-feature">7 Chapters</span>
+        <span class="buy-feature">90-Day Plan</span>
+        <span class="buy-feature">Bank Scripts</span>
+        <span class="buy-feature">Budget Template</span>
+        <span class="buy-feature">Halal Strategy</span>
+        <span class="buy-feature">Instant PDF</span>
+      </div>
+      <div class="buy-price-row">
+        <span class="buy-price">OMR 4.90</span>
+        <span class="buy-price-label">· One-time payment · Instant download</span>
+      </div>
+      <a href="https://www.paypal.com/ncp/payment/VC44XH5E8J4D4" class="buy-btn">
+        Get the Guide — Buy Now
+      </a>
+      <div class="buy-secure">🔒 Secure payment via PayPal · PDF delivered instantly via email</div>
+      <a href="gulf-debt-guide-sales-page.html" class="buy-preview">View full details →</a>
     </div>
   </div>
 </section>
