@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Practical spreadsheet templates for Gulf professionals — income tracking, budgeting, habit building. Works with Excel and Google Sheets.">
+<meta name="keywords" content="budget spreadsheet Gulf, income tracker Oman, habit tracker Excel, paycheck budget Google Sheets, Gulf finance tools">
+<meta name="author" content="Crypode">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Crypode">
+<meta property="og:title" content="Tools & Templates | Crypode">
+<meta property="og:description" content="Practical spreadsheet templates for Gulf professionals. Works with Excel and Google Sheets.">
+<meta property="og:image" content="https://crypode.com/og-image.png">
+<meta property="og:url" content="https://crypode.com/tools.html">
+<link rel="canonical" href="https://crypode.com/tools.html">
+<title>Tools &amp; Templates | Crypode</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --dark: #0D0D0D;
+    --dark-2: #141414;
+    --dark-3: #1C1C1C;
+    --cream: #F5F0E8;
+    --cream-soft: #EDE8DF;
+    --text-muted: #888880;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV — identical to article-1-debt.html */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--cream); font-style: italic; }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+  nav ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--gold); }
+  nav ul a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 10px 24px;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 3px;
+    background: transparent;
+    z-index: 300;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--gold); border-radius: 2px;
+    transition: all 0.35s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,13,13,0.98);
+    z-index: 250;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-logo {
+    position: absolute; top: 24px; left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold); letter-spacing: 2px;
+  }
+  .mobile-menu-logo em { color: var(--cream); font-style: italic; }
+  .mobile-menu-close {
+    position: absolute; top: 20px; right: 24px;
+    color: var(--text-muted); font-size: 2rem;
+    cursor: pointer; background: none; border: none;
+    line-height: 1; transition: color 0.3s;
+  }
+  .mobile-menu-close:hover { color: var(--gold); }
+  .mobile-menu a {
+    color: var(--cream); text-decoration: none;
+    font-size: 1.6rem; font-family: 'Playfair Display', serif;
+    letter-spacing: 2px; padding: 18px 0;
+    width: 80%; text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-subscribe {
+    margin-top: 32px; padding: 14px 40px;
+    border: 1px solid var(--gold); color: var(--gold) !important;
+    font-size: 0.8rem !important; font-family: 'Tajawal', sans-serif !important;
+    letter-spacing: 2px; text-transform: uppercase;
+    border-radius: 2px; width: auto !important;
+    border-bottom: 1px solid var(--gold) !important;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex !important; }
+    nav { padding: 16px 20px !important; flex-wrap: nowrap !important; justify-content: space-between !important; }
+    nav > ul { display: none !important; }
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 140px 48px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeUp 1s ease both;
+  }
+  .article-tag {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
+    padding: 6px 16px; margin-bottom: 32px; border-radius: 1px;
+  }
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.2; color: var(--cream);
+    margin-bottom: 20px; font-weight: 400;
+  }
+  .page-hero h1 em { color: var(--gold); font-style: italic; }
+  .page-hero p {
+    font-size: 1rem; line-height: 1.85;
+    color: var(--text-muted); max-width: 560px;
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex; justify-content: center;
+    gap: 8px; padding: 0 48px 48px; flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.18);
+    color: var(--text-muted);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.75rem; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 8px 20px;
+    cursor: pointer; border-radius: 2px; transition: all 0.25s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold); color: var(--gold);
+  }
+
+  /* BUNDLE BANNER */
+  .bundle-banner {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 0 48px;
+  }
+  .bundle-inner {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 4px; padding: 28px 40px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 24px;
+    flex-wrap: wrap; position: relative; overflow: hidden;
+  }
+  .bundle-inner::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .bundle-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 6px;
+  }
+  .bundle-text p { font-size: 0.82rem; color: var(--text-muted); }
+  .bundle-right { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .bundle-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; color: var(--gold-light); white-space: nowrap;
+  }
+  .bundle-price s { font-size: 1rem; color: var(--text-muted); font-weight: 300; margin-right: 6px; }
+  .btn-bundle {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); font-family: 'Tajawal', sans-serif;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 12px 28px;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-bundle:hover { background: var(--gold); color: var(--dark); }
+
+  /* PRODUCT GRID */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+  }
+
+  /* PRODUCT CARD */
+  .product-card {
+    background: var(--dark-2);
+    border: 1px solid rgba(201,168,76,0.08);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.3s;
+    animation: fadeUp 0.6s ease both;
+  }
+  .product-card:nth-child(1) { animation-delay: 0.1s; }
+  .product-card:nth-child(2) { animation-delay: 0.2s; }
+  .product-card:nth-child(3) { animation-delay: 0.3s; }
+  .product-card:nth-child(4) { animation-delay: 0.4s; }
+  .product-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+
+  .card-image {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    display: block; filter: brightness(0.9) saturate(0.9); transition: filter 0.4s;
+  }
+  .product-card:hover .card-image { filter: brightness(1) saturate(1.05); }
+
+  .card-body { padding: 32px 28px 24px; flex: 1; display: flex; flex-direction: column; }
+
+  .card-category {
+    font-size: 0.68rem; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 400;
+    line-height: 1.3; color: var(--cream); margin-bottom: 14px;
+  }
+  .card-desc {
+    font-size: 0.88rem; line-height: 1.8;
+    color: var(--text-muted); flex: 1; margin-bottom: 20px;
+  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .tag {
+    font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 10px; border: 1px solid rgba(201,168,76,0.12);
+    color: var(--text-muted); background: var(--dark-3); border-radius: 1px;
+  }
+  .compat-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .compat-badge {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.65rem; letter-spacing: 0.5px;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .compat-badge svg { width: 15px; height: 15px; }
+  .compat-dot { width: 3px; height: 3px; background: rgba(201,168,76,0.3); border-radius: 50%; }
+
+  .card-footer {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    gap: 12px;
+  }
+  .card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--gold-light); line-height: 1;
+  }
+  .card-price span {
+    font-size: 0.68rem; font-family: 'Tajawal', sans-serif;
+    font-weight: 300; color: var(--text-muted);
+    letter-spacing: 1px; display: block; margin-top: 4px; text-transform: uppercase;
+  }
+  .btn-buy {
+    display: inline-block; background: var(--gold);
+    color: var(--dark); font-family: 'Tajawal', sans-serif;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 12px 24px;
+    text-decoration: none; border-radius: 2px; transition: all 0.3s; white-space: nowrap;
+  }
+  .btn-buy:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.25);
+  }
+  .btn-buy.disabled {
+    background: rgba(201,168,76,0.3);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; }
+  .footer-logo span { color: var(--cream); font-style: italic; }
+  footer p { font-size: 0.78rem; color: var(--text-muted); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 1200px) {
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .page-hero { padding: 120px 20px 40px; }
+    .filter-bar { padding: 0 20px 32px; }
+    .bundle-banner { padding: 0 20px; }
+    .bundle-inner { padding: 20px 24px; flex-direction: column; text-align: center; }
+    .bundle-right { justify-content: center; }
+    .tools-grid { grid-template-columns: 1fr; padding: 0 20px 60px; }
+    footer { flex-direction: column; text-align: center; padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Cry<span>pode</span></a>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="books-resources.html">Books</a></li>
+    <li><a href="crypto-islamic-trading.html">Crypto</a></li>
+    <li><a href="halal-investing.html">Halal</a></li>
+    <li><a href="tools-budget-planner.html">Tools</a></li>
+    <li><a href="tools.html" class="active">Templates</a></li>
+    <li><a href="impact-products.html">Deals</a></li>
+    <li><a href="https://medium.com/@crypode" target="_blank">Blog</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="article-tag">🛠️ Finance Templates</div>
+  <h1>Tools &amp; <em>Templates</em></h1>
+  <p>Practical spreadsheet templates built for Gulf professionals who take their finances seriously. Works with Microsoft Excel 2016+ and Google Sheets — no subscriptions, instant download via Google Drive.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all', this)">All Products</button>
+  <button class="filter-btn" onclick="filterCards('budgeting', this)">Budgeting</button>
+  <button class="filter-btn" onclick="filterCards('tracking', this)">Tracking</button>
+  <button class="filter-btn" onclick="filterCards('productivity', this)">Productivity</button>
+  <button class="filter-btn" onclick="filterCards('guides', this)">Guides</button>
+</div>
+
+<!-- BUNDLE BANNER -->
+<div class="bundle-banner">
+  <div class="bundle-inner">
+    <div class="bundle-text">
+      <h3>Complete Finance Bundle — All 4 Products</h3>
+      <p>Income tracker + Paycheck budget + Habit tracker + Gulf Debt Guide. Instant download via Google Drive.</p>
+    </div>
+    <div class="bundle-right">
+      <div class="bundle-price"><s>$34.96</s> $27.99</div>
+      <a href="https://www.paypal.com/ncp/payment/UWE4UVBSWK7TQ" target="_blank" class="btn-bundle">Get Bundle →</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="tools-grid" id="toolsGrid">
+
+  <!-- Card 1: Income & Expense -->
+  <div class="product-card" data-cat="tracking">
+    <img class="card-image" src="income.png" alt="Income & Expense Tracker">
+    <div class="card-body">
+      <div class="card-category">Expense Tracking</div>
+      <h2 class="card-title">Income &amp; Expense Tracker</h2>
+      <div class="compat-row">
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#1D6F42"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Excel 2016+
+        </div>
+        <div class="compat-dot"></div>
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#0F9D58"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Google Sheets
+        </div>
+      </div>
+      <p class="card-desc">Year-on-year income vs. expense dashboard with monthly breakdowns, savings rate, and top 20 income &amp; expense sources. Automated tracking with real-time visual progress.</p>
+      <div class="card-tags">
+        <span class="tag">Annual</span>
+        <span class="tag">Monthly</span>
+        <span class="tag">Custom Insights</span>
+        <span class="tag">Auto Charts</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-price">$9.99 <span>Instant Download</span></div>
+        <a href="https://www.paypal.com/ncp/payment/Q6B44CV95J7X2" target="_blank" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: Paycheck Budget -->
+  <div class="product-card" data-cat="budgeting">
+    <img class="card-image" src="paycheck.png" alt="Paycheck Budget">
+    <div class="card-body">
+      <div class="card-category">Budgeting</div>
+      <h2 class="card-title">Paycheck Budget Planner</h2>
+      <div class="compat-row">
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#1D6F42"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Excel 2016+
+        </div>
+        <div class="compat-dot"></div>
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#0F9D58"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Google Sheets
+        </div>
+      </div>
+      <p class="card-desc">Biweekly &amp; weekly budgeting system with smart bill calendar, cash flow summary, and auto monthly overview. Works with any currency — ideal for Gulf salary cycles.</p>
+      <div class="card-tags">
+        <span class="tag">Biweekly</span>
+        <span class="tag">Weekly</span>
+        <span class="tag">Bill Calendar</span>
+        <span class="tag">Any Currency</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-price">$9.99 <span>Instant Download</span></div>
+        <a href="https://www.paypal.com/ncp/payment/CMQCPMAJSDCZE" target="_blank" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3: Habit Tracker -->
+  <div class="product-card" data-cat="productivity">
+    <img class="card-image" src="habit.png" alt="Habit Tracker">
+    <div class="card-body">
+      <div class="card-category">Productivity</div>
+      <h2 class="card-title">Habit Tracker</h2>
+      <div class="compat-row">
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#1D6F42"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Excel 2016+
+        </div>
+        <div class="compat-dot"></div>
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#0F9D58"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Google Sheets
+        </div>
+      </div>
+      <p class="card-desc">Daily, weekly, and monthly habit tracking system with automatic visual progress and a bonus goal tracker. Simple, consistent, and built for professionals who value discipline.</p>
+      <div class="card-tags">
+        <span class="tag">Daily</span>
+        <span class="tag">Weekly</span>
+        <span class="tag">Goal Tracker</span>
+        <span class="tag">Visual Progress</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-price">$9.99 <span>Instant Download</span></div>
+        <a href="https://www.paypal.com/ncp/payment/64N7HANSARQ3C" target="_blank" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4: Gulf Debt Survival Guide -->
+  <div class="product-card" data-cat="guides">
+    <img class="card-image" src="crypode_product_cover_750x750.png" alt="The Gulf Debt Survival Guide">
+    <div class="card-body">
+      <div class="card-category">Digital Guide</div>
+      <h2 class="card-title">The Gulf Debt Survival Guide</h2>
+      <div class="compat-row">
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF Guide
+        </div>
+        <div class="compat-dot"></div>
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Instant Access
+        </div>
+      </div>
+      <p class="card-desc">7 chapters written specifically for Gulf professionals — why Gulf debt is different, the real cost of your loan, Avalanche vs Snowball, a 90-day plan, bank scripts, and halal debt strategy.</p>
+      <div class="card-tags">
+        <span class="tag">7 Chapters</span>
+        <span class="tag">90-Day Plan</span>
+        <span class="tag">Halal Strategy</span>
+        <span class="tag">Bank Scripts</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-price">OMR 4.90 <span>Instant Download</span></div>
+        <a href="https://www.paypal.com/ncp/payment/VC44XH5E8J4D4" target="_blank" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tools-grid -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Cry<span>pode</span></div>
+  <p>© 2026 Crypode · Muscat, Oman · Real Wisdom for Real Life</p>
+</footer>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-logo">Cry<em>pode</em></span>
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+  <a href="index.html#topics" onclick="closeMobileMenu()">Topics</a>
+  <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
+  <a href="crypto-islamic-trading.html" onclick="closeMobileMenu()">Crypto</a>
+  <a href="halal-investing.html" onclick="closeMobileMenu()">Halal</a>
+  <a href="tools-budget-planner.html" onclick="closeMobileMenu()">Tools</a>
+  <a href="tools.html" onclick="closeMobileMenu()">Templates</a>
+  <a href="impact-products.html" onclick="closeMobileMenu()">Deals</a>
+  <a href="https://medium.com/@crypode" target="_blank" onclick="closeMobileMenu()">Blog</a>
+  <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
+</div>
+
+<script>
+  function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.getElementById('hamburgerBtn').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+
+  function filterCards(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
