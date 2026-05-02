@@ -257,9 +257,9 @@
   /* PRODUCT GRID */
   .tools-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 2px;
-    max-width: 1300px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 48px 100px;
   }
@@ -277,6 +277,7 @@
   .product-card:nth-child(2) { animation-delay: 0.2s; }
   .product-card:nth-child(3) { animation-delay: 0.3s; }
   .product-card:nth-child(4) { animation-delay: 0.4s; }
+  .product-card:nth-child(5) { animation-delay: 0.5s; }
   .product-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
 
   .card-image {
@@ -369,6 +370,9 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  @media (max-width: 1400px) {
+    .tools-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 1200px) {
     .tools-grid { grid-template-columns: repeat(2, 1fr); }
   }
@@ -425,11 +429,11 @@
 <div class="bundle-banner">
   <div class="bundle-inner">
     <div class="bundle-text">
-      <h3>Complete Finance Bundle — All 4 Products</h3>
-      <p>Income tracker + Paycheck budget + Habit tracker + Gulf Debt Guide. Instant download via Google Drive.</p>
+      <h3>Complete Finance Bundle — All 5 Products</h3>
+      <p>Income tracker + Paycheck budget + Annual budget + Habit tracker + Gulf Debt Guide. Instant download via Google Drive.</p>
     </div>
     <div class="bundle-right">
-      <div class="bundle-price"><s>$34.96</s> $27.99</div>
+      <div class="bundle-price"><s>$44.95</s> $34.99</div>
       <a href="https://www.paypal.com/ncp/payment/UWE4UVBSWK7TQ" target="_blank" class="btn-bundle">Get Bundle →</a>
     </div>
   </div>
@@ -500,7 +504,38 @@
     </div>
   </div>
 
-  <!-- Card 3: Habit Tracker -->
+  <!-- Card 3: Annual Budget -->
+  <div class="product-card" data-cat="budgeting">
+    <img class="card-image" src="AnnualBudget-Purple.png" alt="Annual Budget">
+    <div class="card-body">
+      <div class="card-category">Annual Planning</div>
+      <h2 class="card-title">Annual Budget Planner</h2>
+      <div class="compat-row">
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#1D6F42"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Excel 2016+
+        </div>
+        <div class="compat-dot"></div>
+        <div class="compat-badge">
+          <svg viewBox="0 0 24 24" fill="#0F9D58"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#fff" stroke-width="1.5"/></svg>
+          Google Sheets
+        </div>
+      </div>
+      <p class="card-desc">All-in-one automated 12-month tracker with annual dashboard, bank account tracking, income &amp; expense breakdowns, and debt payment summaries. Clutter-free design.</p>
+      <div class="card-tags">
+        <span class="tag">12 Months</span>
+        <span class="tag">Bank Tracking</span>
+        <span class="tag">Auto Dashboard</span>
+        <span class="tag">Clutter-Free</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-price">$9.99 <span>Instant Download</span></div>
+        <a href="https://www.paypal.com/ncp/payment/HTMQ6JVC59B4Q" target="_blank" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4: Habit Tracker -->
   <div class="product-card" data-cat="productivity">
     <img class="card-image" src="habit.png" alt="Habit Tracker">
     <div class="card-body">
@@ -531,7 +566,7 @@
     </div>
   </div>
 
-  <!-- Card 4: Gulf Debt Survival Guide -->
+  <!-- Card 5: Gulf Debt Survival Guide -->
   <div class="product-card" data-cat="guides">
     <img class="card-image" src="crypode_product_cover_750x750.png" alt="The Gulf Debt Survival Guide">
     <div class="card-body">
