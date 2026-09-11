@@ -663,7 +663,7 @@
   .ai-float {
     position: fixed;
     bottom: 28px;
-    right: 28px;
+    left: 28px;
     z-index: 90;
     background: var(--dark-3);
     border: 1px solid rgba(201,168,76,0.3);
@@ -785,7 +785,7 @@
     .newsletter-form { flex-direction: column; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
-    .ai-float { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 0.7rem; }
+    .ai-float { bottom: 20px; left: 20px; padding: 10px 16px; font-size: 0.7rem; }
   }
 </style>
 </head>
@@ -1058,7 +1058,7 @@
 
 <!-- SUPPORT — MINIMAL -->
 <div class="support-minimal">
-  <a href="support.html">☕ Support Crypode →</a>
+  <a href="https://buymeacoffee.com/myselzstorh" target="_blank">☕ Support Crypode →</a>
 </div>
 
 <!-- FOOTER -->
@@ -1084,7 +1084,7 @@
 <a href="#" class="ai-float" onclick="toggleAI(event)">✦ Ask Crypode AI</a>
 
 <!-- AI CHAT PANEL (hidden by default) -->
-<div id="aiPanel" style="display:none;position:fixed;bottom:80px;right:28px;width:360px;max-height:480px;background:var(--dark-3);border:1px solid rgba(201,168,76,0.25);border-radius:8px;z-index:89;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+<div id="aiPanel" style="display:none;position:fixed;bottom:80px;left:28px;width:360px;max-height:480px;background:var(--dark-3);border:1px solid rgba(201,168,76,0.25);border-radius:8px;z-index:89;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
   <div style="padding:16px 20px;border-bottom:1px solid rgba(201,168,76,0.12);display:flex;justify-content:space-between;align-items:center;">
     <span style="font-size:0.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">Crypode AI</span>
     <button onclick="document.getElementById('aiPanel').style.display='none'" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1rem;">✕</button>
