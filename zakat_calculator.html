@@ -3,756 +3,244 @@
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XY1Z05QZ15"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XY1Z05QZ15');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Calculate your annual Zakat on cash, gold, investments, and business assets. Supports OMR, AED, SAR, USD and GBP. Free Zakat calculator for Gulf Muslims.">
-<meta name="keywords" content="zakat calculator, zakat calculator 2025, zakat on gold, zakat on investments, nisab calculator, zakat Oman, zakat UAE, zakat Gulf">
+<meta name="keywords" content="zakat calculator, zakat calculator 2026, zakat on gold, zakat on investments, nisab calculator, zakat Oman, zakat UAE, zakat Gulf">
 <meta name="author" content="Crypode">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Crypode">
-<meta property="og:title" content="Zakat Calculator 2025 — Free Tool for Gulf Muslims | Crypode">
+<meta property="og:title" content="Zakat Calculator 2026 — Free Tool for Gulf Muslims | Crypode">
 <meta property="og:description" content="Calculate your annual Zakat on cash, gold, investments, and business assets. Free tool supporting OMR, AED, SAR and more.">
 <meta property="og:image" content="https://crypode.com/og-image.png">
 <meta property="og:url" content="https://crypode.com/zakat_calculator.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zakat Calculator 2025 — Free Tool for Gulf Muslims | Crypode">
-<meta name="twitter:description" content="Calculate your annual Zakat on cash, gold, investments, and business assets. Free tool supporting OMR, AED, SAR and more.">
 <link rel="canonical" href="https://crypode.com/zakat_calculator.html">
-<title>Zakat Calculator 2025 — Free Islamic Tool for Gulf Muslims | Crypode</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Zakat Calculator 2026 — Free Islamic Tool for Gulf Muslims | Crypode</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='512' height='512' rx='64' fill='%230D0D0D'/%3E%3Ctext x='108' y='310' font-family='Georgia,serif' font-size='210' font-weight='700' fill='%23C9A84C'%3EC%3C/text%3E%3Ctext x='268' y='310' font-family='Georgia,serif' font-size='210' font-style='italic' font-weight='400' fill='%23F5F0E8'%3Ep%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #C9A84C;
     --gold-light: #E8C97A;
-    --gold-dim: #8B6E2A;
-    --black: #0A0A0A;
-    --surface: #111111;
-    --surface2: #1A1A1A;
-    --surface3: #222222;
-    --border: rgba(201,168,76,0.18);
-    --text: #F0EDE6;
-    --text-muted: #8A8680;
-    --green: #4CAF7D;
-    --red: #E05555;
+    --gold-dark: #A07830;
+    --dark: #0D0D0D;
+    --dark-2: #141414;
+    --dark-3: #1C1C1C;
+    --cream: #F5F0E8;
+    --cream-soft: #EDE8DF;
+    --paper: #F7F3EA;
+    --paper-2: #EEE9DF;
+    --white: #FFFFFF;
+    --text-dark: #20201D;
+    --text-mid: #4A4845;
+    --text-muted: #888880;
+    --text-muted-dark: #6B6560;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--cream); font-family: "Tajawal", sans-serif; font-weight: 400; overflow-x: hidden; }
+  body::before { content: ""; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.35; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(13,13,13,0.96); border-bottom: 1px solid rgba(201,168,76,0.12); backdrop-filter: blur(12px); }
+  .logo { font-family: "Playfair Display", serif; font-size: 1.5rem; color: var(--gold); letter-spacing: 2px; text-decoration: none; }
+  .logo span { color: var(--cream); font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; }
+  nav ul a:hover { color: var(--gold); }
+  .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold) !important; padding: 9px 22px; border-radius: 2px; transition: all 0.3s !important; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+  .btn-primary { display: inline-block; background: var(--gold); color: var(--dark); padding: 14px 32px; font-family: "Tajawal", sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; text-decoration: none; transition: all 0.3s; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost-sm { display: inline-block; background: transparent; border: 1px solid rgba(201,168,76,0.25); color: var(--text-muted); padding: 11px 24px; font-family: "Tajawal", sans-serif; font-size: 0.78rem; cursor: pointer; border-radius: 2px; transition: all 0.3s; }
+  .btn-ghost-sm:hover { border-color: var(--gold); color: var(--gold); }
+  .eyebrow { font-size: 0.68rem; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 6px 16px; margin-bottom: 28px; border-radius: 1px; display: inline-block; }
+  footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: "Playfair Display", serif; font-size: 1.3rem; letter-spacing: 2px; }
+  footer p { font-size: 0.75rem; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: 1px solid rgba(201,168,76,0.3); border-radius: 3px; background: transparent; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--gold); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--dark); z-index: 150; flex-direction: column; padding: 48px 32px; overflow-y: auto; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-logo { font-family: "Playfair Display", serif; font-size: 1.5rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 36px; }
+  .mobile-menu-logo em { color: var(--cream); font-style: italic; }
+  .mobile-menu a { color: var(--cream-soft); text-decoration: none; font-size: 1.05rem; padding: 16px 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .mobile-menu .mobile-subscribe { margin-top: 28px; background: var(--gold); color: var(--dark) !important; text-align: center; padding: 16px; border-radius: 2px; font-weight: 700; border: none; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: transparent; border: 1px solid rgba(201,168,76,0.3); color: var(--gold); width: 40px; height: 40px; border-radius: 2px; cursor: pointer; font-size: 1rem; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    footer { flex-direction: column; text-align: center; padding: 36px 20px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
   }
-
-  /* Background pattern */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(201,168,76,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
-
-  /* Header */
-  .site-tag {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 48px;
-  }
-
-  .logo-mark {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--black);
-  }
-
-  .site-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: var(--gold);
-    letter-spacing: 0.04em;
-  }
-
-  /* Hero */
-  .hero {
-    margin-bottom: 48px;
-  }
-
-  .hero-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 6vw, 52px);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 20px;
-  }
-
-  .hero h1 span {
-    color: var(--gold);
-  }
-
-  .hero p {
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--text-muted);
-    max-width: 540px;
-  }
-
-  /* Nisab banner */
-  .nisab-banner {
-    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.06));
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 36px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .nisab-icon {
-    font-size: 20px;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .nisab-text {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-
-  .nisab-text strong {
-    color: var(--gold-light);
-    font-weight: 500;
-  }
-
-  /* Cards */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-    margin-bottom: 20px;
-  }
-
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--gold-light);
-    margin-bottom: 6px;
-  }
-
-  .card-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
-
-  /* Input rows */
-  .input-grid {
-    display: grid;
-    gap: 16px;
-  }
-
-  .input-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    align-items: end;
-  }
-
-  @media (max-width: 500px) {
-    .input-row { grid-template-columns: 1fr; }
-  }
-
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .field label {
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.03em;
-    font-weight: 500;
-  }
-
-  .input-wrap {
-    position: relative;
-  }
-
-  .prefix {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 13px;
-    color: var(--gold-dim);
-    font-weight: 500;
-    pointer-events: none;
-  }
-
-  input[type="number"] {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 8px;
-    padding: 12px 14px 12px 36px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-    -moz-appearance: textfield;
-  }
-
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-
-  input[type="number"]:focus {
-    border-color: var(--gold);
-    background: var(--surface3);
-  }
-
-  input[type="number"]::placeholder {
-    color: var(--text-muted);
-    opacity: 0.5;
-  }
-
-  /* Currency selector */
-  .currency-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-
-  .currency-btn {
-    background: var(--surface2);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 12px;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
-
-  .currency-btn:hover {
-    border-color: var(--gold-dim);
-    color: var(--text);
-  }
-
-  .currency-btn.active {
-    background: rgba(201,168,76,0.15);
-    border-color: var(--gold);
-    color: var(--gold-light);
-  }
-
-  /* Divider */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 20px 0;
-  }
-
-  /* Results panel */
-  .results-panel {
-    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.04));
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 12px;
-    padding: 28px;
-    margin-top: 28px;
-    display: none;
-    animation: fadeUp 0.4s ease;
-  }
-
-  .results-panel.visible { display: block; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .result-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    flex-wrap: gap;
-    gap: 12px;
-  }
-
-  .result-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    color: var(--gold-light);
-  }
-
-  .zakat-badge {
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .zakat-badge.due {
-    background: rgba(76,175,125,0.15);
-    border: 1px solid rgba(76,175,125,0.4);
-    color: var(--green);
-  }
-
-  .zakat-badge.not-due {
-    background: rgba(224,85,85,0.1);
-    border: 1px solid rgba(224,85,85,0.3);
-    color: var(--red);
-  }
-
-  .result-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 500px) {
-    .result-grid { grid-template-columns: 1fr; }
-  }
-
-  .result-item {
-    background: rgba(0,0,0,0.3);
-    border-radius: 8px;
-    padding: 16px;
-  }
-
-  .result-item-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 6px;
-  }
-
-  .result-item-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .result-item-value.highlight {
-    color: var(--gold-light);
-  }
-
-  .result-item-sub {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-
-  .nisab-status-bar {
-    background: rgba(0,0,0,0.2);
-    border-radius: 8px;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .nsb-label { font-size: 12px; color: var(--text-muted); }
-  .nsb-value { font-size: 13px; font-weight: 500; color: var(--text); }
-
-  .progress-bar-wrap {
-    width: 100%;
-    height: 4px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 4px;
-    margin-top: 10px;
-    overflow: hidden;
-  }
-
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.6s ease;
-    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-  }
-
-  /* Note */
-  .result-note {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
-
-  .result-note a { color: var(--gold-dim); text-decoration: none; }
-
-  /* Calculate button */
-  .calc-btn {
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-    border: none;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--black);
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: all 0.2s;
-    margin-top: 24px;
-  }
-
-  .calc-btn:hover {
-    background: linear-gradient(135deg, var(--gold-light), var(--gold));
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.25);
-  }
-
-  .calc-btn:active { transform: translateY(0); }
-
-  /* Reset */
-  .reset-btn {
-    width: 100%;
-    padding: 12px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.2s;
-  }
-
-  .reset-btn:hover { border-color: var(--gold-dim); color: var(--text); }
-
-  /* Footer note */
-  .footer-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 48px;
-    line-height: 1.8;
-  }
-
-  .footer-note span { color: var(--gold-dim); }
 </style>
+<style>
+  .tool-hero { background: var(--dark); padding: 130px 48px 72px; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .tool-hero-inner { max-width: 800px; margin: 0 auto; animation: fadeUp 0.8s ease both; }
+  .tool-hero h1 { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.18; color: var(--cream); margin-bottom: 18px; font-weight: 700; }
+  .tool-hero h1 em { color: var(--gold); font-style: italic; }
+  .tool-hero p { font-size: 1rem; line-height: 1.8; color: var(--text-muted); max-width: 580px; }
+  .tool-main { background: var(--dark-2); padding: 72px 48px; }
+  .tool-main-inner { max-width: 900px; margin: 0 auto; }
+  .t-card { background: var(--dark-3); border: 1px solid rgba(201,168,76,0.12); border-radius: 4px; padding: 24px 28px; margin-bottom: 12px; position: relative; }
+  .t-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent); }
+  .t-card-title { font-family: "Playfair Display", serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 16px; }
+  .t-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .t-field { display: flex; flex-direction: column; gap: 6px; }
+  .t-field label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.03em; }
+  .t-input-wrap { position: relative; }
+  .t-prefix { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: rgba(201,168,76,0.5); pointer-events: none; }
+  .t-input { width: 100%; background: var(--dark-2); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; padding: 11px 12px 11px 46px; color: var(--cream); font-family: "Tajawal", sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  .t-input::-webkit-outer-spin-button, .t-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .t-input:focus { border-color: var(--gold); }
+  .t-input::placeholder { color: var(--text-muted); opacity: 0.4; }
+  .t-input.no-prefix { padding-left: 14px; }
+  .t-select { width: 100%; background: var(--dark-2); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; padding: 11px 14px; color: var(--cream); font-family: "Tajawal", sans-serif; font-size: 0.9rem; outline: none; cursor: pointer; }
+  .btn-primary { display: inline-block; background: var(--gold); color: var(--dark); padding: 14px 32px; font-family: "Tajawal", sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; transition: all 0.3s; width: 100%; margin-top: 6px; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost-sm { width: 100%; padding: 11px; background: transparent; border: 1px solid rgba(201,168,76,0.18); border-radius: 3px; font-family: "Tajawal", sans-serif; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .btn-ghost-sm:hover { border-color: var(--gold); color: var(--gold); }
+  .results-box { display: none; margin-top: 24px; background: var(--dark-3); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 28px; }
+  .results-box.show { display: block; }
+  .res-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px; }
+  .res-item { background: var(--dark-2); padding: 16px 18px; border-radius: 3px; border: 1px solid rgba(201,168,76,0.08); }
+  .res-label { font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .res-value { font-family: "Playfair Display", serif; font-size: 1.4rem; color: var(--cream); margin-bottom: 4px; }
+  .res-value.gold { color: var(--gold); }
+  .res-value.green { color: #4CAF50; }
+  .res-value.red { color: #E05555; }
+  .res-sub { font-size: 0.72rem; color: var(--text-muted); }
+  .res-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 16px; line-height: 1.6; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.08); }
+  .tool-links { background: var(--paper-2); padding: 64px 48px; }
+  .tool-links-inner { max-width: 900px; margin: 0 auto; }
+  .tool-links h3 { font-family: "Playfair Display", serif; font-size: 1.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 28px; }
+  .tool-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tool-link-card { background: var(--white); border: 1px solid rgba(180,160,100,0.18); padding: 28px 24px; text-decoration: none; display: block; transition: all 0.3s; border-radius: 3px; }
+  .tool-link-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-3px); }
+  .tool-link-card span { font-size: 1.6rem; display: block; margin-bottom: 12px; }
+  .tool-link-card h4 { font-family: "Playfair Display", serif; font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+  .tool-link-card p { font-size: 0.8rem; color: var(--text-muted-dark); line-height: 1.6; }
+  @media (max-width: 768px) {
+    .tool-hero { padding: 110px 20px 56px; }
+    .tool-main { padding: 56px 20px; }
+    .tool-links { padding: 56px 20px; }
+    .t-grid { grid-template-columns: 1fr; }
+    .res-grid { grid-template-columns: 1fr; }
+    .tool-cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- CRYPODE STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Zakat Calculator 2026 — Free Islamic Tool for Gulf Muslims",
+  "description": "Calculate your annual Zakat on cash, gold, investments, and business assets. Supports OMR, AED, SAR, USD and GBP. Free Zakat calculator for Gulf Muslims.",
+  "url": "https://crypode.com/zakat_calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Crypode",
+    "url": "https://crypode.com/"
+  }
+}
+</script>
 </head>
 <body>
-<div class="wrapper">
+<nav>
+  <a href="index.html" class="logo">Cry<span>pode</span></a>
+  <ul>
+    <li><a href="index.html#pillars">Learn</a></li>
+    <li><a href="halal-investing.html">Halal Investing</a></li>
+    <li><a href="tools-budget-planner.html">Tools</a></li>
+    <li><a href="index.html#podcast">Podcast</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- Site branding -->
-  <div class="site-tag">
-    <div class="logo-mark">C</div>
-    <span class="site-name">Crypode</span>
+<section class="tool-hero">
+  <div class="tool-hero-inner">
+    <div style="display:inline-block;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:6px 16px;margin-bottom:28px;border-radius:1px;">&#9770; Islamic Finance Tool</div>
+    <h1>Zakat <em>Calculator</em></h1>
+    <p>Calculate your annual Zakat obligation across cash, gold, investments, and business assets. Supports OMR, AED, SAR, USD and GBP.</p>
   </div>
+</section>
 
-  <!-- Hero -->
-  <div class="hero">
-    <div class="hero-label">Islamic Finance Tools</div>
-    <h1>Zakat<br><span>Calculator</span></h1>
-    <p>Calculate your annual Zakat obligation across cash, gold, investments, and business assets. Based on the 2.5% rate applied to net zakatable wealth above the nisab threshold.</p>
+<section class="tool-main">
+  <div class="tool-main-inner">
+    
   </div>
+</section>
 
-  <!-- Nisab info -->
-  <div class="nisab-banner">
-    <div class="nisab-icon">☪</div>
-    <div class="nisab-text">
-      <strong>What is Nisab?</strong> Nisab is the minimum threshold of wealth that makes Zakat obligatory. It equals the value of <strong>85g of gold</strong> or <strong>595g of silver</strong>. If your total zakatable wealth exceeds this threshold and you have held it for one lunar year (hawl), Zakat is due.
+<section class="tool-links">
+  <div class="tool-links-inner">
+    <h3>More free tools &amp; guides</h3>
+    <div class="tool-cards-grid">
+      <a href="tools-budget-planner.html" class="tool-link-card">
+        <span>&#9868;</span>
+        <h4>Gulf Salary Budget Planner</h4>
+        <p>See exactly where your salary goes with a personalised budget breakdown and action plan.</p>
+      </a>
+      <a href="article-1-debt.html#debt-calculator" class="tool-link-card">
+        <span>&#9878;</span>
+        <h4>Debt Payoff Calculator</h4>
+        <p>Calculate exactly when you will be debt-free and how much interest you can save.</p>
+      </a>
+      <a href="halal-investing.html" class="tool-link-card">
+        <span>&#128200;</span>
+        <h4>Halal Investing Hub</h4>
+        <p>ETFs, stocks, Sukuk, gold and crypto — the complete halal investing guide for Gulf professionals.</p>
+      </a>
     </div>
   </div>
+</section>
 
-  <!-- Currency selector -->
-  <div class="currency-row">
-    <button class="currency-btn active" data-currency="OMR" data-rate="1">OMR</button>
-    <button class="currency-btn" data-currency="AED" data-rate="9.65">AED</button>
-    <button class="currency-btn" data-currency="SAR" data-rate="9.60">SAR</button>
-    <button class="currency-btn" data-currency="USD" data-rate="2.60">USD</button>
-    <button class="currency-btn" data-currency="GBP" data-rate="2.04">GBP</button>
+<footer>
+  <div class="footer-logo"><span style="color:var(--gold);">Cry</span><span style="color:var(--cream);font-style:italic;">pode</span></div>
+  <p>&#169; 2026 Crypode &middot; Muscat, Oman &middot; Money. Faith. Life in the Gulf.</p>
+  <div class="footer-links">
+    <a href="index.html#pillars">Learn</a>
+    <a href="halal-investing.html">Halal</a>
+    <a href="tools-budget-planner.html">Tools</a>
+    <a href="index.html#podcast">Podcast</a>
+    <a href="index.html#newsletter">Subscribe</a>
   </div>
-
-  <!-- Cash & Savings -->
-  <div class="card">
-    <div class="card-title">💰 Cash & Savings</div>
-    <div class="card-desc">Bank balances, cash at home, money market accounts, and any liquid assets you have held for a lunar year.</div>
-    <div class="input-grid">
-      <div class="input-row">
-        <div class="field">
-          <label>Bank Savings</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="savings" placeholder="0.00" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Cash at Home</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="cash" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Gold & Silver -->
-  <div class="card">
-    <div class="card-title">🏅 Gold & Silver</div>
-    <div class="card-desc">Physical gold (jewellery intended for investment, bars, coins) and silver. Note: gold worn regularly as jewellery is exempt under some scholarly opinions.</div>
-    <div class="input-grid">
-      <div class="input-row">
-        <div class="field">
-          <label>Gold Weight (grams)</label>
-          <div class="input-wrap">
-            <span class="prefix">g</span>
-            <input type="number" id="gold_grams" placeholder="0" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Gold Price per gram</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="gold_price" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-      <div class="input-row">
-        <div class="field">
-          <label>Silver Weight (grams)</label>
-          <div class="input-wrap">
-            <span class="prefix">g</span>
-            <input type="number" id="silver_grams" placeholder="0" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Silver Price per gram</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="silver_price" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Investments -->
-  <div class="card">
-    <div class="card-title">📈 Investments</div>
-    <div class="card-desc">Halal stocks, sukuk, ETFs, and crypto held for investment. Use current market value. For stocks, you may use the Zakat-liable portion (typically the zakatable assets per share).</div>
-    <div class="input-grid">
-      <div class="input-row">
-        <div class="field">
-          <label>Stocks / ETFs</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="stocks" placeholder="0.00" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Sukuk / Bonds</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="sukuk" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-      <div class="input-row">
-        <div class="field">
-          <label>Cryptocurrency</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="crypto" placeholder="0.00" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Other Investments</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="other_invest" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Business & Receivables -->
-  <div class="card">
-    <div class="card-title">🏢 Business & Receivables</div>
-    <div class="card-desc">Business inventory, goods for sale, and money owed to you that you expect to receive. Personal use assets (home, car, furniture) are not zakatable.</div>
-    <div class="input-grid">
-      <div class="input-row">
-        <div class="field">
-          <label>Business Inventory</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="inventory" placeholder="0.00" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Money Owed to You</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="receivables" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Liabilities -->
-  <div class="card">
-    <div class="card-title">📉 Liabilities (Deduct)</div>
-    <div class="card-desc">Debts and obligations due within the year. This includes immediate debts, due installments, and upcoming bills. Deducted from your total zakatable wealth.</div>
-    <div class="input-grid">
-      <div class="input-row">
-        <div class="field">
-          <label>Short-term Debts</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="debts" placeholder="0.00" min="0">
-          </div>
-        </div>
-        <div class="field">
-          <label>Other Liabilities</label>
-          <div class="input-wrap">
-            <span class="prefix curr-prefix">OMR</span>
-            <input type="number" id="liabilities" placeholder="0.00" min="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Nisab value input -->
-  <div class="card">
-    <div class="card-title">⚖️ Nisab Reference Value</div>
-    <div class="card-desc">Enter the current value of 85g of gold in your selected currency to determine the nisab threshold. Check your local gold price to update this.</div>
-    <div class="input-row">
-      <div class="field">
-        <label>Nisab Value (85g gold equivalent)</label>
-        <div class="input-wrap">
-          <span class="prefix curr-prefix">OMR</span>
-          <input type="number" id="nisab_value" placeholder="e.g. 1400" min="0" value="1400">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <button class="calc-btn" onclick="calculate()">Calculate My Zakat →</button>
-  <button class="reset-btn" onclick="resetForm()">Reset All Fields</button>
-
-  <!-- Results -->
-  <div class="results-panel" id="results">
-    <div class="result-header">
-      <div class="result-title">Your Zakat Summary</div>
-      <div class="zakat-badge due" id="zakat-badge">Zakat Due</div>
-    </div>
-
-    <div class="result-grid">
-      <div class="result-item">
-        <div class="result-item-label">Total Zakatable Wealth</div>
-        <div class="result-item-value" id="total-wealth">—</div>
-        <div class="result-item-sub" id="curr-label">After deducting liabilities</div>
-      </div>
-      <div class="result-item">
-        <div class="result-item-label">Nisab Threshold</div>
-        <div class="result-item-value" id="nisab-display">—</div>
-        <div class="result-item-sub">85g gold equivalent</div>
-      </div>
-      <div class="result-item">
-        <div class="result-item-label">Zakat Rate</div>
-        <div class="result-item-value">2.5%</div>
-        <div class="result-item-sub">Of net zakatable wealth</div>
-      </div>
-      <div class="result-item">
-        <div class="result-item-label">Zakat Due</div>
-        <div class="result-item-value highlight" id="zakat-amount">—</div>
-        <div class="result-item-sub" id="zakat-sub">Annual obligation</div>
-      </div>
-    </div>
-
-    <div class="nisab-status-bar">
-      <div>
-        <div class="nsb-label">Nisab Coverage</div>
-        <div class="nsb-value" id="nisab-pct">—</div>
-      </div>
-      <div style="flex:1; min-width:120px;">
-        <div class="progress-bar-wrap">
-          <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-note">
-      ⚠️ This calculator provides an estimate for educational purposes only. Zakat rulings can vary by scholar and madhab. For complex financial situations — including business assets, retirement accounts, or mixed portfolios — please consult a qualified Islamic scholar or Islamic finance advisor. Zakat is one of the five pillars of Islam and an act of worship; approach it with sincerity and seek proper guidance.
-    </div>
-  </div>
-
-  <div class="footer-note">
-    <span>Crypode.com</span> — Halal Finance for Gulf Professionals<br>
-    All calculations are estimates. Consult a qualified Islamic scholar for your specific situation.
-  </div>
-
+</footer>
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-logo">Cry<em>pode</em></span>
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">&#10005;</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="index.html#pillars" onclick="closeMobileMenu()">Learn</a>
+  <a href="halal-investing.html" onclick="closeMobileMenu()">Halal Investing</a>
+  <a href="tools-budget-planner.html" onclick="closeMobileMenu()">Tools</a>
+  <a href="index.html#podcast" onclick="closeMobileMenu()">Podcast</a>
+  <a href="index.html#about" onclick="closeMobileMenu()">About</a>
+  <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
-
+<script>
+  function openMobileMenu()  { document.getElementById("mobileMenu").classList.add("open");  document.getElementById("hamburgerBtn").classList.add("open"); document.body.style.overflow="hidden"; }
+  function closeMobileMenu() { document.getElementById("mobileMenu").classList.remove("open"); document.getElementById("hamburgerBtn").classList.remove("open"); document.body.style.overflow=""; }
+  document.addEventListener("keydown", e => { if(e.key==="Escape") closeMobileMenu(); });
+</script>
 <script>
   let selectedCurrency = 'OMR';
   let selectedRate = 1;
