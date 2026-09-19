@@ -312,6 +312,136 @@
   .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: transparent; border: 1px solid rgba(201,168,76,0.3); color: var(--gold); width: 40px; height: 40px; border-radius: 2px; cursor: pointer; font-size: 1rem; }
 
   /* ANIMATIONS */
+  /* ── READ ALOUD PLAYER ── */
+  .listen-player {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 20px 28px;
+    margin: 0 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+  .listen-player::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    opacity: 0.5;
+  }
+  .listen-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .listen-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .listen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 9px 18px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .listen-btn:hover { background: var(--gold-light); }
+  .listen-btn:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .listen-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 8px 16px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .listen-btn-ghost:hover { border-color: rgba(201,168,76,0.5); color: var(--cream); }
+  .listen-btn-ghost:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .speed-controls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-left: auto;
+  }
+  .speed-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--text-muted);
+    padding: 5px 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.72rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .speed-btn:hover { border-color: rgba(201,168,76,0.4); color: var(--cream); }
+  .speed-btn.active { background: rgba(201,168,76,0.1); border-color: var(--gold); color: var(--gold); }
+  .speed-btn:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .listen-meta {
+    width: 100%;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .listen-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    max-width: 240px;
+  }
+  .listen-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.8s linear;
+  }
+
+  @keyframes pulse-bar {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+  .listen-progress-fill.pulsing {
+    animation: pulse-bar 1.8s ease-in-out infinite;
+  }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
   /* RESPONSIVE */
@@ -363,14 +493,14 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Cry<span>pode</span></a>
+  <a href="/" class="logo">Cry<span>pode</span></a>
   <ul>
-    <li><a href="index.html#pillars">Learn</a></li>
+    <li><a href="/#pillars">Learn</a></li>
     <li><a href="halal-investing.html">Halal Investing</a></li>
     <li><a href="tools-budget-planner.html">Tools</a></li>
-    <li><a href="index.html#podcast">Podcast</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#newsletter" class="nav-cta">Subscribe</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#newsletter" class="nav-cta">Subscribe</a></li>
   </ul>
   <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -380,7 +510,7 @@
 <!-- ARTICLE HERO -->
 <section class="article-hero">
   <div class="article-hero-inner">
-    <a href="index.html" class="back-link">&#8592; Back to Crypode</a>
+    <a href="/" class="back-link">&#8592; Back to Crypode</a>
 
     <div class="article-tag">🧠 Mental Health</div>
     <h1>The Weight of Financial Stress — <em>Carrying Pressure</em> Without Breaking</h1>
@@ -396,7 +526,33 @@
 </section>
 
 <!-- ARTICLE BODY -->
-<section class="article-body-wrap">
+<!-- READ ALOUD PLAYER -->
+<div style="background:var(--dark-2);border-bottom:1px solid rgba(201,168,76,0.08);padding:0 48px 0;">
+  <div style="max-width:740px;margin:0 auto;padding:28px 0;">
+    <div class="listen-player" id="listenPlayer" role="region" aria-label="Listen to this article">
+      <div class="listen-label">
+        <span aria-hidden="true">&#127911;</span>
+        <span id="listenLabelText">Listen to this article</span>
+      </div>
+      <div class="listen-controls" id="listenControls">
+        <button class="listen-btn" id="listenPlayBtn" aria-label="Start listening to this article" onclick="listenControl('play')">
+          <span aria-hidden="true">&#9654;</span> Listen
+        </button>
+      </div>
+      <div class="speed-controls" id="speedControls" aria-label="Playback speed">
+        <span style="font-size:0.65rem;color:var(--text-muted);letter-spacing:1px;margin-right:4px;">SPEED</span>
+        <button class="speed-btn" data-speed="0.75" onclick="setSpeed(0.75,this)" aria-label="0.75x speed">0.75&times;</button>
+        <button class="speed-btn active" data-speed="1" onclick="setSpeed(1,this)" aria-label="Normal speed" aria-pressed="true">1&times;</button>
+        <button class="speed-btn" data-speed="1.25" onclick="setSpeed(1.25,this)" aria-label="1.25x speed">1.25&times;</button>
+        <button class="speed-btn" data-speed="1.5" onclick="setSpeed(1.5,this)" aria-label="1.5x speed">1.5&times;</button>
+        <button class="speed-btn" data-speed="2" onclick="setSpeed(2,this)" aria-label="2x speed">2&times;</button>
+      </div>
+      <div class="listen-meta">
+        <span id="listenStatus" class="listen-status">&#126;&thinsp;15 min listen</span>
+        <div class="listen-progress-bar" id="progressBar" style="display:none;" aria-hidden="true">
+          <div class="listen-progress-fill" id="progressFill"></div>
+        </div>
+<section class="article-body-wrap" id="article-content">
   <div class="article-body">
     
   <!-- Original content from article-6-stress.html – unchanged -->
@@ -516,24 +672,24 @@
   <div class="footer-logo"><span style="color:var(--gold);">Cry</span><span style="color:var(--cream);font-style:italic;">pode</span></div>
   <p>&#169; 2026 Crypode &middot; Muscat, Oman &middot; Money. Faith. Life in the Gulf.</p>
   <div class="footer-links">
-    <a href="index.html#pillars">Learn</a>
+    <a href="/#pillars">Learn</a>
     <a href="halal-investing.html">Halal</a>
     <a href="tools-budget-planner.html">Tools</a>
-    <a href="index.html#podcast">Podcast</a>
-    <a href="index.html#newsletter">Subscribe</a>
+    <a href="/#podcast">Podcast</a>
+    <a href="/#newsletter">Subscribe</a>
   </div>
 </footer>
 
 <div class="mobile-menu" id="mobileMenu">
   <span class="mobile-menu-logo">Cry<em>pode</em></span>
   <button class="mobile-menu-close" onclick="closeMobileMenu()">&#10005;</button>
-  <a href="index.html" onclick="closeMobileMenu()">Home</a>
-  <a href="index.html#pillars" onclick="closeMobileMenu()">Learn</a>
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  <a href="/#pillars" onclick="closeMobileMenu()">Learn</a>
   <a href="halal-investing.html" onclick="closeMobileMenu()">Halal Investing</a>
   <a href="tools-budget-planner.html" onclick="closeMobileMenu()">Tools</a>
-  <a href="index.html#podcast" onclick="closeMobileMenu()">Podcast</a>
-  <a href="index.html#about" onclick="closeMobileMenu()">About</a>
-  <a href="index.html#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
+  <a href="/#podcast" onclick="closeMobileMenu()">Podcast</a>
+  <a href="/#about" onclick="closeMobileMenu()">About</a>
+  <a href="/#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
 <script>
   function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');  document.getElementById('hamburgerBtn').classList.add('open'); document.body.style.overflow='hidden'; }
@@ -542,5 +698,406 @@
 </script>
 
 
+<script>
+(function () {
+  'use strict';
+
+  // ── SUPPORT CHECK ───────────────────────────────────────────────
+  if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+    var p = document.getElementById('listenPlayer');
+    if (p) p.innerHTML =
+      '<span class="listen-label">&#127911; Listen</span>' +
+      '<span class="listen-not-supported" role="status">Read aloud is not supported by this browser. ' +
+      'Try Chrome, Edge or Safari.</span>';
+    return;
+  }
+
+  // ── STATE ───────────────────────────────────────────────────────
+  var synth          = window.speechSynthesis;
+  var chunks         = [];
+  var currentIdx     = 0;
+  var currentRate    = 1;
+  var isPlaying      = false;
+  var isPaused       = false;
+  var currentUtt     = null;
+  var voice          = null;
+
+  // ── VOICE LOADING ───────────────────────────────────────────────
+  // Chrome loads voices asynchronously; must listen for voiceschanged
+  function selectVoice() {
+    var voices = synth.getVoices();
+    console.log('[Crypode Read Aloud] voices available:', voices.length);
+    if (!voices.length) return;
+
+    var preferred = [
+      'Google UK English Female', 'Google UK English Male',
+      'Google US English', 'Microsoft Aria Online (Natural)',
+      'Microsoft Guy Online (Natural)', 'Samantha', 'Daniel',
+      'Karen', 'Alex', 'Zira', 'David', 'Mark'
+    ];
+
+    for (var i = 0; i < preferred.length; i++) {
+      for (var j = 0; j < voices.length; j++) {
+        if (voices[j].name === preferred[i]) {
+          voice = voices[j];
+          console.log('[Crypode Read Aloud] selected voice:', voice.name);
+          return;
+        }
+      }
+    }
+    // Any English locale
+    for (var k = 0; k < voices.length; k++) {
+      if (/^en/i.test(voices[k].lang)) {
+        voice = voices[k];
+        console.log('[Crypode Read Aloud] fallback voice:', voice.name, voice.lang);
+        return;
+      }
+    }
+    // Browser default — leave voice null
+    console.log('[Crypode Read Aloud] using browser default voice');
+  }
+
+  // Initial call (Firefox / Safari have voices ready immediately)
+  selectVoice();
+  // Chrome fires voiceschanged after load
+  if (synth.addEventListener) {
+    synth.addEventListener('voiceschanged', selectVoice);
+  } else {
+    synth.onvoiceschanged = selectVoice;
+  }
+
+  // ── LISTENING TIME ──────────────────────────────────────────────
+  function estimateListenTime() {
+    var container = document.getElementById('article-content');
+    if (!container) return '~15 min listen';
+    var words = (container.innerText || '').trim().split(/\s+/).length;
+    var minutes = Math.round(words / 160);
+    return '~' + minutes + ' min listen';
+  }
+
+  // Set initial status from word count
+  var statusEl = document.getElementById('listenStatus');
+  if (statusEl) statusEl.textContent = estimateListenTime();
+
+  // ── TEXT PREPROCESSING ──────────────────────────────────────────
+  function cleanForSpeech(text) {
+    if (!text) return '';
+    return text
+      // Financial amounts: OMR 1,800 → "1800 Omani rials"
+      .replace(/OMR\s*([\d,]+)/g, function (_, n) {
+        return n.replace(/,/g, '') + ' Omani rials';
+      })
+      .replace(/\bOMR\b/g, 'Omani rials')
+      .replace(/\bAED\b/g, 'UAE Dirhams')
+      .replace(/\bSAR\b/g, 'Saudi riyals')
+      .replace(/\bCBO\b/g, 'Central Bank of Oman')
+      .replace(/\bAAOIFI\b/g, 'AAOIFI')
+      .replace(/\bIFSB\b/g, 'I F S B')
+      // Math
+      .replace(/([\d,]+)\s*[÷\/]\s*([\d,]+)\s*[×x]\s*100/g, function (_, a, b) {
+        return a.replace(/,/g, '') + ' divided by ' + b.replace(/,/g, '') + ' multiplied by 100';
+      })
+      .replace(/([\d,]+)\s*[÷\/]\s*([\d,]+)/g, function (_, a, b) {
+        return a.replace(/,/g, '') + ' divided by ' + b.replace(/,/g, '');
+      })
+      // Percentages
+      .replace(/([\d.]+)\s*%/g, '$1 percent')
+      // Symbols
+      .replace(/[—–]/g, ', ')
+      .replace(/→|&rarr;/g, '. ')
+      .replace(/[•·]/g, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  }
+
+  // ── TEXT EXTRACTION ─────────────────────────────────────────────
+  function getReadableChunks() {
+    var container = document.getElementById('article-content');
+    if (!container) {
+      console.warn('[Crypode Read Aloud] #article-content not found');
+      return [];
+    }
+
+    // Elements to skip entirely (CTAs, nav, sources, badges, etc.)
+    var skipSelectors = [
+      '.tool-cta-btn', '.tool-cta-btn-ghost',
+      '.next-step-link', '.listen-player',
+      '.sources-box', '.next-steps',
+      '.check-num', '.checklist-title',
+      '.reset-step-num', '.debt-reset-label',
+      '.takeaway-label', '.sources-label',
+      '.coming-soon-tag', '.article-badge',
+      '[data-no-speech]'
+    ];
+
+    // Readable selectors inside the container
+    var readableSelectors = [
+      'h2', 'h3', 'h4', 'p', 'li', 'blockquote',
+      'td', 'figcaption'
+    ].join(', ');
+
+    var nodes = container.querySelectorAll(readableSelectors);
+    var results = [];
+    var seen = new Set();
+
+    nodes.forEach(function (el) {
+      // Skip if inside an excluded parent
+      for (var i = 0; i < skipSelectors.length; i++) {
+        if (el.closest(skipSelectors[i])) return;
+      }
+      var raw = (el.innerText || el.textContent || '').trim();
+      if (!raw || seen.has(raw)) return;
+      seen.add(raw);
+      var cleaned = cleanForSpeech(raw);
+      if (cleaned) results.push(cleaned);
+    });
+
+    // Also prepend the article title and subtitle from the hero
+    var h1El = document.querySelector('.article-hero h1');
+    var subEl = document.querySelector('.article-hero .article-subtitle');
+    var intro = '';
+    if (h1El) intro += cleanForSpeech((h1El.innerText || '').replace(/\s+/g, ' ').trim()) + '. ';
+    if (subEl) intro += cleanForSpeech((subEl.innerText || '').replace(/\s+/g, ' ').trim()) + '. ';
+    if (intro) results.unshift(intro);
+
+    console.log('[Crypode Read Aloud] chunks extracted:', results.length);
+    return results;
+  }
+
+  // Split a long string into sentence-sized pieces < maxLen chars
+  function splitIntoChunks(items, maxLen) {
+    maxLen = maxLen || 800;
+    var out = [];
+    items.forEach(function (item) {
+      if (item.length <= maxLen) {
+        out.push(item);
+        return;
+      }
+      // Split by sentence boundaries
+      var sentences = item.match(/[^.!?]+[.!?]*/g) || [item];
+      var buf = '';
+      sentences.forEach(function (s) {
+        if ((buf + s).length > maxLen) {
+          if (buf.trim()) out.push(buf.trim());
+          buf = s;
+        } else {
+          buf += ' ' + s;
+        }
+      });
+      if (buf.trim()) out.push(buf.trim());
+    });
+    return out.filter(function (c) { return c.trim().length > 0; });
+  }
+
+  // ── SPEAK ONE CHUNK ─────────────────────────────────────────────
+  function speakChunk(idx) {
+    if (!isPlaying) return;
+    if (idx >= chunks.length) {
+      console.log('[Crypode Read Aloud] finished all chunks');
+      isPlaying = false; isPaused = false; currentIdx = 0; currentUtt = null;
+      var el4 = document.getElementById('listenLabelText');
+      var ct4 = document.getElementById('listenControls');
+      var br4 = document.getElementById('progressBar');
+      var fi4 = document.getElementById('progressFill');
+      if (el4) el4.textContent = 'Listen to this article';
+      if (ct4) ct4.innerHTML = "<button class=\"listen-btn\" aria-label=\"Listen to article\" onclick=\"listenControl('play')\"><span aria-hidden=\"true\">&#9654;</span> Listen</button>";
+      if (fi4) { fi4.style.width = '0%'; fi4.classList.remove('pulsing'); }
+      if (br4) br4.style.display = 'none';
+      setStatus('Article complete');
+      return;
+    }
+
+    console.log('[Crypode Read Aloud] speaking chunk', idx + 1, 'of', chunks.length);
+
+    var utt = new SpeechSynthesisUtterance(chunks[idx]);
+    utt.rate  = currentRate;
+    utt.pitch = 1;
+    if (voice) utt.voice = voice;
+    // Set lang only if we have a voice with a known lang; otherwise let browser decide
+    utt.lang = (voice && voice.lang) ? voice.lang : 'en-US';
+    currentUtt = utt;
+
+    utt.onstart = function () {
+      console.log('[Crypode Read Aloud] chunk started:', idx + 1);
+      updateProgress(idx);
+    };
+
+    utt.onend = function () {
+      console.log('[Crypode Read Aloud] chunk ended:', idx + 1);
+      if (isPlaying && !isPaused) {
+        currentIdx = idx + 1;
+        speakChunk(currentIdx);
+      }
+    };
+
+    utt.onerror = function (e) {
+      console.error('[Crypode Read Aloud] speech error:', e.error, e);
+      if (e.error === 'interrupted' || e.error === 'canceled') return;
+      setStatus('Unable to start Read Aloud. Please try again or use another browser.');
+      resetPlayer();
+    };
+
+    synth.speak(utt);
+  }
+
+  // ── CONTROLS (global — called from onclick attributes) ──────────
+  window.listenControl = function (action) {
+
+    if (action === 'play') {
+      if (isPaused) {
+        // Resume from current position
+        isPaused = false;
+        isPlaying = true;
+        synth.resume();
+        showPlayingState();
+        console.log('[Crypode Read Aloud] resumed at chunk', currentIdx + 1);
+        return;
+      }
+
+      // Fresh start
+      synth.cancel();
+      isPlaying  = true;
+      isPaused   = false;
+      currentIdx = 0;
+
+      // Extract and chunk text
+      var items  = getReadableChunks();
+      chunks     = splitIntoChunks(items, 800);
+
+      console.log('[Crypode Read Aloud] starting. Total chunks:', chunks.length);
+
+      if (chunks.length === 0) {
+        setStatus('Article text could not be loaded for Read Aloud.');
+        isPlaying = false;
+        return;
+      }
+
+      showPlayingState();
+      updateProgress(0);
+
+      // Slight delay so synth.cancel() clears the queue first
+      setTimeout(function () {
+        speakChunk(0);
+      }, 80);
+    }
+
+    if (action === 'pause') {
+      if (isPlaying && !isPaused) {
+        isPaused  = true;
+        isPlaying = false;
+        synth.pause();
+        showPausedState();
+        console.log('[Crypode Read Aloud] paused at chunk', currentIdx + 1);
+      }
+    }
+
+    if (action === 'stop') {
+      synth.cancel();
+      resetPlayer();
+      console.log('[Crypode Read Aloud] stopped');
+    }
+  };
+
+  window.setSpeed = function (rate, btn) {
+    currentRate = parseFloat(rate);
+    document.querySelectorAll('.speed-btn').forEach(function (b) {
+      b.classList.remove('active');
+      b.removeAttribute('aria-pressed');
+    });
+    if (btn) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+    }
+    console.log('[Crypode Read Aloud] speed set to', currentRate);
+    // New rate takes effect from the next chunk automatically
+    // If currently speaking, cancel current chunk and re-speak it at new rate
+    if (isPlaying && !isPaused && synth.speaking) {
+      synth.cancel();
+      setTimeout(function () { speakChunk(currentIdx); }, 80);
+    }
+  };
+
+  // ── UI STATE HELPERS ────────────────────────────────────────────
+  // Use double quotes inside the HTML strings to avoid quote conflicts
+  function showPlayingState() {
+    var lbl = document.getElementById('listenLabelText');
+    var ctrl = document.getElementById('listenControls');
+    var bar = document.getElementById('progressBar');
+    if (lbl)  lbl.textContent = 'Listening';
+    if (ctrl) ctrl.innerHTML  =
+      "<button class=\"listen-btn\" aria-label=\"Pause article\" onclick=\"listenControl('pause')\">" +
+      "<span aria-hidden=\"true\">&#9646;&#9646;</span> Pause</button>" +
+      "<button class=\"listen-btn-ghost\" aria-label=\"Stop article\" onclick=\"listenControl('stop')\">" +
+      "<span aria-hidden=\"true\">&#9632;</span> Stop</button>";
+    if (bar) {
+      bar.style.display = 'block';
+      var fill2 = document.getElementById('progressFill');
+      if (fill2) { fill2.style.width = '100%'; fill2.classList.add('pulsing'); }
+    }
+    setStatus('Playing article\u2026');
+  }
+
+  function showPausedState() {
+    var lbl  = document.getElementById('listenLabelText');
+    var ctrl = document.getElementById('listenControls');
+    var fill3 = document.getElementById('progressFill');
+    if (fill3) fill3.classList.remove('pulsing');
+    if (lbl)  lbl.textContent = 'Paused';
+    if (ctrl) ctrl.innerHTML  =
+      "<button class=\"listen-btn\" aria-label=\"Resume article\" onclick=\"listenControl('play')\">" +
+      "<span aria-hidden=\"true\">&#9654;</span> Resume</button>" +
+      "<button class=\"listen-btn-ghost\" aria-label=\"Stop article\" onclick=\"listenControl('stop')\">" +
+      "<span aria-hidden=\"true\">&#9632;</span> Stop</button>";
+    setStatus('Paused');
+  }
+
+  function resetPlayer() {
+    isPlaying  = false;
+    isPaused   = false;
+    currentIdx = 0;
+    currentUtt = null;
+    var lbl  = document.getElementById('listenLabelText');
+    var ctrl = document.getElementById('listenControls');
+    var bar  = document.getElementById('progressBar');
+    var fill = document.getElementById('progressFill');
+    var plbl = document.getElementById('progressLabel');
+    if (lbl)  lbl.textContent  = 'Listen to this article';
+    if (ctrl) ctrl.innerHTML   =
+      "<button class=\"listen-btn\" aria-label=\"Listen to article\" onclick=\"listenControl('play')\">" +
+      "<span aria-hidden=\"true\">&#9654;</span> Listen</button>";
+    if (bar)  bar.style.display = 'none';
+    if (fill) { fill.style.width = '0%'; fill.classList.remove('pulsing'); }
+    if (plbl) plbl.textContent  = '';
+    setStatus(estimateListenTime());
+  }
+
+  function setStatus(msg) {
+    var el = document.getElementById('listenStatus');
+    if (el) el.textContent = msg;
+  }
+
+  function updateProgress(idx) {
+    var fill = document.getElementById('progressFill');
+    var plbl = document.getElementById('progressLabel');
+    if (fill) fill.style.width = '100%';
+    if (plbl) plbl.textContent = '';
+  }
+
+  // ── PAGE EXIT ───────────────────────────────────────────────────
+  window.addEventListener('beforeunload', function () {
+    synth.cancel();
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && isPlaying) {
+      synth.cancel();
+      resetPlayer();
+    }
+  });
+
+  console.log('[Crypode Read Aloud] player initialised. speechSynthesis available:', !!synth);
+
+})();
+</script>
 </body>
 </html>
