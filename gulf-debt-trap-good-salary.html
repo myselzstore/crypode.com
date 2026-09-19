@@ -349,6 +349,14 @@
     width: 0%;
     transition: width 0.8s linear;
   }
+
+  @keyframes pulse-bar {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+  .listen-progress-fill.pulsing {
+    animation: pulse-bar 1.8s ease-in-out infinite;
+  }
   .listen-status { font-size: 0.75rem; color: var(--text-muted); }
   .listen-not-supported { font-size: 0.78rem; color: var(--text-muted); font-style: italic; }
   @media (max-width: 600px) {
@@ -1089,7 +1097,16 @@
     if (!isPlaying) return;
     if (idx >= chunks.length) {
       console.log('[Crypode Read Aloud] finished all chunks');
-      resetPlayer();
+      isPlaying = false; isPaused = false; currentIdx = 0; currentUtt = null;
+      var el4 = document.getElementById('listenLabelText');
+      var ct4 = document.getElementById('listenControls');
+      var br4 = document.getElementById('progressBar');
+      var fi4 = document.getElementById('progressFill');
+      if (el4) el4.textContent = 'Listen to this article';
+      if (ct4) ct4.innerHTML = "<button class=\"listen-btn\" aria-label=\"Listen to article\" onclick=\"listenControl('play')\"><span aria-hidden=\"true\">&#9654;</span> Listen</button>";
+      if (fi4) { fi4.style.width = '0%'; fi4.classList.remove('pulsing'); }
+      if (br4) br4.style.display = 'none';
+      setStatus('Article complete');
       return;
     }
 
@@ -1135,12 +1152,6 @@
         isPaused = false;
         isPlaying = true;
         synth.resume();
-        // Safety: if browser didn't actually resume, re-speak chunk
-        setTimeout(function () {
-          if (!synth.speaking && isPlaying) {
-            speakChunk(currentIdx);
-          }
-        }, 300);
         showPlayingState();
         console.log('[Crypode Read Aloud] resumed at chunk', currentIdx + 1);
         return;
@@ -1178,13 +1189,6 @@
         isPaused  = true;
         isPlaying = false;
         synth.pause();
-        // Some browsers don't honour pause() on SpeechSynthesis mid-chunk
-        // Mark position and cancel if still speaking after brief wait
-        setTimeout(function () {
-          if (synth.speaking) {
-            synth.cancel();
-          }
-        }, 150);
         showPausedState();
         console.log('[Crypode Read Aloud] paused at chunk', currentIdx + 1);
       }
@@ -1228,13 +1232,19 @@
       "<span aria-hidden=\"true\">&#9646;&#9646;</span> Pause</button>" +
       "<button class=\"listen-btn-ghost\" aria-label=\"Stop article\" onclick=\"listenControl('stop')\">" +
       "<span aria-hidden=\"true\">&#9632;</span> Stop</button>";
-    if (bar)  bar.style.display = 'block';
+    if (bar) {
+      bar.style.display = 'block';
+      var fill2 = document.getElementById('progressFill');
+      if (fill2) { fill2.style.width = '100%'; fill2.classList.add('pulsing'); }
+    }
     setStatus('Playing article\u2026');
   }
 
   function showPausedState() {
-    var lbl = document.getElementById('listenLabelText');
+    var lbl  = document.getElementById('listenLabelText');
     var ctrl = document.getElementById('listenControls');
+    var fill3 = document.getElementById('progressFill');
+    if (fill3) fill3.classList.remove('pulsing');
     if (lbl)  lbl.textContent = 'Paused';
     if (ctrl) ctrl.innerHTML  =
       "<button class=\"listen-btn\" aria-label=\"Resume article\" onclick=\"listenControl('play')\">" +
@@ -1259,7 +1269,7 @@
       "<button class=\"listen-btn\" aria-label=\"Listen to article\" onclick=\"listenControl('play')\">" +
       "<span aria-hidden=\"true\">&#9654;</span> Listen</button>";
     if (bar)  bar.style.display = 'none';
-    if (fill) fill.style.width  = '0%';
+    if (fill) { fill.style.width = '0%'; fill.classList.remove('pulsing'); }
     if (plbl) plbl.textContent  = '';
     setStatus(estimateListenTime());
   }
@@ -1272,10 +1282,8 @@
   function updateProgress(idx) {
     var fill = document.getElementById('progressFill');
     var plbl = document.getElementById('progressLabel');
-    if (!chunks.length) return;
-    var pct  = Math.min(Math.round(((idx + 1) / chunks.length) * 100), 100);
-    if (fill) fill.style.width  = pct + '%';
-    if (plbl) plbl.textContent  = pct < 100 ? pct + '%' : 'Done';
+    if (fill) fill.style.width = '100%';
+    if (plbl) plbl.textContent = '';
   }
 
   // ── PAGE EXIT ───────────────────────────────────────────────────
