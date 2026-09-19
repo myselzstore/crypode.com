@@ -507,7 +507,7 @@
   </div>
 </div>
 <!-- ARTICLE BODY -->
-<section class="article-body-wrap">
+<section class="article-body-wrap" id="article-content">
   <div class="article-body">
 
     <p>Consider a professional in Oman earning OMR 1,800 per month. From the outside, that can look like a strong salary. But the salary figure alone tells us very little about the financial obligations attached to it &mdash; including how much of that income is already committed before the month begins.</p>
@@ -892,317 +892,405 @@
   document.querySelectorAll('.related-card, .stat-callout, .checklist, .tool-cta-box, .debt-reset, .reset-step').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; obs.observe(el); });
 </script>
 
+
 <script>
-(function() {
-  // ── BROWSER SUPPORT CHECK ──────────────────────────────────────
-  if (!('speechSynthesis' in window)) {
+(function () {
+  'use strict';
+
+  // ── SUPPORT CHECK ───────────────────────────────────────────────
+  if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
     var p = document.getElementById('listenPlayer');
-    if (p) {
-      p.innerHTML = '<span class="listen-label">&#127911; Listen</span>' +
-        '<span class="listen-not-supported">Read-aloud is not supported in this browser. ' +
-        'Try Chrome, Edge or Safari.</span>';
-    }
+    if (p) p.innerHTML =
+      '<span class="listen-label">&#127911; Listen</span>' +
+      '<span class="listen-not-supported" role="status">Read aloud is not supported by this browser. ' +
+      'Try Chrome, Edge or Safari.</span>';
     return;
   }
 
-  // ── STATE ──────────────────────────────────────────────────────
-  var _synth        = window.speechSynthesis;
-  var _chunks       = [];
-  var _chunkIdx     = 0;
-  var _rate         = 1;
-  var _paused       = false;
-  var _playing      = false;
-  var _totalChunks  = 0;
-  var _voice        = null;
-  var _voiceLoaded  = false;
+  // ── STATE ───────────────────────────────────────────────────────
+  var synth          = window.speechSynthesis;
+  var chunks         = [];
+  var currentIdx     = 0;
+  var currentRate    = 1;
+  var isPlaying      = false;
+  var isPaused       = false;
+  var currentUtt     = null;
+  var voice          = null;
 
-  // ── LOAD PREFERRED VOICE ──────────────────────────────────────
-  function loadVoice() {
-    var voices = _synth.getVoices();
+  // ── VOICE LOADING ───────────────────────────────────────────────
+  // Chrome loads voices asynchronously; must listen for voiceschanged
+  function selectVoice() {
+    var voices = synth.getVoices();
+    console.log('[Crypode Read Aloud] voices available:', voices.length);
     if (!voices.length) return;
-    // Prefer a natural-sounding English voice
+
     var preferred = [
-      'Google UK English Female','Google UK English Male',
-      'Google US English','Microsoft Aria Online (Natural)',
-      'Microsoft Guy Online (Natural)','Samantha','Daniel','Karen',
-      'Alex','Zira','David'
+      'Google UK English Female', 'Google UK English Male',
+      'Google US English', 'Microsoft Aria Online (Natural)',
+      'Microsoft Guy Online (Natural)', 'Samantha', 'Daniel',
+      'Karen', 'Alex', 'Zira', 'David', 'Mark'
     ];
+
     for (var i = 0; i < preferred.length; i++) {
       for (var j = 0; j < voices.length; j++) {
-        if (voices[j].name === preferred[i]) { _voice = voices[j]; return; }
+        if (voices[j].name === preferred[i]) {
+          voice = voices[j];
+          console.log('[Crypode Read Aloud] selected voice:', voice.name);
+          return;
+        }
       }
     }
-    // Fall back: any en-GB or en-US voice
+    // Any English locale
     for (var k = 0; k < voices.length; k++) {
-      if (/^en[-_]/i.test(voices[k].lang)) { _voice = voices[k]; return; }
-    }
-    // Last resort: first available
-    _voice = voices[0] || null;
-    _voiceLoaded = true;
-  }
-
-  _synth.onvoiceschanged = function() { if (!_voiceLoaded) { loadVoice(); _voiceLoaded = true; } };
-  loadVoice();
-
-  // ── TEXT EXTRACTION ────────────────────────────────────────────
-  function getArticleText() {
-    var title   = document.querySelector('.article-hero h1');
-    var subtitle= document.querySelector('.article-hero .article-subtitle');
-    var body    = document.querySelector('.article-body');
-
-    var text = '';
-
-    // Title
-    if (title) text += cleanText(title.innerText) + '. ';
-    if (subtitle) text += cleanText(subtitle.innerText) + '. ';
-
-    if (!body) return text;
-
-    // Walk body nodes — skip buttons, CTAs, source boxes, next-steps buttons
-    var skipClasses = [
-      'tool-cta-btn','tool-cta-btn-ghost','next-step-link','listen-player',
-      'sources-box','next-steps','check-num','checklist-title',
-      'reset-step-num','debt-reset-label','takeaway-label','sources-label',
-      'coming-soon-tag'
-    ];
-    var nodes = body.querySelectorAll('p, h2, h3, h4, li, blockquote, .pull-quote p, ' +
-      '.highlight-box p, .stat-callout-text h4, .stat-callout-text p, ' +
-      '.margin-callout p, .check-content h4, .check-content p, ' +
-      '.reset-step-word, .reset-step-desc, td, .takeaway-box h3, .takeaway-box li, ' +
-      '.takeaway-box .closing, .salary-table-header p, .table-note');
-
-    var seen = new Set();
-    nodes.forEach(function(el) {
-      // Skip if inside a skip-class parent
-      var skip = false;
-      for (var i = 0; i < skipClasses.length; i++) {
-        if (el.closest('.' + skipClasses[i])) { skip = true; break; }
+      if (/^en/i.test(voices[k].lang)) {
+        voice = voices[k];
+        console.log('[Crypode Read Aloud] fallback voice:', voice.name, voice.lang);
+        return;
       }
-      if (skip) return;
-      // Deduplicate
-      var t = el.innerText.trim();
-      if (!t || seen.has(t)) return;
-      seen.add(t);
-      text += cleanText(t) + ' ';
-    });
-
-    return text.trim();
+    }
+    // Browser default — leave voice null
+    console.log('[Crypode Read Aloud] using browser default voice');
   }
 
-  function cleanText(t) {
-    if (!t) return '';
-    return t
-      // Math operators → spoken form
-      .replace(/(\d[\d,]*)\s*÷\s*(\d[\d,]*)\s*×\s*100/g, function(m,a,b){
-        return spellNumber(a) + ' divided by ' + spellNumber(b) + ' multiplied by one hundred';
+  // Initial call (Firefox / Safari have voices ready immediately)
+  selectVoice();
+  // Chrome fires voiceschanged after load
+  if (synth.addEventListener) {
+    synth.addEventListener('voiceschanged', selectVoice);
+  } else {
+    synth.onvoiceschanged = selectVoice;
+  }
+
+  // ── LISTENING TIME ──────────────────────────────────────────────
+  function estimateListenTime() {
+    var container = document.getElementById('article-content');
+    if (!container) return '~15 min listen';
+    var words = (container.innerText || '').trim().split(/\s+/).length;
+    var minutes = Math.round(words / 160);
+    return '~' + minutes + ' min listen';
+  }
+
+  // Set initial status from word count
+  var statusEl = document.getElementById('listenStatus');
+  if (statusEl) statusEl.textContent = estimateListenTime();
+
+  // ── TEXT PREPROCESSING ──────────────────────────────────────────
+  function cleanForSpeech(text) {
+    if (!text) return '';
+    return text
+      // Financial amounts: OMR 1,800 → "1800 Omani rials"
+      .replace(/OMR\s*([\d,]+)/g, function (_, n) {
+        return n.replace(/,/g, '') + ' Omani rials';
       })
-      .replace(/(\d[\d,]*)\s*÷\s*(\d[\d,]*)/g, function(m,a,b){
-        return spellNumber(a) + ' divided by ' + spellNumber(b);
+      .replace(/\bOMR\b/g, 'Omani rials')
+      .replace(/\bAED\b/g, 'UAE Dirhams')
+      .replace(/\bSAR\b/g, 'Saudi riyals')
+      .replace(/\bCBO\b/g, 'Central Bank of Oman')
+      .replace(/\bAAOIFI\b/g, 'AAOIFI')
+      .replace(/\bIFSB\b/g, 'I F S B')
+      // Math
+      .replace(/([\d,]+)\s*[÷\/]\s*([\d,]+)\s*[×x]\s*100/g, function (_, a, b) {
+        return a.replace(/,/g, '') + ' divided by ' + b.replace(/,/g, '') + ' multiplied by 100';
       })
-      .replace(/(\d[\d,]*)\s*×\s*(\d[\d,]*)/g, function(m,a,b){
-        return spellNumber(a) + ' multiplied by ' + spellNumber(b);
+      .replace(/([\d,]+)\s*[÷\/]\s*([\d,]+)/g, function (_, a, b) {
+        return a.replace(/,/g, '') + ' divided by ' + b.replace(/,/g, '');
       })
-      .replace(/≈\s*([\d.]+)%/g, 'approximately $1 percent')
-      .replace(/=\s*([\d.]+)%/g, 'equals approximately $1 percent')
-      // Currency
-      .replace(/OMR\s*([\d,]+)/g, function(m,n){ return spellNumber(n) + ' Omani Rials'; })
-      .replace(/OMR/g, 'Omani Rials')
-      .replace(/AED/g, 'UAE Dirhams')
-      .replace(/SAR/g, 'Saudi Riyals')
+      // Percentages
+      .replace(/([\d.]+)\s*%/g, '$1 percent')
       // Symbols
-      .replace(/&minus;|−|–/g, 'minus ')
-      .replace(/&times;/g, ' multiplied by ')
-      .replace(/&divide;/g, ' divided by ')
-      .replace(/&rarr;|→/g, '. ')
-      .replace(/&mdash;|—/g, ', ')
-      .replace(/&rsquo;|'/g, "'")
-      .replace(/&ldquo;|&rdquo;|"/g, '"')
-      .replace(/&hellip;|…/g, '.')
-      .replace(/%/g, ' percent')
-      .replace(/\s+/g, ' ')
+      .replace(/[—–]/g, ', ')
+      .replace(/→|&rarr;/g, '. ')
+      .replace(/[•·]/g, '')
+      .replace(/\s{2,}/g, ' ')
       .trim();
   }
 
-  function spellNumber(s) {
-    // Remove commas, return as-is for TTS to handle
-    return s.replace(/,/g,'');
-  }
+  // ── TEXT EXTRACTION ─────────────────────────────────────────────
+  function getReadableChunks() {
+    var container = document.getElementById('article-content');
+    if (!container) {
+      console.warn('[Crypode Read Aloud] #article-content not found');
+      return [];
+    }
 
-  // ── CHUNK TEXT ────────────────────────────────────────────────
-  // SpeechSynthesis can stall on very long utterances; split by sentence
-  function chunkText(text, maxLen) {
-    maxLen = maxLen || 180;
-    var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-    var chunks = [], current = '';
-    sentences.forEach(function(s) {
-      if ((current + s).length > maxLen) {
-        if (current) chunks.push(current.trim());
-        current = s;
-      } else {
-        current += ' ' + s;
+    // Elements to skip entirely (CTAs, nav, sources, badges, etc.)
+    var skipSelectors = [
+      '.tool-cta-btn', '.tool-cta-btn-ghost',
+      '.next-step-link', '.listen-player',
+      '.sources-box', '.next-steps',
+      '.check-num', '.checklist-title',
+      '.reset-step-num', '.debt-reset-label',
+      '.takeaway-label', '.sources-label',
+      '.coming-soon-tag', '.article-badge',
+      '[data-no-speech]'
+    ];
+
+    // Readable selectors inside the container
+    var readableSelectors = [
+      'h2', 'h3', 'h4', 'p', 'li', 'blockquote',
+      'td', 'figcaption'
+    ].join(', ');
+
+    var nodes = container.querySelectorAll(readableSelectors);
+    var results = [];
+    var seen = new Set();
+
+    nodes.forEach(function (el) {
+      // Skip if inside an excluded parent
+      for (var i = 0; i < skipSelectors.length; i++) {
+        if (el.closest(skipSelectors[i])) return;
       }
+      var raw = (el.innerText || el.textContent || '').trim();
+      if (!raw || seen.has(raw)) return;
+      seen.add(raw);
+      var cleaned = cleanForSpeech(raw);
+      if (cleaned) results.push(cleaned);
     });
-    if (current.trim()) chunks.push(current.trim());
-    return chunks;
+
+    // Also prepend the article title and subtitle from the hero
+    var h1El = document.querySelector('.article-hero h1');
+    var subEl = document.querySelector('.article-hero .article-subtitle');
+    var intro = '';
+    if (h1El) intro += cleanForSpeech((h1El.innerText || '').replace(/\s+/g, ' ').trim()) + '. ';
+    if (subEl) intro += cleanForSpeech((subEl.innerText || '').replace(/\s+/g, ' ').trim()) + '. ';
+    if (intro) results.unshift(intro);
+
+    console.log('[Crypode Read Aloud] chunks extracted:', results.length);
+    return results;
   }
 
-  // ── PLAYBACK ──────────────────────────────────────────────────
+  // Split a long string into sentence-sized pieces < maxLen chars
+  function splitIntoChunks(items, maxLen) {
+    maxLen = maxLen || 800;
+    var out = [];
+    items.forEach(function (item) {
+      if (item.length <= maxLen) {
+        out.push(item);
+        return;
+      }
+      // Split by sentence boundaries
+      var sentences = item.match(/[^.!?]+[.!?]*/g) || [item];
+      var buf = '';
+      sentences.forEach(function (s) {
+        if ((buf + s).length > maxLen) {
+          if (buf.trim()) out.push(buf.trim());
+          buf = s;
+        } else {
+          buf += ' ' + s;
+        }
+      });
+      if (buf.trim()) out.push(buf.trim());
+    });
+    return out.filter(function (c) { return c.trim().length > 0; });
+  }
+
+  // ── SPEAK ONE CHUNK ─────────────────────────────────────────────
   function speakChunk(idx) {
-    if (idx >= _chunks.length) {
+    if (!isPlaying) return;
+    if (idx >= chunks.length) {
+      console.log('[Crypode Read Aloud] finished all chunks');
       resetPlayer();
       return;
     }
-    var utt = new SpeechSynthesisUtterance(_chunks[idx]);
-    utt.rate  = _rate;
-    utt.pitch = 1;
-    if (_voice) utt.voice = _voice;
-    utt.lang  = 'en-GB';
 
-    utt.onend = function() {
-      if (!_paused && _playing) {
-        _chunkIdx = idx + 1;
-        updateProgress(_chunkIdx);
-        speakChunk(_chunkIdx);
+    console.log('[Crypode Read Aloud] speaking chunk', idx + 1, 'of', chunks.length);
+
+    var utt = new SpeechSynthesisUtterance(chunks[idx]);
+    utt.rate  = currentRate;
+    utt.pitch = 1;
+    if (voice) utt.voice = voice;
+    // Set lang only if we have a voice with a known lang; otherwise let browser decide
+    utt.lang = (voice && voice.lang) ? voice.lang : 'en-US';
+    currentUtt = utt;
+
+    utt.onstart = function () {
+      console.log('[Crypode Read Aloud] chunk started:', idx + 1);
+      updateProgress(idx);
+    };
+
+    utt.onend = function () {
+      console.log('[Crypode Read Aloud] chunk ended:', idx + 1);
+      if (isPlaying && !isPaused) {
+        currentIdx = idx + 1;
+        speakChunk(currentIdx);
       }
     };
 
-    utt.onerror = function(e) {
+    utt.onerror = function (e) {
+      console.error('[Crypode Read Aloud] speech error:', e.error, e);
       if (e.error === 'interrupted' || e.error === 'canceled') return;
-      setStatus('Read-aloud encountered an error. Please try again.');
+      setStatus('Unable to start Read Aloud. Please try again or use another browser.');
       resetPlayer();
     };
 
-    _synth.speak(utt);
+    synth.speak(utt);
   }
 
-  // ── CONTROLS ──────────────────────────────────────────────────
-  window.listenControl = function(action) {
-    if (!('speechSynthesis' in window)) return;
+  // ── CONTROLS (global — called from onclick attributes) ──────────
+  window.listenControl = function (action) {
 
     if (action === 'play') {
-      if (_paused) {
-        // Resume
-        _paused = false;
-        _synth.resume();
-        // If synth didn't actually resume (some browsers), re-speak from chunk
-        setTimeout(function() {
-          if (!_synth.speaking) speakChunk(_chunkIdx);
-        }, 200);
+      if (isPaused) {
+        // Resume from current position
+        isPaused = false;
+        isPlaying = true;
+        synth.resume();
+        // Safety: if browser didn't actually resume, re-speak chunk
+        setTimeout(function () {
+          if (!synth.speaking && isPlaying) {
+            speakChunk(currentIdx);
+          }
+        }, 300);
         showPlayingState();
+        console.log('[Crypode Read Aloud] resumed at chunk', currentIdx + 1);
         return;
       }
+
       // Fresh start
-      _synth.cancel();
-      _playing = true;
-      _paused  = false;
-      _chunkIdx = 0;
-      if (!_voiceLoaded) { loadVoice(); _voiceLoaded = true; }
-      var raw = getArticleText();
-      _chunks = chunkText(raw, 200);
-      _totalChunks = _chunks.length;
+      synth.cancel();
+      isPlaying  = true;
+      isPaused   = false;
+      currentIdx = 0;
+
+      // Extract and chunk text
+      var items  = getReadableChunks();
+      chunks     = splitIntoChunks(items, 800);
+
+      console.log('[Crypode Read Aloud] starting. Total chunks:', chunks.length);
+
+      if (chunks.length === 0) {
+        setStatus('Article text could not be loaded for Read Aloud.');
+        isPlaying = false;
+        return;
+      }
+
       showPlayingState();
       updateProgress(0);
-      speakChunk(0);
+
+      // Slight delay so synth.cancel() clears the queue first
+      setTimeout(function () {
+        speakChunk(0);
+      }, 80);
     }
 
     if (action === 'pause') {
-      if (_synth.speaking && !_paused) {
-        _paused = true;
-        _synth.pause();
-        // Some browsers don't pause mid-utterance; cancel and note position
-        setTimeout(function() {
-          if (_synth.speaking) { _synth.cancel(); }
-        }, 100);
+      if (isPlaying && !isPaused) {
+        isPaused  = true;
+        isPlaying = false;
+        synth.pause();
+        // Some browsers don't honour pause() on SpeechSynthesis mid-chunk
+        // Mark position and cancel if still speaking after brief wait
+        setTimeout(function () {
+          if (synth.speaking) {
+            synth.cancel();
+          }
+        }, 150);
         showPausedState();
+        console.log('[Crypode Read Aloud] paused at chunk', currentIdx + 1);
       }
     }
 
     if (action === 'stop') {
-      _synth.cancel();
+      synth.cancel();
       resetPlayer();
+      console.log('[Crypode Read Aloud] stopped');
     }
   };
 
-  window.setSpeed = function(rate, btn) {
-    _rate = rate;
-    document.querySelectorAll('.speed-btn').forEach(function(b) {
+  window.setSpeed = function (rate, btn) {
+    currentRate = parseFloat(rate);
+    document.querySelectorAll('.speed-btn').forEach(function (b) {
       b.classList.remove('active');
       b.removeAttribute('aria-pressed');
     });
-    btn.classList.add('active');
-    btn.setAttribute('aria-pressed', 'true');
-    // If currently playing, restart current chunk at new rate
-    if (_playing && !_paused) {
-      _synth.cancel();
-      setTimeout(function() { speakChunk(_chunkIdx); }, 60);
+    if (btn) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+    }
+    console.log('[Crypode Read Aloud] speed set to', currentRate);
+    // New rate takes effect from the next chunk automatically
+    // If currently speaking, cancel current chunk and re-speak it at new rate
+    if (isPlaying && !isPaused && synth.speaking) {
+      synth.cancel();
+      setTimeout(function () { speakChunk(currentIdx); }, 80);
     }
   };
 
-  // ── UI STATES ─────────────────────────────────────────────────
+  // ── UI STATE HELPERS ────────────────────────────────────────────
+  // Use double quotes inside the HTML strings to avoid quote conflicts
   function showPlayingState() {
-    document.getElementById('listenLabelText').textContent = 'Listening';
-    document.getElementById('listenControls').innerHTML =
-      '<button class="listen-btn" id="listenPauseBtn" aria-label="Pause article" onclick="listenControl('pause')">' +
-      '<span aria-hidden="true">&#9646;&#9646;</span> Pause</button>' +
-      '<button class="listen-btn-ghost" id="listenStopBtn" aria-label="Stop article" onclick="listenControl('stop')">' +
-      '<span aria-hidden="true">&#9632;</span> Stop</button>';
-    document.getElementById('progressBar').style.display = 'block';
-    setStatus('Playing article…');
+    var lbl = document.getElementById('listenLabelText');
+    var ctrl = document.getElementById('listenControls');
+    var bar = document.getElementById('progressBar');
+    if (lbl)  lbl.textContent = 'Listening';
+    if (ctrl) ctrl.innerHTML  =
+      "<button class=\"listen-btn\" aria-label=\"Pause article\" onclick=\"listenControl('pause')\">" +
+      "<span aria-hidden=\"true\">&#9646;&#9646;</span> Pause</button>" +
+      "<button class=\"listen-btn-ghost\" aria-label=\"Stop article\" onclick=\"listenControl('stop')\">" +
+      "<span aria-hidden=\"true\">&#9632;</span> Stop</button>";
+    if (bar)  bar.style.display = 'block';
+    setStatus('Playing article\u2026');
   }
 
   function showPausedState() {
-    document.getElementById('listenLabelText').textContent = 'Paused';
-    document.getElementById('listenControls').innerHTML =
-      '<button class="listen-btn" id="listenPlayBtn" aria-label="Resume article" onclick="listenControl('play')">' +
-      '<span aria-hidden="true">&#9654;</span> Resume</button>' +
-      '<button class="listen-btn-ghost" id="listenStopBtn" aria-label="Stop article" onclick="listenControl('stop')">' +
-      '<span aria-hidden="true">&#9632;</span> Stop</button>';
+    var lbl = document.getElementById('listenLabelText');
+    var ctrl = document.getElementById('listenControls');
+    if (lbl)  lbl.textContent = 'Paused';
+    if (ctrl) ctrl.innerHTML  =
+      "<button class=\"listen-btn\" aria-label=\"Resume article\" onclick=\"listenControl('play')\">" +
+      "<span aria-hidden=\"true\">&#9654;</span> Resume</button>" +
+      "<button class=\"listen-btn-ghost\" aria-label=\"Stop article\" onclick=\"listenControl('stop')\">" +
+      "<span aria-hidden=\"true\">&#9632;</span> Stop</button>";
     setStatus('Paused');
   }
 
   function resetPlayer() {
-    _playing  = false;
-    _paused   = false;
-    _chunkIdx = 0;
-    document.getElementById('listenLabelText').textContent = 'Listen to this article';
-    document.getElementById('listenControls').innerHTML =
-      '<button class="listen-btn" id="listenPlayBtn" aria-label="Start listening to this article" onclick="listenControl('play')">' +
-      '<span aria-hidden="true">&#9654;</span> Listen</button>';
-    document.getElementById('progressBar').style.display = 'none';
-    document.getElementById('progressFill').style.width  = '0%';
-    document.getElementById('progressLabel').textContent  = '';
-    setStatus('&#126;&thinsp;15 min listen');
+    isPlaying  = false;
+    isPaused   = false;
+    currentIdx = 0;
+    currentUtt = null;
+    var lbl  = document.getElementById('listenLabelText');
+    var ctrl = document.getElementById('listenControls');
+    var bar  = document.getElementById('progressBar');
+    var fill = document.getElementById('progressFill');
+    var plbl = document.getElementById('progressLabel');
+    if (lbl)  lbl.textContent  = 'Listen to this article';
+    if (ctrl) ctrl.innerHTML   =
+      "<button class=\"listen-btn\" aria-label=\"Listen to article\" onclick=\"listenControl('play')\">" +
+      "<span aria-hidden=\"true\">&#9654;</span> Listen</button>";
+    if (bar)  bar.style.display = 'none';
+    if (fill) fill.style.width  = '0%';
+    if (plbl) plbl.textContent  = '';
+    setStatus(estimateListenTime());
   }
 
   function setStatus(msg) {
     var el = document.getElementById('listenStatus');
-    if (el) el.innerHTML = msg;
+    if (el) el.textContent = msg;
   }
 
   function updateProgress(idx) {
-    if (!_totalChunks) return;
-    var pct = Math.round((idx / _totalChunks) * 100);
-    pct = Math.min(pct, 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    if (idx > 0 && idx < _totalChunks) {
-      document.getElementById('progressLabel').textContent = pct + '%';
-    } else if (idx >= _totalChunks) {
-      document.getElementById('progressLabel').textContent = 'Done';
-    } else {
-      document.getElementById('progressLabel').textContent = '';
-    }
+    var fill = document.getElementById('progressFill');
+    var plbl = document.getElementById('progressLabel');
+    if (!chunks.length) return;
+    var pct  = Math.min(Math.round(((idx + 1) / chunks.length) * 100), 100);
+    if (fill) fill.style.width  = pct + '%';
+    if (plbl) plbl.textContent  = pct < 100 ? pct + '%' : 'Done';
   }
 
-  // ── STOP ON NAVIGATION ────────────────────────────────────────
-  window.addEventListener('beforeunload', function() {
-    if (_synth) _synth.cancel();
+  // ── PAGE EXIT ───────────────────────────────────────────────────
+  window.addEventListener('beforeunload', function () {
+    synth.cancel();
   });
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden && _playing) {
-      _synth.cancel();
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && isPlaying) {
+      synth.cancel();
       resetPlayer();
     }
   });
+
+  console.log('[Crypode Read Aloud] player initialised. speechSynthesis available:', !!synth);
 
 })();
 </script>
