@@ -431,6 +431,14 @@
 
   .tool-icon { font-size: 2.2rem; margin-bottom: 20px; display: block; }
 
+  .tool-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .tool-badge { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 9px; border-radius: 1px; font-weight: 600; }
+  .tool-badge.free { color: #7FC8A0; border: 1px solid rgba(127,200,160,0.35); background: rgba(127,200,160,0.06); }
+  .tool-badge.paid { color: var(--gold); border: 1px solid rgba(201,168,76,0.4); background: rgba(201,168,76,0.08); }
+  .tools-more { text-align: center; margin-top: 44px; }
+  .tools-more .btn-ghost { display: inline-flex; width: auto; }
+
+
   .tool-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
@@ -536,6 +544,8 @@
     margin-bottom: 10px;
   }
   .podcast-episode:hover { border-color: rgba(201,168,76,0.35); }
+  .show-name { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .show-name.second { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(201,168,76,0.15); }
   .ep-num { color: var(--gold); font-size: 0.7rem; font-weight: 700; min-width: 32px; letter-spacing: 1px; }
   .ep-title { color: var(--cream); font-size: 0.88rem; line-height: 1.4; }
   .ep-icon { margin-left: auto; flex-shrink: 0; }
@@ -889,30 +899,49 @@
 <!-- FREE TOOLS — DARK -->
 <section class="section-dark" id="tools">
   <div class="section-inner">
-    <span class="section-label-dark">✦ Start with our free tools</span>
+    <span class="section-label-dark">✦ Tools for Gulf professionals</span>
     <h2 class="section-title-dark">Built for Gulf professionals</h2>
-    <p class="section-sub-dark">Three tools that answer the questions most Gulf professionals never have a good answer to — built specifically for Oman, UAE and Saudi Arabia.</p>
+    <p class="section-sub-dark">Free calculators and AI-powered tools that answer the money questions Gulf professionals face, built in Muscat for Oman and the wider GCC.</p>
 
     <div class="tools-grid">
+      <a href="https://crypode-payoff-tool.vercel.app" class="tool-card">
+        <div class="tool-top"><span class="tool-icon">🧭</span><span class="tool-badge free">Free</span></div>
+        <h3>Debt Payoff Planner</h3>
+        <p>Add all your loans and cards and see your debt-free date, with Snowball, Avalanche and Balanced strategies compared.</p>
+        <span class="tool-cta">Plan My Payoff →</span>
+      </a>
+      <a href="https://gulf-zakat-planner.vercel.app" class="tool-card">
+        <div class="tool-top"><span class="tool-icon">🌙</span><span class="tool-badge free">Free</span></div>
+        <h3>Zakat Calculator</h3>
+        <p>Gold and silver valued by weight and purity, a proper nisab check, and your school’s rules on jewellery and debts.</p>
+        <span class="tool-cta">Calculate Zakat →</span>
+      </a>
       <a href="tools-budget-planner.html" class="tool-card">
-        <span class="tool-icon">🧮</span>
+        <div class="tool-top"><span class="tool-icon">🧮</span><span class="tool-badge free">Free</span></div>
         <h3>Gulf Salary Budget Planner</h3>
-        <p>Enter your salary, loans and expenses to see exactly where your money goes — with a personalised action plan.</p>
-        <span class="tool-cta">Use Free Tool →</span>
+        <p>Enter your salary, loans and expenses to see exactly where your money goes, with a personalised action plan.</p>
+        <span class="tool-cta">Plan My Budget →</span>
       </a>
-      <a href="zakat_calculator.html" class="tool-card">
-        <span class="tool-icon">🌙</span>
-        <h3>Zakat Calculator 2026</h3>
-        <p>Calculate your annual Zakat on cash, gold, investments and business assets. Supports OMR, AED, SAR and USD.</p>
-        <span class="tool-cta">Calculate Now →</span>
+      <a href="https://gulf-resume-tailorer.vercel.app" class="tool-card">
+        <div class="tool-top"><span class="tool-icon">📄</span><span class="tool-badge paid">Premium · $15</span></div>
+        <h3>Resume &amp; Cover Letter Tailorer</h3>
+        <p>ATS-friendly resumes and tailored cover letters for Gulf job markets, written by AI from your own details.</p>
+        <span class="tool-cta">Open Tool →</span>
       </a>
-      <a href="halal-investing.html" class="tool-card">
-        <span class="tool-icon">📊</span>
-        <h3>Halal Investing Resources</h3>
-        <p>Screeners, ETF guides, Sukuk explainers, crypto rulings — everything Gulf investors need in one place.</p>
-        <span class="tool-cta">Explore Hub →</span>
+      <a href="https://gulf-bank-explainer.vercel.app" class="tool-card">
+        <div class="tool-top"><span class="tool-icon">🏦</span><span class="tool-badge paid">Premium · $10</span></div>
+        <h3>Bank Document Explainer</h3>
+        <p>Paste a statement, loan or financing agreement and get a plain-language explanation in English or Arabic.</p>
+        <span class="tool-cta">Open Tool →</span>
+      </a>
+      <a href="https://gcc-gratuity-calculator.vercel.app" class="tool-card">
+        <div class="tool-top"><span class="tool-icon">💼</span><span class="tool-badge paid">Premium · $10</span></div>
+        <h3>Oman Gratuity Calculator</h3>
+        <p>Your end-of-service gratuity under Royal Decree 53/2023, using the Ministry of Labour method, with the full working.</p>
+        <span class="tool-cta">Open Tool →</span>
       </a>
     </div>
+    <div class="tools-more"><a href="tools.html" class="btn-ghost">See all tools &amp; templates →</a></div>
   </div>
 </section>
 
@@ -930,7 +959,7 @@
       </a>
     </div>
     <div>
-      <p style="font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Latest episodes</p>
+      <p class="show-name">The Gulf Finance Podcast</p>
       <p style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Latest</p>
       <a href="https://open.spotify.com/episode/1bqstqIP8WFrKNoz8Q4fSu" target="_blank" class="podcast-episode">
         <span class="ep-num">Ep.1</span><span class="ep-title">The Debt Trap Nobody Warned You About</span>
@@ -946,7 +975,20 @@
         <span class="ep-num">Ep.2</span><span class="ep-title">Why Gulf Professionals Stay Broke</span>
         <span class="ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
       </a>
-      <a href="https://open.spotify.com/show/033pg4DD8ZPOf10ePMbtxw" target="_blank" style="display:block;text-align:right;margin-top:20px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;">View All Episodes →</a>
+      <a href="https://open.spotify.com/show/033pg4DD8ZPOf10ePMbtxw" target="_blank" style="display:block;text-align:right;margin-top:14px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;">View All Episodes →</a>
+
+      <p class="show-name second">The Gulf Professional Mistake of the Week</p>
+      <p style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Best of the series · 4-minute episodes</p>
+      <a href="https://open.spotify.com/episode/21HpJtDj7c4PiDRurso2zJ" target="_blank" rel="noopener" class="podcast-episode">
+        <span class="ep-num">Ep.12</span><span class="ep-title">The Investment Tip from the Cousin</span><span class="ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
+      </a>
+      <a href="https://open.spotify.com/episode/6QlOYTblBGgbZXSGWaRz7y" target="_blank" rel="noopener" class="podcast-episode">
+        <span class="ep-num">Ep.15</span><span class="ep-title">The Salary Advance: Living a Month Ahead of Yourself</span><span class="ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
+      </a>
+      <a href="https://open.spotify.com/episode/3Ed4QYvkHRnp3fUKjwBzS8" target="_blank" rel="noopener" class="podcast-episode">
+        <span class="ep-num">Ep.11</span><span class="ep-title">The Restaurant That Became a Lifestyle</span><span class="ep-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
+      </a>
+      <a href="https://open.spotify.com/show/6Eoetr32vZq6wE61hFRrNL" target="_blank" rel="noopener" style="display:block;text-align:right;margin-top:14px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;">View All Episodes →</a>
     </div>
   </div>
 </section>
@@ -1124,7 +1166,7 @@
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
   <a href="#pillars" onclick="closeMobileMenu()">Learn</a>
   <a href="halal-investing.html" onclick="closeMobileMenu()">Halal Investing</a>
-  <a href="#tools" onclick="closeMobileMenu()">Free Tools</a>
+  <a href="#tools" onclick="closeMobileMenu()">Tools</a>
   <a href="#podcast" onclick="closeMobileMenu()">Podcast</a>
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="books-resources.html" onclick="closeMobileMenu()">Books</a>
