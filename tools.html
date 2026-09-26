@@ -375,6 +375,12 @@
   @media (max-width: 1100px) { .otools-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .otools-grid { grid-template-columns: 1fr; padding: 0 20px 70px; } .section-head { padding: 0 20px 28px; } }
 
+
+  /* CRYPODE LABS: quieter than the main tools */
+  .labs-section { border-top: 1px solid rgba(201,168,76,0.12); padding-top: 70px; margin-top: 20px; }
+  .labs-section .otool-card { background: transparent; }
+  .labs-section .section-head h2 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
+
   /* FILTER BAR */
   .filter-bar {
     display: flex; justify-content: center;
@@ -602,7 +608,7 @@
 <div class="section-head">
   <span class="label">✦ Online tools</span>
   <h2>Calculators &amp; <em>AI tools</em></h2>
-  <p>Use them right in your browser, on your phone or computer. The free tools need no sign-up; premium tools are a one-time payment with unlimited use.</p>
+  <p>Use them right in your browser, on your phone or computer. The free tools need no sign-up; premium tools are a one-time payment. AI tools include up to 30 generations a month.</p>
 </div>
 <div class="otools-grid">
   <a class="otool-card" href="https://payoff.crypode.com">
@@ -635,7 +641,7 @@
     <h3 class="card-title">Resume &amp; Cover Letter Tailorer</h3>
     <p class="card-desc">ATS-friendly resumes and tailored cover letters for Gulf job markets, written by AI from your own details. Copy, download or print as PDF.</p>
     <div class="card-tags"><span class="tag">AI</span><span class="tag">ATS-friendly</span><span class="tag">Cover letters</span><span class="tag">Print / PDF</span></div>
-    <div class="card-footer"><div class="card-price">$15 <span>One-time · unlimited use</span></div><span class="btn-buy">Open Tool →</span></div>
+    <div class="card-footer"><div class="card-price">$15 <span>One-time · 30 AI uses / month</span></div><span class="btn-buy">Open Tool →</span></div>
   </a>
   <a class="otool-card" href="https://banks.crypode.com">
     <div class="otool-top"><div class="otool-icon">🏦</div><span class="otool-badge paid">Premium</span></div>
@@ -643,7 +649,7 @@
     <h3 class="card-title">Bank Document Explainer</h3>
     <p class="card-desc">Paste a bank statement, loan or financing agreement and get a plain-language explanation of the key terms, fees and what to watch for, in English or Arabic.</p>
     <div class="card-tags"><span class="tag">AI</span><span class="tag">English &amp; Arabic</span><span class="tag">Loans &amp; statements</span></div>
-    <div class="card-footer"><div class="card-price">$10 <span>One-time · unlimited use</span></div><span class="btn-buy">Open Tool →</span></div>
+    <div class="card-footer"><div class="card-price">$10 <span>One-time · 30 AI uses / month</span></div><span class="btn-buy">Open Tool →</span></div>
   </a>
   <a class="otool-card" href="https://gratuity.crypode.com">
     <div class="otool-top"><div class="otool-icon">💼</div><span class="otool-badge paid">Premium</span></div>
@@ -652,33 +658,6 @@
     <p class="card-desc">Your end-of-service gratuity under Royal Decree 53/2023, calculated from your actual dates using the Ministry of Labour method, with the full working and a printable report.</p>
     <div class="card-tags"><span class="tag">RD 53/2023</span><span class="tag">Date-based</span><span class="tag">Full breakdown</span></div>
     <div class="card-footer"><div class="card-price">$10 <span>One-time · unlimited use</span></div><span class="btn-buy">Open Tool →</span></div>
-  </a>
-</div>
-</section>
-
-<!-- FAMILY APPS -->
-<section id="family-apps">
-<div class="section-head">
-  <span class="label">✦ Family apps</span>
-  <h2>Apps for the <em>whole family</em></h2>
-  <p>Two free AI-powered apps for families: bedtime stories for the kids and smarter travel planning for everyone.</p>
-</div>
-<div class="otools-grid">
-  <a class="otool-card" href="https://tales.crypode.com" target="_blank" rel="noopener">
-    <div class="otool-top"><div class="otool-icon">📚</div><span class="otool-badge free">Free</span></div>
-    <div class="card-category">Free · Kids &amp; Family</div>
-    <h3 class="card-title">LittleTales</h3>
-    <p class="card-desc">Type any story idea and AI writes a children's story in English and Arabic, with read-aloud, word highlighting and tap-to-hear key words.</p>
-    <div class="card-tags"><span class="tag">AI stories</span><span class="tag">English &amp; Arabic</span><span class="tag">Read aloud</span></div>
-    <div class="card-footer"><div class="card-price">Free <span>No sign-up</span></div><span class="btn-buy">Read a Story →</span></div>
-  </a>
-  <a class="otool-card" href="https://trip.crypode.com" target="_blank" rel="noopener">
-    <div class="otool-top"><div class="otool-icon">🌍</div><span class="otool-badge free">Free</span></div>
-    <div class="card-category">Free · Travel</div>
-    <h3 class="card-title">TrueTrip</h3>
-    <p class="card-desc">Search any country and get an AI travel guide: hidden gems, daily cost breakdown, local food spots, tourist traps to avoid and a personalised itinerary.</p>
-    <div class="card-tags"><span class="tag">AI guide</span><span class="tag">Daily costs</span><span class="tag">Itinerary</span></div>
-    <div class="card-footer"><div class="card-price">Free <span>No sign-up</span></div><span class="btn-buy">Plan a Trip →</span></div>
   </a>
 </div>
 </section>
@@ -872,6 +851,34 @@
   </div>
 
 </div><!-- /tools-grid -->
+
+<!-- CRYPODE LABS -->
+<section id="labs" class="labs-section">
+<div class="section-head">
+  <span class="label">✦ Crypode Labs</span>
+  <h2>Experiments &amp; <em>family apps</em></h2>
+  <p>Side projects from the Crypode workshop: free AI apps for the family, built alongside our main tools.</p>
+</div>
+<div class="otools-grid">
+  <a class="otool-card" href="https://tales.crypode.com" target="_blank" rel="noopener">
+    <div class="otool-top"><div class="otool-icon">📚</div><span class="otool-badge free">Free</span></div>
+    <div class="card-category">Free · Kids &amp; Family</div>
+    <h3 class="card-title">LittleTales</h3>
+    <p class="card-desc">Type any story idea and AI writes a children's story in English and Arabic, with read-aloud, word highlighting and tap-to-hear key words.</p>
+    <div class="card-tags"><span class="tag">AI stories</span><span class="tag">English &amp; Arabic</span><span class="tag">Read aloud</span></div>
+    <div class="card-footer"><div class="card-price">Free <span>No sign-up</span></div><span class="btn-buy">Read a Story →</span></div>
+  </a>
+  <a class="otool-card" href="https://trip.crypode.com" target="_blank" rel="noopener">
+    <div class="otool-top"><div class="otool-icon">🌍</div><span class="otool-badge free">Free</span></div>
+    <div class="card-category">Free · Travel</div>
+    <h3 class="card-title">TrueTrip</h3>
+    <p class="card-desc">Search any country and get an AI travel guide: hidden gems, daily cost breakdown, local food spots, tourist traps to avoid and a personalised itinerary.</p>
+    <div class="card-tags"><span class="tag">AI guide</span><span class="tag">Daily costs</span><span class="tag">Itinerary</span></div>
+    <div class="card-footer"><div class="card-price">Free <span>No sign-up</span></div><span class="btn-buy">Plan a Trip →</span></div>
+  </a>
+</div>
+</section>
+
 
 <!-- FOOTER -->
 <footer>
