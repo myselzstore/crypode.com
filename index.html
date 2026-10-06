@@ -708,6 +708,28 @@
   .support-minimal a { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; transition: color 0.3s; }
   .support-minimal a:hover { color: var(--gold); }
 
+  /* SUPPORT / DONATION */
+  .support-section {
+    background: var(--dark-2);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .support-inner { max-width: 520px; margin: 0 auto; }
+  .support-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+  .support-section h2 em { color: var(--gold); font-style: italic; }
+  .support-section p { font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 28px; }
+  .support-section .support-note { font-size: 0.72rem; line-height: 1.6; margin: 20px 0 0; }
+  .support-section .support-note a { color: var(--gold); text-decoration: none; }
+  .support-section .support-note a:hover { color: var(--gold-light); }
+  .support-section .btn-primary:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; }
+
   /* HALAL INVESTING HUB — LIGHT */
   .halal-hub {
     background: var(--paper);
@@ -794,7 +816,7 @@
     .hero { padding: 110px 24px 80px; }
     .hero-stats { display: none; }
     .section-light, .section-light-2, .section-dark, .section-dark-2,
-    .podcast-section, .founder-section, .newsletter-section, .halal-hub { padding: 72px 24px; }
+    .podcast-section, .founder-section, .newsletter-section, .halal-hub, .support-section { padding: 64px 24px; }
     .pillars-grid, .tools-grid, .articles-grid { grid-template-columns: 1fr; }
     .newsletter-form { flex-direction: column; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
@@ -1127,10 +1149,15 @@
   </div>
 </section>
 
-<!-- SUPPORT — MINIMAL -->
-<div class="support-minimal">
-  <a href="https://buymeacoffee.com/myselzstorh" target="_blank">☕ Support Crypode →</a>
-</div>
+<!-- SUPPORT — DONATION -->
+<section class="support-section" id="support">
+  <div class="support-inner">
+    <h2>Support <em>Crypode</em></h2>
+    <p>Crypode shares honest writing and tools on money, faith and life in the Gulf. If it has helped you, you can help keep it going. Give any amount you like.</p>
+    <a class="btn-primary" href="https://www.paypal.com/ncp/payment/6L6WHV4MEYTKW" target="_blank" rel="noopener noreferrer">Donate with PayPal</a>
+    <p class="support-note">Donations are voluntary gifts to an independent creator and are not tax-deductible. Prefer another way? <a href="https://buymeacoffee.com/myselzstorh" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>.</p>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
