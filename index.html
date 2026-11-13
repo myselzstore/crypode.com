@@ -823,6 +823,59 @@
     .footer-links { flex-wrap: wrap; justify-content: center; }
     .ai-float { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 0.7rem; }
   }
+
+  /* HERO SEARCH */
+  .hero-search { margin: 28px auto 0; max-width: 520px; position: relative; }
+  .hero-search-wrap {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 0 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .hero-search-wrap:focus-within {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.09);
+  }
+  .hero-search-icon { color: var(--gold); font-size: 0.95rem; flex-shrink: 0; margin-right: 10px; }
+  .hero-search-input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--cream); font-family: 'Tajawal', sans-serif;
+    font-size: 0.9rem; padding: 13px 0;
+  }
+  .hero-search-input::placeholder { color: rgba(245,240,232,0.45); }
+  .hero-search-clear {
+    display: none; background: transparent; border: none;
+    color: rgba(245,240,232,0.5); cursor: pointer; font-size: 1rem;
+    padding: 4px 0 4px 8px; line-height: 1;
+  }
+  .hero-search-clear:hover { color: var(--gold); }
+  .hero-search-clear.visible { display: block; }
+  .search-results {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    background: var(--dark-3); border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 3px; z-index: 100; max-height: 340px; overflow-y: auto;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
+  .search-results.open { display: block; }
+  .search-result-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 16px; text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    transition: background 0.15s;
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: rgba(201,168,76,0.07); }
+  .search-result-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .search-result-text { flex: 1; }
+  .search-result-title { color: var(--cream); font-size: 0.85rem; font-weight: 600; line-height: 1.4; display: block; }
+  .search-result-desc { color: var(--text-muted); font-size: 0.75rem; line-height: 1.4; margin-top: 2px; display: block; }
+  .search-no-results { padding: 18px 16px; color: var(--text-muted); font-size: 0.85rem; text-align: center; }
+  .search-hint { text-align: center; margin-top: 10px; font-size: 0.72rem; color: rgba(245,240,232,0.35); letter-spacing: 0.3px; }
+  @media (max-width: 768px) {
+    .hero-search { max-width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -865,6 +918,20 @@
       <a href="#pillars" class="btn-primary">Explore Guides</a>
       <a href="#tools" class="btn-ghost">Use Free Tools →</a>
     </div>
+
+    <!-- SEARCH BOX -->
+    <div class="hero-search" id="heroSearch">
+      <div class="hero-search-wrap">
+        <span class="hero-search-icon">🔍</span>
+        <input class="hero-search-input" id="searchInput" type="text"
+               placeholder="Search guides, tools, halal investing…"
+               autocomplete="off" aria-label="Search Crypode">
+        <button class="hero-search-clear" id="searchClear" aria-label="Clear search">✕</button>
+      </div>
+      <div class="search-results" id="searchResults" role="listbox"></div>
+      <p class="search-hint">Try: "halal crypto", "debt", "ETF", "gold", "budget"</p>
+    </div>
+
     <p class="hero-origin">Built in Muscat, Oman · Written for professionals across the GCC</p>
   </div>
   <div class="hero-stats">
@@ -1295,6 +1362,126 @@
   function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open');  document.body.style.overflow='hidden'; }
   function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeMobileMenu(); });
+
+  // ——— SEARCH ENGINE ———
+  const SEARCH_INDEX = [
+    { title:'Is Crypto Halal? A Muslim\'s Guide (2026)', desc:'Bitcoin, Ethereum & more — complete halal status guide for Gulf Muslims.', url:'halal-article-crypto.html', icon:'₿' },
+    { title:'Sharia Compliant Crypto in Oman & Gulf (2026)', desc:'Islamic trading accounts, halal exchanges, Binance & MEXC setup guide.', url:'crypto-islamic-trading.html', icon:'🕌' },
+    { title:'Is Gold Investment Halal? Physical Gold, ETFs & iShares SGLN', desc:'Shariah ruling on gold ETFs, physical gold, and the iShares SGLN ETC for Gulf investors.', url:'halal-article-gold.html', icon:'🥇' },
+    { title:'Zoya vs Musaffa (2026): Which Halal Stock Screener Is Better?', desc:'Side-by-side comparison of Zoya and Musaffa halal screeners — features, pricing, accuracy.', url:'halal-article-zoya-musaffa.html', icon:'📊' },
+    { title:'Best Halal ETFs & Halal Index Funds for Gulf Investors (2026)', desc:'SPUS, HLAL, UMMA and other Shariah-compliant ETFs reviewed for GCC investors.', url:'halal-article-etfs.html', icon:'📈' },
+    { title:'How to Open a Halal Investment Account in the Gulf (2026)', desc:'Step-by-step guide to opening Islamic brokerage accounts from Oman, UAE, Saudi & Kuwait.', url:'halal-article-account-opening.html', icon:'🏦' },
+    { title:'Halal Sukuk & Islamic Bonds Guide', desc:'What sukuk is, how it works, and how Gulf Muslims can invest in halal bonds.', url:'halal-article-sukuk.html', icon:'📜' },
+    { title:'Halal Side Income Ideas for Gulf Professionals', desc:'Shariah-compliant ways to earn extra income alongside your salary in the GCC.', url:'halal-article-side-income.html', icon:'💡' },
+    { title:'Halal Investing Hub', desc:'Your central resource for halal stocks, ETFs, crypto and Islamic finance in the Gulf.', url:'halal-investing.html', icon:'🌙' },
+    { title:'Local vs Expat in the Gulf: Salary, Benefits & Real Differences', desc:'Pension, housing allowance, job security — the full financial comparison.', url:'article-7-expat-local.html', icon:'👔' },
+    { title:'Gulf Debt Trap: Why a Good Salary Isn\'t Enough', desc:'How Gulf professionals fall into debt cycles despite earning well — and how to escape.', url:'gulf-debt-trap-good-salary.html', icon:'💳' },
+    { title:'Why Your Gulf Salary Isn\'t Enough', desc:'The hidden costs and financial traps that swallow high GCC salaries.', url:'why-good-salary-gulf-not-enough.html', icon:'💸' },
+    { title:'Debt & Money Guide', desc:'Navigate personal loans, salary deductions, and debt cycles in the Gulf.', url:'article-1-debt.html', icon:'🏦' },
+    { title:'Islamic Finance Explained', desc:'Murabaha, sukuk, Islamic mortgages — practical guide for Gulf professionals.', url:'article-2-islamic-finance.html', icon:'📖' },
+    { title:'Career & Salary Strategy in the Gulf', desc:'Negotiate better, switch sectors, and grow your income in the GCC job market.', url:'article-3-career.html', icon:'🚀' },
+    { title:'Building Income Streams in the Gulf', desc:'Diversify beyond your salary with halal side income and investment strategies.', url:'article-4-income.html', icon:'💰' },
+    { title:'Family Finances in the Gulf', desc:'Manage family financial pressure, maher, housing costs and dependants in the GCC.', url:'article-5-family.html', icon:'👨‍👩‍👧' },
+    { title:'Financial Stress & Mental Wellbeing', desc:'Practical guidance on managing money anxiety as a Gulf professional.', url:'article-6-stress.html', icon:'🧘' },
+    { title:'Retirement Planning in the Gulf', desc:'Pension, end-of-service, savings — planning a secure retirement from the GCC.', url:'article-8-retirement.html', icon:'🏖️' },
+    { title:'Free Budget Planner Tool', desc:'Plan your monthly Gulf budget — salary, expenses, savings and debt repayment.', url:'tools-budget-planner.html', icon:'🧮' },
+    { title:'All Free Tools & Templates', desc:'Budget planner, debt calculator, zakat calculator and more — all free.', url:'tools.html', icon:'🛠️' },
+    { title:'Books & Resources for Gulf Muslims', desc:'Recommended reading on Islamic finance, investing and financial wellbeing.', url:'books-resources.html', icon:'📚' },
+    { title:'Impact Products', desc:'Ethical, Shariah-conscious products and services for Gulf professionals.', url:'impact-products.html', icon:'✨' },
+    { title:'Gulf Debt Freedom Guide', desc:'Step-by-step program to get out of debt and build financial stability in the Gulf.', url:'gulf-debt-guide-sales-page.html', icon:'🗝️' },
+    { title:'All Articles', desc:'Browse every Crypode guide on debt, halal investing, career and Gulf finance.', url:'articles.html', icon:'📰' },
+    { title:'Support Crypode', desc:'Help keep this free resource running for Gulf Muslims.', url:'support.html', icon:'🤝' },
+  ];
+
+  (function initSearch() {
+    const input   = document.getElementById('searchInput');
+    const results = document.getElementById('searchResults');
+    const clear   = document.getElementById('searchClear');
+    if (!input) return;
+
+    function normalize(s) { return s.toLowerCase().replace(/['']/g, '').trim(); }
+
+    function score(item, q) {
+      const haystack = normalize(item.title + ' ' + item.desc);
+      const words = q.split(/\s+/).filter(Boolean);
+      let pts = 0;
+      for (const w of words) {
+        if (normalize(item.title).includes(w)) pts += 3;
+        else if (haystack.includes(w)) pts += 1;
+      }
+      if (haystack.includes(q)) pts += 2;
+      return pts;
+    }
+
+    function render(q) {
+      const nq = normalize(q);
+      if (!nq) { results.classList.remove('open'); results.innerHTML = ''; return; }
+      const hits = SEARCH_INDEX
+        .map(item => ({ item, pts: score(item, nq) }))
+        .filter(x => x.pts > 0)
+        .sort((a, b) => b.pts - a.pts)
+        .slice(0, 7);
+
+      if (!hits.length) {
+        results.innerHTML = '<p class="search-no-results">No results for "' + q.replace(/</g,'&lt;') + '" — try different keywords.</p>';
+      } else {
+        results.innerHTML = hits.map(({ item }) =>
+          `<a href="${item.url}" class="search-result-item">
+            <span class="search-result-icon">${item.icon}</span>
+            <span class="search-result-text">
+              <span class="search-result-title">${item.title}</span>
+              <span class="search-result-desc">${item.desc}</span>
+            </span>
+          </a>`
+        ).join('');
+      }
+      results.classList.add('open');
+    }
+
+    input.addEventListener('input', function() {
+      const v = this.value;
+      clear.classList.toggle('visible', v.length > 0);
+      render(v);
+    });
+
+    clear.addEventListener('click', function() {
+      input.value = '';
+      clear.classList.remove('visible');
+      results.classList.remove('open');
+      results.innerHTML = '';
+      input.focus();
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!document.getElementById('heroSearch').contains(e.target)) {
+        results.classList.remove('open');
+      }
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        results.classList.remove('open');
+        input.blur();
+      }
+      if (e.key === 'Enter') {
+        const first = results.querySelector('.search-result-item');
+        if (first) first.click();
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const items = results.querySelectorAll('.search-result-item');
+        if (items.length) items[0].focus();
+      }
+    });
+
+    results.addEventListener('keydown', function(e) {
+      const items = [...results.querySelectorAll('.search-result-item')];
+      const idx = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown' && idx < items.length - 1) { e.preventDefault(); items[idx+1].focus(); }
+      if (e.key === 'ArrowUp')  { e.preventDefault(); idx > 0 ? items[idx-1].focus() : input.focus(); }
+      if (e.key === 'Escape')   { results.classList.remove('open'); input.focus(); }
+    });
+  })();
 </script>
 </body>
 </html>
