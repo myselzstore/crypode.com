@@ -1408,18 +1408,42 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  // Newsletter
+  // Newsletter — saves email to Google Sheet, then redirects to Medium
+  const CRYPODE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyU8lYwKku_nxhsWPeFV84F5I32Rt4gRXH29eN6YyoEwU_fOfBhStN0Cz2lyxtyUnc/exec';
+
   function handleSubscribe() {
     const input = document.getElementById('newsletter-email');
-    if (input.value && input.value.includes('@')) {
-      const email = encodeURIComponent(input.value);
-      input.value = '';
-      input.placeholder = '✦ Thank you — redirecting to Medium...';
-      setTimeout(() => window.open('https://medium.com/subscribe/@crypode?email=' + email, '_blank'), 800);
-    } else {
+    const btn   = document.querySelector('.newsletter-form .btn-primary');
+    const email = (input.value || '').trim();
+
+    if (!email || !email.includes('@') || !email.includes('.')) {
       input.style.borderColor = '#c0392b';
       input.placeholder = 'Please enter a valid email';
+      return;
     }
+
+    // Disable button to prevent double-submit
+    if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
+
+    // Fire-and-forget POST to Google Apps Script (no-cors so no CORS preflight)
+    fetch(CRYPODE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'email=' + encodeURIComponent(email) + '&source=crypode.com&ts=' + encodeURIComponent(new Date().toISOString())
+    }).catch(function(){});   // silent fail — redirect happens regardless
+
+    // Update UI and redirect to Medium
+    input.value = '';
+    input.placeholder = '✦ Thank you — redirecting to Medium…';
+    if (btn) { btn.textContent = '✓ Done'; }
+    setTimeout(function() {
+      window.open('https://medium.com/subscribe/@crypode?email=' + encodeURIComponent(email), '_blank');
+      setTimeout(function() {
+        if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+        input.placeholder = 'Your email address';
+      }, 4000);
+    }, 1000);
   }
 
   // AI toggle
