@@ -65,7 +65,7 @@
   }
 
   /* ── 3. AFFILIATE CLICK TRACKING ──────────────────────────────── */
-  var TRACK_URL = 'https://script.google.com/macros/s/AKfycbyU8lYwKku_nxhsWPeFV84F5I32Rt4gRXH29eN6YyoEwU_fOfBhStN0Cz2lyxtyUnc/exec';
+  var TRACK_URL = 'https://script.google.com/macros/s/AKfycbxYdr-n5PGzgOLQhDQPUnRb8YSwZqGBjsREku66Aw2Sk4cnePNvGYrBNMTQIFF0v8M/exec';
 
   var AFFILIATES = [
     { re: /binance\.com/,          name: 'Binance'      },
