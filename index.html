@@ -905,6 +905,7 @@
     .nav-search-overlay { padding: 24px 20px 28px; top: 55px; }
   }
 </style>
+<link rel="alternate" type="application/rss+xml" title="Crypode RSS" href="/rss.xml">
 </head>
 <body>
 
@@ -1370,6 +1371,7 @@
     <a href="#about">About</a>
     <a href="#newsletter">Subscribe</a>
     <a href="support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
   </div>
 </footer>
 
@@ -1406,9 +1408,37 @@
   <a href="#newsletter" class="mobile-subscribe" onclick="closeMobileMenu()">Subscribe</a>
 </div>
 
+<!-- EmailJS SDK — for welcome emails. See setup note below. -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  // Newsletter — saves email to Google Sheet, then redirects to Medium
+  // ── EMAILJS SETUP ──────────────────────────────────────────────
+  // To activate welcome emails:
+  //   1. Sign up at https://www.emailjs.com (free tier = 200 emails/month)
+  //   2. Connect your Gmail service → note the Service ID (e.g. "service_abc123")
+  //   3. Create an email template with variables {{to_email}} and {{site_name}}
+  //      Note the Template ID (e.g. "template_xyz789")
+  //   4. Go to Account → API Keys → copy your Public Key
+  //   5. Replace the three placeholder values below and push to GitHub.
+  var EMAILJS_PUBLIC_KEY  = 'yKRCas8mxwQBVEiW1';
+  var EMAILJS_SERVICE_ID  = 'service_4d0cill';
+  var EMAILJS_TEMPLATE_ID = 'template_ipbd8fa';
+
+  if (EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  function sendWelcomeEmail(email) {
+    if (EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') return;
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_email:  email,
+      site_name: 'Crypode',
+      site_url:  'https://crypode.com'
+    }).catch(function () {});   // fire-and-forget
+  }
+
+  // ── NEWSLETTER ─────────────────────────────────────────────────
+  // Saves email to Google Sheet, sends welcome email, redirects to Medium
   const CRYPODE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyU8lYwKku_nxhsWPeFV84F5I32Rt4gRXH29eN6YyoEwU_fOfBhStN0Cz2lyxtyUnc/exec';
 
   function handleSubscribe() {
@@ -1425,15 +1455,18 @@
     // Disable button to prevent double-submit
     if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
 
-    // Fire-and-forget POST to Google Apps Script (no-cors so no CORS preflight)
+    // 1. Save to Google Sheet (fire-and-forget, no-cors)
     fetch(CRYPODE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: 'email=' + encodeURIComponent(email) + '&source=crypode.com&ts=' + encodeURIComponent(new Date().toISOString())
-    }).catch(function(){});   // silent fail — redirect happens regardless
+    }).catch(function(){});
 
-    // Update UI and redirect to Medium
+    // 2. Send welcome email via EmailJS (if configured)
+    sendWelcomeEmail(email);
+
+    // 3. Update UI and redirect to Medium
     input.value = '';
     input.placeholder = '✦ Thank you — redirecting to Medium…';
     if (btn) { btn.textContent = '✓ Done'; }
@@ -1680,5 +1713,6 @@
     });
   })();
 </script>
+<script src="/crypode-utils.js"></script>
 </body>
 </html>

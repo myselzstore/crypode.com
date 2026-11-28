@@ -166,6 +166,7 @@
     .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>
+<link rel="alternate" type="application/rss+xml" title="Crypode RSS" href="/rss.xml">
 </head>
 <body>
 
@@ -335,6 +336,7 @@
     <a href="tools-budget-planner.html">Tools</a>
     <a href="/#podcast">Podcast</a>
     <a href="/#newsletter">Subscribe</a>
+      <a href="/privacy.html">Privacy</a>
   </div>
 </footer>
 
@@ -446,5 +448,6 @@
   const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), {threshold:0.08});
   document.querySelectorAll('.t-card, .related-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; obs.observe(el); });
 </script>
+<script src="/crypode-utils.js"></script>
 </body>
 </html>
